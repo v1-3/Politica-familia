@@ -14,6 +14,8 @@ function renderSectionSelector(scope){
 }
 const emptyScope=scope=>`<div class="no-results"><h3>Choose people for ${scope==='geometry'?'these graphs':scope==='matches'?'these matches':'this reading list'}.</h3><p>Select any person, pair, trio or everyone using the buttons above.</p></div>`;
 const originalGeometry=renderGeometry;
+let geometryResizeTimer;
+window.addEventListener('resize',()=>{clearTimeout(geometryResizeTimer);geometryResizeTimer=setTimeout(()=>renderGeometry(),120);});
 renderGeometry=function(){renderSectionSelector('geometry');inSection('geometry',()=>{if(!S.mask){$('radar-chart').innerHTML=emptyScope('geometry');['radar-legend','distance-map','distance-matrix','map-quality'].forEach(id=>$(id).innerHTML='');return;}originalGeometry();});};
 const originalHero=renderHero;
 renderHero=function(){inSection('matches',originalHero);};

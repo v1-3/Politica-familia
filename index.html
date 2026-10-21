@@ -104,6 +104,33 @@ html[data-theme="dark"] [aria-pressed="true"]{box-shadow:inset 0 0 0 2px #b5e8cb
 @media(max-width:650px){.section-selection{padding:16px;gap:14px}.section-selector-label{width:100%}.section-selection .people-filter{gap:7px!important;justify-content:flex-start}.scope-actions{width:100%;gap:12px}.scope-actions select{flex:1;min-width:0;max-width:100%}.section-selection .person-pill{font-size:10px!important;padding:7px 9px!important}.book-method-controls{align-items:flex-start;flex-direction:column}.book-method-controls .threshold{width:100%}#geometry{padding-top:28px}#geometry .section-head h1{font-size:33px}.selection-label{display:block}.selection-label strong{font-size:11px}.selection-label span{max-width:300px;font-size:9px}.selection-shell{position:static!important}}
 @media print{.section-selection,.book-method-controls{display:none}.hero h2{font-size:32px}}
 @media(max-width:650px){.nav{flex-wrap:wrap;justify-content:center;padding-block:14px}.nav nav{width:100%;justify-content:center;flex-wrap:wrap;gap:10px 18px}.geometry-card .note{font-size:11px}.geometry-card h3{font-size:18px}#radar-chart{overflow-x:auto}#radar-chart svg{min-width:540px}.selection-actions select{max-width:190px!important}.mobile-chart-hint{display:block;color:var(--forest)}}
+/* Chart surfaces and SVG primitives share the active theme. */
+#radar-chart,#distance-map,#compass-chart{background:transparent!important;width:100%;min-width:0;overflow:visible}
+#radar-chart svg,#distance-map svg,#compass-chart svg{display:block;width:100%;min-width:0!important;max-width:900px;height:auto;margin-inline:auto}
+.geometry-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:1250px){.geometry-grid{grid-template-columns:minmax(0,1fr)}}
+.mobile-chart-hint{display:none!important}
+.radar-axis-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 28px;margin:14px 0 22px;padding-left:26px;font-size:14px;line-height:1.5;color:var(--ink)}
+.radar-axis-key li{padding-left:3px;overflow-wrap:anywhere}.radar-axis-key li::marker{font-weight:700;color:var(--forest)}
+#distance-matrix{max-width:100%;overflow-x:auto}
+#distance-matrix table{table-layout:fixed;width:100%;min-width:0}
+#distance-matrix caption,#distance-matrix th,#distance-matrix td{white-space:normal;overflow-wrap:anywhere}
+#distance-matrix th:first-child{width:30%}
+.segments{flex-wrap:wrap;max-width:100%}.segments button{white-space:normal;min-width:0}
+html[data-theme="dark"] #radar-chart polygon[fill="#f4f3eb"]{fill:#26372e}
+html[data-theme="dark"] #radar-chart [stroke="#deddd1"]{stroke:#617369}
+html[data-theme="dark"] #radar-chart text{fill:#edf6ee}
+html[data-theme="dark"] #radar-chart polygon[stroke="#102e24"]{stroke:#b3f1ce}
+html[data-theme="dark"] #radar-chart polygon[stroke="#9d531c"]{stroke:#ffc17f}
+html[data-theme="dark"] #radar-legend .line-swatch:not(.dashed){color:#b3f1ce!important}
+html[data-theme="dark"] #radar-legend .line-swatch.dashed{color:#ffc17f!important}
+html[data-theme="dark"] #distance-map pattern circle{fill:#617369}
+html[data-theme="dark"] #distance-map g rect,html[data-theme="dark"] #compass-chart g rect[fill="#fbf9f3"]{fill:#26372e}
+html[data-theme="dark"] #distance-map g text,html[data-theme="dark"] #compass-chart g[data-compass-person] text{fill:#f2f4ec}
+html[data-theme="dark"] #distance-map g circle,html[data-theme="dark"] #compass-chart [data-marker]{stroke:#202b25}
+html[data-theme="dark"] #compass-chart svg>text{fill:#f2f4ec}
+html[data-theme="dark"] #compass-chart g[clip-path]{filter:brightness(.65) saturate(.7)}
+@media(max-width:650px){.geometry-card{padding:16px 12px}.geometry-grid{gap:18px}.geometry-card .note{font-size:14px!important}.geometry-card table{font-size:12px!important}.geometry-card th,.geometry-card td{padding:8px 4px}}
 
 </style><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23102e24'/%3E%3Ctext x='32' y='43' fill='%23f4f1e8' font-family='Arial' font-size='34' font-weight='bold' text-anchor='middle'%3E12%3C/text%3E%3C/svg%3E"></head>
 <body><a href="#main" class="skip">Skip to content</a>
@@ -552,16 +579,17 @@ function renderGeometry(){
  const ps=selectedProfiles(), summaries=robustAxes(), averages=$('radar-average').checked&&ps.length>1;
  const cx=360,cy=260,r=175,at=(j,v,extra=0)=>{const t=-Math.PI/2+j*Math.PI/6;return[cx+Math.cos(t)*(r*v/100+extra),cy+Math.sin(t)*(r*v/100+extra)];};
  const polygon=values=>values.map((v,j)=>at(j,v).map(x=>x.toFixed(2)).join(',')).join(' ');
- let svg=`<svg viewBox="0 0 720 535" role="img" aria-labelledby="radar-title radar-desc"><title id="radar-title">Twelve-axis comparison for ${esc(selectedNames())}</title><desc id="radar-desc">Each spoke measures the named pole from zero at the center to one hundred at the edge. Individual profiles are colored; the median is dark green and the mean is dashed brown.</desc>`;
+ const compact=$('radar-chart').clientWidth<560;
+ let svg=`<svg viewBox="${compact?'145 45 430 430':'0 0 720 535'}" role="img" aria-labelledby="radar-title radar-desc"><title id="radar-title">Twelve-axis comparison for ${esc(selectedNames())}</title><desc id="radar-desc">Each spoke measures the named pole from zero at the center to one hundred at the edge. Individual profiles are colored; the median is dark green and the mean is dashed brown.</desc>`;
  [25,50,75,100].forEach(v=>{svg+=`<polygon points="${polygon(Array(12).fill(v))}" fill="${v===100?'#f4f3eb':'none'}" stroke="#deddd1" stroke-width="1"/>`;});
  // Draw rings in descending order so the outer fill cannot cover the inner rings.
  [25,50,75].forEach(v=>{svg+=`<polygon points="${polygon(Array(12).fill(v))}" fill="none" stroke="#deddd1"/>`;});
  const labels=['Federal','Democratic','Security-focused','Assimilationist','Militarist','Non-interventionist','Public economy','Planned economy','Protectionist','Irreligious','Progressive','Pro-technology'];
- D.axes.forEach((a,j)=>{const p=at(j,100),l=at(j,100,35),anchor=Math.abs(l[0]-cx)<8?'middle':l[0]>cx?'start':'end';svg+=`<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="#deddd1"/><text class="radar-axis-label" x="${l[0]}" y="${l[1]+4}" text-anchor="${anchor}" fill="#203c2e" font-size="16" font-weight="600">${esc(labels[j])}</text>`;});
- [0,25,50,75,100].forEach(v=>svg+=`<text x="${cx+6}" y="${cy-r*v/100-4}" font-size="9" fill="#77776b">${v}</text>`);
+ D.axes.forEach((a,j)=>{const p=at(j,100),l=at(j,100,compact?22:35),anchor=compact?'middle':Math.abs(l[0]-cx)<8?'middle':l[0]>cx?'start':'end';svg+=`<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="#deddd1"/><text class="radar-axis-label" x="${l[0]}" y="${l[1]+4}" text-anchor="${anchor}" fill="#203c2e" font-size="${compact?19:16}" font-weight="600">${compact?j+1:esc(labels[j])}</text>`;});
+ [0,25,50,75,100].forEach(v=>svg+=`<text x="${cx+6}" y="${cy-r*v/100-4}" font-size="12" fill="#77776b">${v}</text>`);
  ps.forEach(p=>{svg+=`<polygon points="${polygon(p.values)}" fill="${p.color}" fill-opacity=".04" stroke="${p.color}" stroke-width="2.3"><title>${esc(p.name)}</title></polygon>`;p.values.forEach((v,j)=>{const q=at(j,v);svg+=`<circle cx="${q[0]}" cy="${q[1]}" r="3.3" fill="${p.color}"><title>${esc(p.name)} · ${esc(D.axes[j].leftPole)}: ${pct(v)}</title></circle>`;});});
  if(averages)svg+=`<polygon points="${polygon(summaries.map(s=>s.mean))}" fill="none" stroke="#9d531c" stroke-dasharray="7 5" stroke-width="2.4"/><polygon points="${polygon(summaries.map(s=>s.median))}" fill="none" stroke="#102e24" stroke-width="3.2"/>`;
- $('radar-chart').innerHTML=svg+'</svg>';
+ $('radar-chart').innerHTML=svg+'</svg>'+(compact?'<ol class="radar-axis-key">'+labels.map(label=>`<li>${esc(label)}</li>`).join('')+'</ol>':'');
  $('radar-legend').innerHTML=members().map(i=>`<span>${dot(i)}${esc(D.people[i].name)}</span>`).join('')+(averages?'<span><i class="line-swatch" style="color:#102e24"></i>Median</span><span><i class="line-swatch dashed" style="color:#9d531c"></i>Mean</span>':'');
  const m=F.classicalMDS(ps), xs=m.coordinates.map(p=>p[0]), ys=m.coordinates.map(p=>p[1]);
  const dx=Math.max(...xs)-Math.min(...xs),dy=Math.max(...ys)-Math.min(...ys),scale=Math.min(dx?440/dx:Infinity,dy?235/dy:Infinity);
@@ -621,6 +649,8 @@ function renderSectionSelector(scope){
 }
 const emptyScope=scope=>`<div class="no-results"><h3>Choose people for ${scope==='geometry'?'these graphs':scope==='matches'?'these matches':'this reading list'}.</h3><p>Select any person, pair, trio or everyone using the buttons above.</p></div>`;
 const originalGeometry=renderGeometry;
+let geometryResizeTimer;
+window.addEventListener('resize',()=>{clearTimeout(geometryResizeTimer);geometryResizeTimer=setTimeout(()=>renderGeometry(),120);});
 renderGeometry=function(){renderSectionSelector('geometry');inSection('geometry',()=>{if(!S.mask){$('radar-chart').innerHTML=emptyScope('geometry');['radar-legend','distance-map','distance-matrix','map-quality'].forEach(id=>$(id).innerHTML='');return;}originalGeometry();});};
 const originalHero=renderHero;
 renderHero=function(){inSection('matches',originalHero);};

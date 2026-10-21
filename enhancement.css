@@ -35,3 +35,30 @@ html[data-theme="dark"] [aria-pressed="true"]{box-shadow:inset 0 0 0 2px #b5e8cb
 @media(max-width:650px){.section-selection{padding:16px;gap:14px}.section-selector-label{width:100%}.section-selection .people-filter{gap:7px!important;justify-content:flex-start}.scope-actions{width:100%;gap:12px}.scope-actions select{flex:1;min-width:0;max-width:100%}.section-selection .person-pill{font-size:10px!important;padding:7px 9px!important}.book-method-controls{align-items:flex-start;flex-direction:column}.book-method-controls .threshold{width:100%}#geometry{padding-top:28px}#geometry .section-head h1{font-size:33px}.selection-label{display:block}.selection-label strong{font-size:11px}.selection-label span{max-width:300px;font-size:9px}.selection-shell{position:static!important}}
 @media print{.section-selection,.book-method-controls{display:none}.hero h2{font-size:32px}}
 @media(max-width:650px){.nav{flex-wrap:wrap;justify-content:center;padding-block:14px}.nav nav{width:100%;justify-content:center;flex-wrap:wrap;gap:10px 18px}.geometry-card .note{font-size:11px}.geometry-card h3{font-size:18px}#radar-chart{overflow-x:auto}#radar-chart svg{min-width:540px}.selection-actions select{max-width:190px!important}.mobile-chart-hint{display:block;color:var(--forest)}}
+/* Chart surfaces and SVG primitives share the active theme. */
+#radar-chart,#distance-map,#compass-chart{background:transparent!important;width:100%;min-width:0;overflow:visible}
+#radar-chart svg,#distance-map svg,#compass-chart svg{display:block;width:100%;min-width:0!important;max-width:900px;height:auto;margin-inline:auto}
+.geometry-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:1250px){.geometry-grid{grid-template-columns:minmax(0,1fr)}}
+.mobile-chart-hint{display:none!important}
+.radar-axis-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 28px;margin:14px 0 22px;padding-left:26px;font-size:14px;line-height:1.5;color:var(--ink)}
+.radar-axis-key li{padding-left:3px;overflow-wrap:anywhere}.radar-axis-key li::marker{font-weight:700;color:var(--forest)}
+#distance-matrix{max-width:100%;overflow-x:auto}
+#distance-matrix table{table-layout:fixed;width:100%;min-width:0}
+#distance-matrix caption,#distance-matrix th,#distance-matrix td{white-space:normal;overflow-wrap:anywhere}
+#distance-matrix th:first-child{width:30%}
+.segments{flex-wrap:wrap;max-width:100%}.segments button{white-space:normal;min-width:0}
+html[data-theme="dark"] #radar-chart polygon[fill="#f4f3eb"]{fill:#26372e}
+html[data-theme="dark"] #radar-chart [stroke="#deddd1"]{stroke:#617369}
+html[data-theme="dark"] #radar-chart text{fill:#edf6ee}
+html[data-theme="dark"] #radar-chart polygon[stroke="#102e24"]{stroke:#b3f1ce}
+html[data-theme="dark"] #radar-chart polygon[stroke="#9d531c"]{stroke:#ffc17f}
+html[data-theme="dark"] #radar-legend .line-swatch:not(.dashed){color:#b3f1ce!important}
+html[data-theme="dark"] #radar-legend .line-swatch.dashed{color:#ffc17f!important}
+html[data-theme="dark"] #distance-map pattern circle{fill:#617369}
+html[data-theme="dark"] #distance-map g rect,html[data-theme="dark"] #compass-chart g rect[fill="#fbf9f3"]{fill:#26372e}
+html[data-theme="dark"] #distance-map g text,html[data-theme="dark"] #compass-chart g[data-compass-person] text{fill:#f2f4ec}
+html[data-theme="dark"] #distance-map g circle,html[data-theme="dark"] #compass-chart [data-marker]{stroke:#202b25}
+html[data-theme="dark"] #compass-chart svg>text{fill:#f2f4ec}
+html[data-theme="dark"] #compass-chart g[clip-path]{filter:brightness(.65) saturate(.7)}
+@media(max-width:650px){.geometry-card{padding:16px 12px}.geometry-grid{gap:18px}.geometry-card .note{font-size:14px!important}.geometry-card table{font-size:12px!important}.geometry-card th,.geometry-card td{padding:8px 4px}}

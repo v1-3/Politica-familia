@@ -11,16 +11,17 @@ function renderGeometry(){
  const ps=selectedProfiles(), summaries=robustAxes(), averages=$('radar-average').checked&&ps.length>1;
  const cx=360,cy=260,r=175,at=(j,v,extra=0)=>{const t=-Math.PI/2+j*Math.PI/6;return[cx+Math.cos(t)*(r*v/100+extra),cy+Math.sin(t)*(r*v/100+extra)];};
  const polygon=values=>values.map((v,j)=>at(j,v).map(x=>x.toFixed(2)).join(',')).join(' ');
- let svg=`<svg viewBox="0 0 720 535" role="img" aria-labelledby="radar-title radar-desc"><title id="radar-title">Twelve-axis comparison for ${esc(selectedNames())}</title><desc id="radar-desc">Each spoke measures the named pole from zero at the center to one hundred at the edge. Individual profiles are colored; the median is dark green and the mean is dashed brown.</desc>`;
+ const compact=$('radar-chart').clientWidth<560;
+ let svg=`<svg viewBox="${compact?'145 45 430 430':'0 0 720 535'}" role="img" aria-labelledby="radar-title radar-desc"><title id="radar-title">Twelve-axis comparison for ${esc(selectedNames())}</title><desc id="radar-desc">Each spoke measures the named pole from zero at the center to one hundred at the edge. Individual profiles are colored; the median is dark green and the mean is dashed brown.</desc>`;
  [25,50,75,100].forEach(v=>{svg+=`<polygon points="${polygon(Array(12).fill(v))}" fill="${v===100?'#f4f3eb':'none'}" stroke="#deddd1" stroke-width="1"/>`;});
  // Draw rings in descending order so the outer fill cannot cover the inner rings.
  [25,50,75].forEach(v=>{svg+=`<polygon points="${polygon(Array(12).fill(v))}" fill="none" stroke="#deddd1"/>`;});
  const labels=['Federal','Democratic','Security-focused','Assimilationist','Militarist','Non-interventionist','Public economy','Planned economy','Protectionist','Irreligious','Progressive','Pro-technology'];
- D.axes.forEach((a,j)=>{const p=at(j,100),l=at(j,100,35),anchor=Math.abs(l[0]-cx)<8?'middle':l[0]>cx?'start':'end';svg+=`<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="#deddd1"/><text class="radar-axis-label" x="${l[0]}" y="${l[1]+4}" text-anchor="${anchor}" fill="#203c2e" font-size="16" font-weight="600">${esc(labels[j])}</text>`;});
- [0,25,50,75,100].forEach(v=>svg+=`<text x="${cx+6}" y="${cy-r*v/100-4}" font-size="9" fill="#77776b">${v}</text>`);
+ D.axes.forEach((a,j)=>{const p=at(j,100),l=at(j,100,compact?22:35),anchor=compact?'middle':Math.abs(l[0]-cx)<8?'middle':l[0]>cx?'start':'end';svg+=`<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="#deddd1"/><text class="radar-axis-label" x="${l[0]}" y="${l[1]+4}" text-anchor="${anchor}" fill="#203c2e" font-size="${compact?19:16}" font-weight="600">${compact?j+1:esc(labels[j])}</text>`;});
+ [0,25,50,75,100].forEach(v=>svg+=`<text x="${cx+6}" y="${cy-r*v/100-4}" font-size="12" fill="#77776b">${v}</text>`);
  ps.forEach(p=>{svg+=`<polygon points="${polygon(p.values)}" fill="${p.color}" fill-opacity=".04" stroke="${p.color}" stroke-width="2.3"><title>${esc(p.name)}</title></polygon>`;p.values.forEach((v,j)=>{const q=at(j,v);svg+=`<circle cx="${q[0]}" cy="${q[1]}" r="3.3" fill="${p.color}"><title>${esc(p.name)} · ${esc(D.axes[j].leftPole)}: ${pct(v)}</title></circle>`;});});
  if(averages)svg+=`<polygon points="${polygon(summaries.map(s=>s.mean))}" fill="none" stroke="#9d531c" stroke-dasharray="7 5" stroke-width="2.4"/><polygon points="${polygon(summaries.map(s=>s.median))}" fill="none" stroke="#102e24" stroke-width="3.2"/>`;
- $('radar-chart').innerHTML=svg+'</svg>';
+ $('radar-chart').innerHTML=svg+'</svg>'+(compact?'<ol class="radar-axis-key">'+labels.map(label=>`<li>${esc(label)}</li>`).join('')+'</ol>':'');
  $('radar-legend').innerHTML=members().map(i=>`<span>${dot(i)}${esc(D.people[i].name)}</span>`).join('')+(averages?'<span><i class="line-swatch" style="color:#102e24"></i>Median</span><span><i class="line-swatch dashed" style="color:#9d531c"></i>Mean</span>':'');
  const m=F.classicalMDS(ps), xs=m.coordinates.map(p=>p[0]), ys=m.coordinates.map(p=>p[1]);
  const dx=Math.max(...xs)-Math.min(...xs),dy=Math.max(...ys)-Math.min(...ys),scale=Math.min(dx?440/dx:Infinity,dy?235/dy:Infinity);
