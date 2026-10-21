@@ -126,22 +126,49 @@ const UI_PHRASES = {
  'points RMS':'pontos RMS','percentage points':'pontos percentuais','Mean:':'Média:','Median:':'Mediana:',
  'Public catalog snapshot':'Versão do catálogo público','commit':'commit','Page ':'Página ','Source page':'Página de origem','Compatibility':'Compatibilidade','Range':'Amplitude','Gap':'Diferença','Author':'Autor','Read more':'Ler mais'
 };
+Object.assign(UI_PHRASES,{
+ 'Separate median-profile fits using the source’s dimension-specific axis sets. These are independent of the minimum filter above.':'As correspondências com a mediana são calculadas separadamente para cada dimensão, usando os eixos definidos pela fonte. O filtro mínimo acima não se aplica aqui.',
+ 'Separate minimum individual fits using the source’s dimension-specific axis sets. These are independent of the minimum filter above.':'A menor compatibilidade individual é calculada separadamente para cada dimensão, usando os eixos definidos pela fonte. O filtro mínimo acima não se aplica aqui.',
+ 'Third position with Strongly traditionalist social values':'Terceira posição com valores sociais fortemente tradicionalistas',
+ 'Centrist with Traditionalist social values':'Centro com valores sociais tradicionalistas','Right with Traditionalist social values':'Direita com valores sociais tradicionalistas','Centrist with Moderate social values':'Centro com valores sociais moderados',
+ 'Book matching method':'Método de compatibilidade dos livros',
+ 'The main bars show the selected median; each person’s score stays visible.':'As visualizações mostram a mediana da seleção e as pontuações individuais.',
+ 'CLOSEST AXIS':'EIXO COM MAIOR CONCORDÂNCIA','WIDEST DIFFERENCE':'MAIOR DIFERENÇA','CLOSEST PAIR':'DUPLA MAIS PRÓXIMA',
+ 'percentage point range among the selected people.':'pontos percentuais de amplitude entre as pessoas selecionadas.',
+ 'percentage points. Every individual stays visible.':'pontos percentuais. Todas as pontuações individuais continuam visíveis.',
+ 'percentage points apart on average.':'pontos percentuais de diferença, em média.',
+ 'The main bars show the selected median; each person’s score stays visible.':'As visualizações mostram a mediana da seleção e as pontuações individuais.',
+ 'Highlighted values determine the median. Individual values below measure':'Os valores destacados determinam a mediana. Os valores individuais abaixo medem',
+ 'Median':'Mediana','Mean':'Média','Federal':'Federalista','Militarist':'Militarista','Non-interventionist':'Não intervencionista','Irreligious':'Irreligioso','Progressive':'Progressista','Traditionalist':'Tradicionalista',
+ 'Political matches':'Correspondências políticas','Social matches':'Correspondências sociais','Economic matches':'Correspondências econômicas',
+ 'Search these matches':'Buscar nestas correspondências','Axis view':'Visualização dos eixos','Match category':'Categoria de correspondências','Compatibility method':'Método de compatibilidade','Original report category':'Categoria dos relatórios originais',
+ 'Default people; changing these resets all section selections':'Seleção geral; alterá-la redefine as seleções de todas as seções',
+ 'Twelve-axis comparison for':'Comparação dos doze eixos de',
+ 'Each spoke measures the named pole from zero at the center to one hundred at the edge. Individual profiles are colored; the median is dark green and the mean is dashed brown.':'Cada eixo mede o polo indicado de zero no centro a cem na borda. Os perfis individuais são coloridos; a mediana tem linha contínua e a média tem linha tracejada.',
+ 'Geometric distance map for':'Mapa de distâncias entre os perfis de',
+ 'Two-dimensional projection of root-mean-square score differences. Distances and projection quality appear below.':'Projeção em duas dimensões das diferenças RMS entre pontuações. As distâncias exatas e a qualidade da projeção aparecem abaixo.',
+ 'Political compass for':'Bússola política de',
+ 'Economic right increases from left to right. Authority increases from bottom to top. Points use the original formulas. Exact scores appear in the adjacent table.':'A direita econômica aumenta da esquerda para a direita. A autoridade aumenta de baixo para cima. Os pontos usam as fórmulas originais. As pontuações exatas estão na tabela.',
+ 'Authoritarian':'Autoritário','Authority ↑':'Autoridade ↑','Economic right →':'Direita econômica →',
+ ' of ':' de '
+});
 let uiLanguage=localStorage.getItem('family-language')||'en';
 const uiOriginal=new WeakMap();
 const uiAttributes=new WeakMap();
-const uiPhrasePattern=new RegExp(Object.keys(UI_PHRASES).sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g');
+const uiPhraseMap={...Object.fromEntries(Object.entries(UI_COPY).filter(([,v])=>typeof v==='string')),...UI_PHRASES};
+const uiPhrasePattern=new RegExp('(?<![A-Za-z])(?:'+Object.keys(uiPhraseMap).sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![A-Za-z])','g');
 function uiText(raw){
  const trim=raw.trim(),entry=UI_COPY[trim];
  if(entry){const value=Array.isArray(entry)?entry[uiLanguage==='pt'?1:0]:(uiLanguage==='pt'?entry:trim);return raw.replace(trim,value);}
  if(uiLanguage!=='pt')return raw;
  let text=raw;
  // Match against the original English text once: translated output is never retranslated.
- text=text.replace(uiPhrasePattern,match=>UI_PHRASES[match]);
+ text=text.replace(uiPhrasePattern,match=>uiPhraseMap[match]);
  return text;
 }
 function translateInterface(){
  uiObserver.disconnect();
- const walk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement?.closest('script,style,#page-preferences,.original-text,.report-quote,.report-item details p')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+ const walk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement?.closest('script,style,#page-preferences,.original-text,.report-quote,.report-item details p,.book-body h3,.card-title,.dimension-entry strong,.hero-match h3,.hero-image-item strong,.book-portrait>span,.report-item h5')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
  while(walk.nextNode()){
   const node=walk.currentNode,previous=uiOriginal.get(node);
   const raw=previous&&node.nodeValue===previous.rendered?previous.raw:node.nodeValue;

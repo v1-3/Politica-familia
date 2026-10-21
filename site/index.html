@@ -131,6 +131,50 @@ html[data-theme="dark"] #distance-map g circle,html[data-theme="dark"] #compass-
 html[data-theme="dark"] #compass-chart svg>text{fill:#f2f4ec}
 html[data-theme="dark"] #compass-chart g[clip-path]{filter:brightness(.65) saturate(.7)}
 @media(max-width:650px){.geometry-card{padding:16px 12px}.geometry-grid{gap:18px}.geometry-card .note{font-size:14px!important}.geometry-card table{font-size:12px!important}.geometry-card th,.geometry-card td{padding:8px 4px}}
+/* Final typography and surface rules: keep late mobile rules from shrinking text. */
+:root{--soft:#e9ede4;--selected:#173e2d;--on-selected:#fff;--badge:#fbf9f3}
+html[data-theme="dark"]{--soft:#29372e;--selected:#b3e7ca;--on-selected:#15271d;--badge:#202b25}
+.matches-shell,.report-shell{background:var(--paper)!important;border-color:var(--line)}
+.segments,.axis-detail,.hero-bottom,.context-panel{background:var(--soft)!important;color:var(--ink);border-color:var(--line)}
+.mode-explanation{background:var(--surface);color:var(--ink);border-color:var(--line);font-size:16px;line-height:1.8;max-width:80ch}
+.mode-explanation strong{display:block;margin-bottom:6px}
+html[data-theme] .segments button[aria-pressed="true"],html[data-theme] .category-tabs button[aria-pressed="true"],html[data-theme] .sorted-value.middle{background:var(--selected);color:var(--on-selected)!important;border-color:var(--selected)}
+.segments{border:1px solid var(--line);border-radius:18px;gap:6px;padding:6px}
+.segments button{border-radius:12px;line-height:1.5;min-height:44px}
+.category-tabs button{background:var(--surface);color:var(--ink);border-color:var(--line);line-height:1.5;min-height:44px}
+.section-head{align-items:flex-start;flex-wrap:wrap;gap:20px}.section-head>div:first-child{flex:1 1 460px}.section-head .controls,.section-head .match-mode{max-width:100%}
+.section-head p:not(.eyebrow),.lead{font-size:16px!important;line-height:1.8;max-width:70ch}
+.note,.card-subtitle,.source-page,.subtle,.section-scope-caption,.profile-meta{font-size:15px!important;line-height:1.75!important}
+.check-label,.threshold,.link-button,.graph-legend,nav a,.hero-foot,.hero-match p,.hero-image-item small,.hero-bottom,.social-row,.social-poles,.spectrum-legend,.insight small,.insight p,.axis-meta button,.mini-person,.pole-titles,.median-tag,.axis-detail,.axis-detail p,.sorted-value,.card-category,.card-rank,.card-score span,.dimension-entry strong,.dimension-entry small,.dimension-entry>b,.context-notes p,.pair-button span,.pair-button small,.gap-row,.book-portrait>span,.source-grid p,summary,details p{font-size:14px!important;line-height:1.65!important}
+.insight p,.context-notes p,.source-grid p{font-size:15px!important;line-height:1.8!important}
+.card-score{align-items:flex-start;flex-direction:column;gap:9px;margin-top:18px}.card-score strong{font-size:34px}.card-score span{display:block;max-width:28ch}
+.card-rank{background:var(--badge);color:var(--ink);border:1px solid var(--line);padding:5px 10px}
+.card-body,.book-body{padding:24px}.card-footer{flex-wrap:wrap;align-items:flex-start;gap:9px;font-size:14px!important}
+.person-scores{grid-template-columns:1fr;gap:10px}.person-score{font-size:15px!important;padding-block:3px}.person-score strong{color:var(--ink)}
+.book-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:24px}
+.book-body h3{font-size:21px;line-height:1.45;margin-bottom:12px}.book-body .card-score span{font-size:14px!important}.book-body .person-scores{grid-template-columns:1fr}
+.book-portrait>span{background:#14231ce8;color:#fff;padding:7px 12px;border-radius:8px}
+.dimension-entry{padding:10px 0;border-bottom:1px solid var(--line);gap:12px}.dimension-entry strong{color:var(--ink)}.dimension-entry>b{font-variant-numeric:tabular-nums;color:var(--forest)}
+.context-notes{gap:24px}.context-notes strong{color:var(--ink)}
+.report-columns,.report-columns:has(.report-person:nth-child(4)){grid-template-columns:repeat(2,minmax(0,1fr))}
+.report-person{padding:26px}.report-item{padding:20px 0}.report-item h5{font-size:18px!important;line-height:1.5}.report-item p,.report-item details,.report-item ul,.original-text{font-size:15px!important;line-height:1.8!important}.report-item details[open]{background:var(--soft);border-radius:12px;padding:14px;margin-block:12px}.report-person details p{max-width:70ch}
+.original-text{white-space:pre-line;max-width:75ch;padding:20px 0}
+table{font-size:14px}th{font-size:13px}.compass-read th,.compass-read td{font-size:13px}.compass-read{padding:28px}.compass-read table{white-space:normal}
+.plot-row{grid-template-columns:180px minmax(0,1fr) 90px;padding:26px 22px;gap:24px}.plot-end{font-size:12px;top:-25px;max-width:49%;white-space:normal;line-height:1.4}.plot-row .plot-field{margin-top:34px}.plot-summary span{font-size:13px!important}
+.plot-mean{border-color:#b76b2d}html[data-theme="dark"] .plot-mean{border-color:#ffc17f}
+.hero-bottom{font-size:14px!important}.hero-image-item strong{font-size:15px}.hero-images{gap:18px}.hero-match{flex-wrap:wrap}
+@media(max-width:950px){.dimension-grid{grid-template-columns:1fr}.context-notes{grid-template-columns:1fr}.match-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.compass-panel{grid-template-columns:1fr}.compass-visual{border-right:0;border-bottom:1px solid var(--line)}}
+@media(max-width:700px){.match-grid,.report-columns,.report-columns:has(.report-person:nth-child(4)){grid-template-columns:1fr}.section{padding-block:44px}.section-head{gap:18px}.plot-row{display:grid;grid-template-columns:minmax(0,1fr)!important;padding:22px 16px}.plot-row>div:first-child{grid-column:auto}.plot-summary{text-align:left}.match-tools,.threshold{flex-wrap:wrap}.threshold{font-size:14px;gap:9px}.match-tools{align-items:stretch}.search{max-width:none}.report-person{padding:22px}.hero-images{grid-template-columns:1fr}.person-pill,.section-selection .person-pill{font-size:14px!important;padding:10px 12px!important}.selection-label span{font-size:14px!important}.selection-shell{position:static!important}.sources summary{align-items:flex-start}.source-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+html[data-theme] .pair-button[aria-pressed="true"]{background:var(--selected);color:var(--on-selected)!important;border-color:var(--selected)}
+.pair-button small{opacity:1}.pair-detail>p{font-size:15px}.book-body .card-score strong{font-size:30px}
+html[data-theme="dark"] .axis-value{color:var(--ink)!important}
+@media(max-width:700px){.pair-area{grid-template-columns:1fr}.pair-list{grid-template-columns:repeat(2,minmax(0,1fr))}.pair-button{padding:16px 12px}.pair-button strong{font-size:24px}.gap-row{grid-template-columns:110px minmax(0,1fr) 42px}}
+.skip{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.brand span{font-size:11px;letter-spacing:1px}.btn.small,.all-results td a,.tag{font-size:14px!important}
+.tag{white-space:normal;line-height:1.6}.source-grid p{max-width:70ch}.source-grid{gap:28px}
+.person-pill .person-check{width:18px;height:18px;font-size:12px;font-weight:700;text-shadow:0 1px 2px #000}
+@media(max-width:700px){.insight{display:block;padding:22px}.insight small{margin-bottom:10px}.insight h3{margin:0 0 12px}.insight p{margin:0}.brand span{font-size:10px}}
 
 </style><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23102e24'/%3E%3Ctext x='32' y='43' fill='%23f4f1e8' font-family='Arial' font-size='34' font-weight='bold' text-anchor='middle'%3E12%3C/text%3E%3C/svg%3E"></head>
 <body><a href="#main" class="skip">Skip to content</a>
@@ -830,22 +874,49 @@ const UI_PHRASES = {
  'points RMS':'pontos RMS','percentage points':'pontos percentuais','Mean:':'Média:','Median:':'Mediana:',
  'Public catalog snapshot':'Versão do catálogo público','commit':'commit','Page ':'Página ','Source page':'Página de origem','Compatibility':'Compatibilidade','Range':'Amplitude','Gap':'Diferença','Author':'Autor','Read more':'Ler mais'
 };
+Object.assign(UI_PHRASES,{
+ 'Separate median-profile fits using the source’s dimension-specific axis sets. These are independent of the minimum filter above.':'As correspondências com a mediana são calculadas separadamente para cada dimensão, usando os eixos definidos pela fonte. O filtro mínimo acima não se aplica aqui.',
+ 'Separate minimum individual fits using the source’s dimension-specific axis sets. These are independent of the minimum filter above.':'A menor compatibilidade individual é calculada separadamente para cada dimensão, usando os eixos definidos pela fonte. O filtro mínimo acima não se aplica aqui.',
+ 'Third position with Strongly traditionalist social values':'Terceira posição com valores sociais fortemente tradicionalistas',
+ 'Centrist with Traditionalist social values':'Centro com valores sociais tradicionalistas','Right with Traditionalist social values':'Direita com valores sociais tradicionalistas','Centrist with Moderate social values':'Centro com valores sociais moderados',
+ 'Book matching method':'Método de compatibilidade dos livros',
+ 'The main bars show the selected median; each person’s score stays visible.':'As visualizações mostram a mediana da seleção e as pontuações individuais.',
+ 'CLOSEST AXIS':'EIXO COM MAIOR CONCORDÂNCIA','WIDEST DIFFERENCE':'MAIOR DIFERENÇA','CLOSEST PAIR':'DUPLA MAIS PRÓXIMA',
+ 'percentage point range among the selected people.':'pontos percentuais de amplitude entre as pessoas selecionadas.',
+ 'percentage points. Every individual stays visible.':'pontos percentuais. Todas as pontuações individuais continuam visíveis.',
+ 'percentage points apart on average.':'pontos percentuais de diferença, em média.',
+ 'The main bars show the selected median; each person’s score stays visible.':'As visualizações mostram a mediana da seleção e as pontuações individuais.',
+ 'Highlighted values determine the median. Individual values below measure':'Os valores destacados determinam a mediana. Os valores individuais abaixo medem',
+ 'Median':'Mediana','Mean':'Média','Federal':'Federalista','Militarist':'Militarista','Non-interventionist':'Não intervencionista','Irreligious':'Irreligioso','Progressive':'Progressista','Traditionalist':'Tradicionalista',
+ 'Political matches':'Correspondências políticas','Social matches':'Correspondências sociais','Economic matches':'Correspondências econômicas',
+ 'Search these matches':'Buscar nestas correspondências','Axis view':'Visualização dos eixos','Match category':'Categoria de correspondências','Compatibility method':'Método de compatibilidade','Original report category':'Categoria dos relatórios originais',
+ 'Default people; changing these resets all section selections':'Seleção geral; alterá-la redefine as seleções de todas as seções',
+ 'Twelve-axis comparison for':'Comparação dos doze eixos de',
+ 'Each spoke measures the named pole from zero at the center to one hundred at the edge. Individual profiles are colored; the median is dark green and the mean is dashed brown.':'Cada eixo mede o polo indicado de zero no centro a cem na borda. Os perfis individuais são coloridos; a mediana tem linha contínua e a média tem linha tracejada.',
+ 'Geometric distance map for':'Mapa de distâncias entre os perfis de',
+ 'Two-dimensional projection of root-mean-square score differences. Distances and projection quality appear below.':'Projeção em duas dimensões das diferenças RMS entre pontuações. As distâncias exatas e a qualidade da projeção aparecem abaixo.',
+ 'Political compass for':'Bússola política de',
+ 'Economic right increases from left to right. Authority increases from bottom to top. Points use the original formulas. Exact scores appear in the adjacent table.':'A direita econômica aumenta da esquerda para a direita. A autoridade aumenta de baixo para cima. Os pontos usam as fórmulas originais. As pontuações exatas estão na tabela.',
+ 'Authoritarian':'Autoritário','Authority ↑':'Autoridade ↑','Economic right →':'Direita econômica →',
+ ' of ':' de '
+});
 let uiLanguage=localStorage.getItem('family-language')||'en';
 const uiOriginal=new WeakMap();
 const uiAttributes=new WeakMap();
-const uiPhrasePattern=new RegExp(Object.keys(UI_PHRASES).sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g');
+const uiPhraseMap={...Object.fromEntries(Object.entries(UI_COPY).filter(([,v])=>typeof v==='string')),...UI_PHRASES};
+const uiPhrasePattern=new RegExp('(?<![A-Za-z])(?:'+Object.keys(uiPhraseMap).sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![A-Za-z])','g');
 function uiText(raw){
  const trim=raw.trim(),entry=UI_COPY[trim];
  if(entry){const value=Array.isArray(entry)?entry[uiLanguage==='pt'?1:0]:(uiLanguage==='pt'?entry:trim);return raw.replace(trim,value);}
  if(uiLanguage!=='pt')return raw;
  let text=raw;
  // Match against the original English text once: translated output is never retranslated.
- text=text.replace(uiPhrasePattern,match=>UI_PHRASES[match]);
+ text=text.replace(uiPhrasePattern,match=>uiPhraseMap[match]);
  return text;
 }
 function translateInterface(){
  uiObserver.disconnect();
- const walk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement?.closest('script,style,#page-preferences,.original-text,.report-quote,.report-item details p')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+ const walk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement?.closest('script,style,#page-preferences,.original-text,.report-quote,.report-item details p,.book-body h3,.card-title,.dimension-entry strong,.hero-match h3,.hero-image-item strong,.book-portrait>span,.report-item h5')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
  while(walk.nextNode()){
   const node=walk.currentNode,previous=uiOriginal.get(node);
   const raw=previous&&node.nodeValue===previous.rendered?previous.raw:node.nodeValue;
