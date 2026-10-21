@@ -107,6 +107,15 @@ html[data-theme="dark"] .axis-value{color:var(--ink)!important}
 .person-pill .person-check{width:18px;height:18px;font-size:12px;font-weight:700;text-shadow:0 1px 2px #000}
 @media(max-width:700px){.insight{display:block;padding:22px}.insight small{margin-bottom:10px}.insight h3{margin:0 0 12px}.insight p{margin:0}.brand span{font-size:10px}}
 /* Color accents identify panels without relying on color to convey scores. */
+.report-description{font-size:16px!important;line-height:1.85!important;color:var(--ink)!important;margin-block:14px}
+.report-metadata,.report-context{font-size:14px!important;line-height:1.75!important;color:var(--muted)!important}
+.report-context{border-left:3px solid var(--person-color);padding-left:12px}
+.report-summary{margin-block:20px;padding:18px;border:1px solid var(--line);border-radius:14px;background:var(--soft)}
+.report-summary p:last-child,.report-summary ul:last-child{margin-bottom:0}.report-summary ul{padding-left:22px;line-height:1.8}
+.report-summary small{font-size:13px;color:var(--muted)}
+.report-item .source-page{margin:12px 0 0;font-size:12px!important;color:var(--muted)}
+.report-page{border:1px solid var(--line);border-radius:12px;padding:16px;margin-block:12px}.report-page-content{padding-top:14px}
+.report-literal{border-top:1px solid var(--line);padding-top:14px}.report-literal .original-text{font-size:14px!important}
 .match-card,.book-card,.axis-card,.insight,.dimension-column,.geometry-card{--accent:#4f8cdb}
 .match-card:nth-child(4n+2),.book-card:nth-child(4n+2),.axis-card:nth-child(4n+2),.insight:nth-child(4n+2),.geometry-card:nth-child(2){--accent:#29a68b}
 .match-card:nth-child(4n+3),.book-card:nth-child(4n+3),.axis-card:nth-child(4n+3),.insight:nth-child(4n+3),.dimension-column:nth-child(3){--accent:#d8953c}

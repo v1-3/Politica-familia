@@ -51,7 +51,7 @@ old_init_start=base.index('function init(){')
 old_init_end=base.index(needle,old_init_start)
 # init remains declared for the clean replacement in scoped-controls.js.
 base=base[:old_init_start]+'function init(){}\n'+base[old_init_end:]
-base=base.replace(needle,(root/'enhancement.js').read_text(encoding='utf-8')+'\n'+(root/'scoped-controls.js').read_text(encoding='utf-8')+'\n'+(root/'preferences.js').read_text(encoding='utf-8')+'\n'+needle)
+base=base.replace(needle,'\n'.join((root/name).read_text(encoding='utf-8') for name in ['enhancement.js','scoped-controls.js','preferences.js','report-locale.js','report-view.js'])+'\n'+needle)
 # Put evidence and the standalone statistics library before the page script.
 logic_start=base.rfind('<script>')
 if logic_start<0: raise RuntimeError('Could not locate page script')

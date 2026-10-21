@@ -43,7 +43,7 @@ const UI_COPY = {
  'Politics':'Política','Intellectuals':'Intelectuais','Business':'Negócios','Philosophy':'Filosofia','Activism':'Ativismo','Theory':'Teoria','Economics':'Economia','Religion':'Religião',
  'Radical Left':'Esquerda radical','Left':'Esquerda','Center':'Centro','Right':'Direita','Far-Right':'Extrema direita','Third Position':'Terceira posição','Libertarian':'Libertário','Anarchist':'Anarquista',
  'PRESERVED FROM THE FOUR PDF REPORTS':'PRESERVADO DOS QUATRO RELATÓRIOS PDF','The original results, side by side.':'Os resultados originais, lado a lado.',
- 'Explore the supplied reports from October 17, 2026. Each card remains attached to its person and source page.':['Explore the reports from October 17, 2026. Each card identifies its person and source page. Original report passages are preserved in their source language.','Explore os relatórios de 17 de outubro de 2026. Cada cartão identifica a pessoa e a página de origem. As passagens originais são preservadas no idioma da fonte.'],
+ 'Explore the supplied reports from October 17, 2026. Each card remains attached to its person and source page.':['Read the reports from October 17, 2026 in English or Portuguese. Each result identifies its person and source page.','Leia os relatórios de 17 de outubro de 2026 em português ou inglês. Cada resultado identifica a pessoa e a página de origem.'],
  'Overview':'Visão geral','Figures & leaders':'Personalidades e líderes','Original books':'Livros originais','Timeline':'Linha do tempo','Full report text':'Texto integral do relatório',
  'Sources, filters & calculation details':'Fontes, filtros e cálculos','Source snapshot':'Versão da fonte','Shared compatibility':'Compatibilidade compartilhada','Original recommendation filters':'Filtros originais de recomendação',
  'Download current selections ↓':'Baixar seleções atuais ↓','Download full catalog & all combinations ↓':'Baixar catálogo completo e todas as combinações ↓','Source catalog':'Catálogo de origem',
@@ -172,7 +172,7 @@ function uiText(raw){
 }
 function translateInterface(){
  uiObserver.disconnect();
- const walk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement?.closest('script,style,#page-preferences,.original-text,.report-quote,.report-item details p,.book-body h3,.card-title,.dimension-entry strong,.hero-match h3,.hero-image-item strong,.book-portrait>span,.report-item h5')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+ const walk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement?.closest('script,style,#page-preferences,#report-content,#report-note,.original-text,.report-quote,.report-item details p,.book-body h3,.card-title,.dimension-entry strong,.hero-match h3,.hero-image-item strong,.book-portrait>span,.report-item h5')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
  while(walk.nextNode()){
   const node=walk.currentNode,previous=uiOriginal.get(node);
   const raw=previous&&node.nodeValue===previous.rendered?previous.raw:node.nodeValue;
@@ -193,6 +193,6 @@ const uiObserver=new MutationObserver(()=>translateInterface());
 const preferences=document.createElement('div');preferences.id='page-preferences';preferences.innerHTML='<button type="button" id="language-toggle">Português</button><button type="button" id="theme-toggle">Dark mode</button>';
 document.querySelector('.nav').append(preferences);
 document.documentElement.dataset.theme=localStorage.getItem('family-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
-document.getElementById('language-toggle').addEventListener('click',()=>{uiLanguage=uiLanguage==='en'?'pt':'en';localStorage.setItem('family-language',uiLanguage);translateInterface();});
+document.getElementById('language-toggle').addEventListener('click',()=>{uiLanguage=uiLanguage==='en'?'pt':'en';localStorage.setItem('family-language',uiLanguage);if(D&&S.mask)renderReports();translateInterface();});
 document.getElementById('theme-toggle').addEventListener('click',()=>{document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';localStorage.setItem('family-theme',document.documentElement.dataset.theme);translateInterface();});
 translateInterface();
