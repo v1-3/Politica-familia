@@ -175,6 +175,32 @@ html[data-theme="dark"] .axis-value{color:var(--ink)!important}
 .tag{white-space:normal;line-height:1.6}.source-grid p{max-width:70ch}.source-grid{gap:28px}
 .person-pill .person-check{width:18px;height:18px;font-size:12px;font-weight:700;text-shadow:0 1px 2px #000}
 @media(max-width:700px){.insight{display:block;padding:22px}.insight small{margin-bottom:10px}.insight h3{margin:0 0 12px}.insight p{margin:0}.brand span{font-size:10px}}
+/* Color accents identify panels without relying on color to convey scores. */
+.match-card,.book-card,.axis-card,.insight,.dimension-column,.geometry-card{--accent:#4f8cdb}
+.match-card:nth-child(4n+2),.book-card:nth-child(4n+2),.axis-card:nth-child(4n+2),.insight:nth-child(4n+2),.geometry-card:nth-child(2){--accent:#29a68b}
+.match-card:nth-child(4n+3),.book-card:nth-child(4n+3),.axis-card:nth-child(4n+3),.insight:nth-child(4n+3),.dimension-column:nth-child(3){--accent:#d8953c}
+.match-card:nth-child(4n),.book-card:nth-child(4n),.axis-card:nth-child(4n),.dimension-column:nth-child(2){--accent:#b280dd}
+html[data-theme] .match-card,html[data-theme] .book-card,html[data-theme] .axis-card,html[data-theme] .insight,.geometry-card{border-top:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--surface))}
+.card-rank{border-color:var(--accent);box-shadow:0 2px 12px #0001}.card-category{color:var(--ink)}
+.card-score strong,.book-body .card-score strong{color:var(--forest)}
+.dimension-column{border-top:3px solid var(--accent);padding-top:16px}
+.plot-row{--axis-accent:#4f8cdb;border-left:4px solid var(--axis-accent)}
+.plot-row:nth-of-type(3n+2){--axis-accent:#29a68b}.plot-row:nth-of-type(3n){--axis-accent:#b280dd}
+.plot-field{background-color:color-mix(in srgb,var(--axis-accent) 7%,transparent)}
+.plot-range{background:var(--axis-accent);height:3px}.plot-mean{background:#ffd398}.gap-row:nth-child(3n+1) i{background:#4f8cdb}.gap-row:nth-child(3n+2) i{background:#29a68b}.gap-row:nth-child(3n) i{background:#b280dd}
+.report-person{background:color-mix(in srgb,var(--person-color) 5%,var(--surface))!important}
+.pair-button{border-top:3px solid #4f8cdb}.pair-button:nth-child(3n+2){border-top-color:#29a68b}.pair-button:nth-child(3n){border-top-color:#b280dd}
+.geometry-grid{align-items:start}#median-explanation:empty,p:empty{display:none}
+@media(max-width:700px){
+ .section{padding-block:32px}.section-head{margin-bottom:22px;gap:14px}.section-head>div:first-child{flex-basis:auto}
+ .hero{padding-block:32px;gap:24px}.hero-actions{margin-block:18px}.hero h2{font-size:30px}
+ .geometry-card{padding:18px 14px}.geometry-card h3{margin-bottom:12px}.geometry-card .note{margin-bottom:14px}.radar-axis-key{gap:7px 20px;margin-block:12px 18px}
+ .match-grid,.book-grid,.report-columns{gap:18px}.card-body,.book-body{padding:21px}.card-image{height:160px}.book-portrait{height:170px}
+ .card-subtitle,.card-category{min-height:0}.card-score{margin-top:12px}.card-title{margin-bottom:10px}
+ .plot-row{grid-template-columns:minmax(0,1fr) 82px!important;gap:10px 14px;padding:18px 14px}.plot-row>div:first-child{grid-column:1;grid-row:1}.plot-summary{grid-column:2;grid-row:1;text-align:right}.plot-row .plot-field{grid-column:1/-1;grid-row:2;min-height:0;height:70px;margin-top:26px}
+ .context-panel{padding:20px;margin-top:26px}.dimension-grid{gap:16px}.context-notes{gap:16px}.report-item{padding-block:16px}
+ .section-selection{margin-bottom:20px}.report-person{padding:20px}.no-results{padding:28px 18px}.geometry-card .no-results{min-height:0;padding:20px 10px}
+}
 
 </style><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23102e24'/%3E%3Ctext x='32' y='43' fill='%23f4f1e8' font-family='Arial' font-size='34' font-weight='bold' text-anchor='middle'%3E12%3C/text%3E%3C/svg%3E"></head>
 <body><a href="#main" class="skip">Skip to content</a>
@@ -184,7 +210,6 @@ html[data-theme="dark"] .axis-value{color:var(--ink)!important}
  <div class="section-head"><div><p class="eyebrow">ALL 12 AXES, ONE SHAPE</p><h1>A geometry of your differences.</h1><p>Choose any combination below. The radar shows scores; the distance map shows separation.</p></div><div class="controls"><label class="check-label"><input id="radar-average" type="checkbox" checked> Median & mean</label><label class="check-label"><input id="map-edges" type="checkbox" checked> Connections</label></div></div>
  <div id="geometry-selection" class="section-selection"></div>
  <div class="geometry-grid"><article class="geometry-card"><h3>The 12-axis radar</h3><p class="note">Center = 0%, outer ring = 100% of each named pole. A larger shape does not mean a stronger or better ideology.</p><p class="note mobile-chart-hint">Swipe the chart sideways to read all twelve spokes →</p><div id="radar-chart" tabindex="0" aria-label="Scrollable radar chart"></div><div id="radar-legend" class="graph-legend"></div></article><article class="geometry-card"><h3>How far apart are your profiles?</h3><p class="note">Closer points mean more similar test answers across all 12 axes. Horizontal and vertical directions have no political meaning.</p><div id="distance-map"></div><p id="map-quality" class="note"></p><div id="distance-matrix" class="table-wrap"></div></article></div>
- <p class="note">Map: classical multidimensional scaling of root-mean-square (RMS) gaps. It is a two-dimensional approximation; use the table for exact gaps. All axes have equal weight. Selecting a different group may rotate or reposition the map.</p>
 </section>
 
 
@@ -192,7 +217,7 @@ html[data-theme="dark"] .axis-value{color:var(--ink)!important}
 <div id="empty-selection" class="wrap empty-selection" hidden><h2>Choose at least one person.</h2><p>The graphs, medians and compatibility lists update with your selection.</p><button class="btn primary" id="empty-all">Select everyone</button></div>
 <div id="selected-content">
 <section class="wrap hero"><div><p class="eyebrow">YOUR FAMILY’S RESULTS, TOGETHER</p><h2>Different perspectives.<br><em>Find your common ground.</em></h2><p class="lead">Compare four individual results. Select any combination to discover the ideas, places and people that fit your group.</p><div class="hero-actions"><a class="btn primary" href="#matches">Explore your matches ↓</a><a class="btn" href="#geometry">Compare the geometry ↗</a></div><p class="hero-foot">4 family members · 15 possible combinations · 12 axes · images included offline</p></div><div id="hero-result" class="hero-result"></div></section>
-<section class="wrap section" id="graph"><div class="section-head"><div><p class="eyebrow">YOUR POSITIONS, ON THE ORIGINAL SCALE</p><h2>The political compass.</h2><p>Economic left to right. Libertarian to authoritarian. Each point keeps its exact coordinates.</p></div><label class="check-label"><input id="show-median" type="checkbox" checked> Show selected median</label></div><div class="compass-panel"><div class="compass-visual"><div id="compass-chart"></div><div id="compass-legend" class="graph-legend"></div></div><div class="compass-read"><p class="eyebrow">SELECTED PROFILES</p><h3 id="group-title"></h3><p id="median-explanation" class="muted"></p><div id="compass-table" class="table-wrap"></div><h4>Social values</h4><div class="social-poles"><span>Progressive</span><span>Traditionalist</span></div><div id="social-chart"></div><p class="note">The median point is the projection of the selected axis medians. It is not the average of these dots.</p><details><summary>How the compass is calculated</summary><p>Economic right = 60% private economy + 40% free market. Authority = the average of security, autocracy and unitary scores. Traditionalism = 100 minus the progressive score. These are the original 12 Axes formulas.</p><p>The eight-region color map follows the original site. The graph is a summary; the complete 12-axis profile determines matches.</p></details></div></div><div id="spectrum-legend" class="spectrum-legend"></div><div id="insights" class="insights"></div></section>
+<section class="wrap section" id="graph"><div class="section-head"><div><p class="eyebrow">YOUR POSITIONS, ON THE ORIGINAL SCALE</p><h2>The political compass.</h2><p>Economic left to right. Libertarian to authoritarian. Each point keeps its exact coordinates.</p></div><label class="check-label"><input id="show-median" type="checkbox" checked> Show selected median</label></div><div class="compass-panel"><div class="compass-visual"><div id="compass-chart"></div><div id="compass-legend" class="graph-legend"></div></div><div class="compass-read"><p class="eyebrow">SELECTED PROFILES</p><h3 id="group-title"></h3><p id="median-explanation" class="muted"></p><div id="compass-table" class="table-wrap"></div><h4>Social values</h4><div class="social-poles"><span>Progressive</span><span>Traditionalist</span></div><div id="social-chart"></div><details><summary>How the compass is calculated</summary><p>Economic right = 60% private economy + 40% free market. Authority = the average of security, autocracy and unitary scores. Traditionalism = 100 minus the progressive score. These are the original 12 Axes formulas.</p><p>The eight-region color map follows the original site. The graph is a summary; the complete 12-axis profile determines matches.</p></details></div></div><div id="spectrum-legend" class="spectrum-legend"></div><div id="insights" class="insights"></div></section>
 <section class="wrap section" id="axes"><div class="section-head"><div><p class="eyebrow">ALL TWELVE DIMENSIONS</p><h2>Where you agree. Where you differ.</h2><p id="axes-caption"></p></div><div class="controls"><label class="sr-only" for="sort-axes">Sort axes</label><select id="sort-axes"><option value="original">Original order</option><option value="largest">Largest differences</option><option value="smallest">Closest agreement</option></select><div class="segments" role="group" aria-label="Axis view"><button data-view="bars" aria-pressed="true">Original bars</button><button data-view="plot" aria-pressed="false">Compare</button><button data-view="table" aria-pressed="false">Values</button></div></div></div><div id="axes-bars" class="axes-bars"></div><div id="axes-plot" class="axes-plot" hidden></div><div id="axes-table" class="table-wrap panel" hidden></div><div id="axis-detail" class="axis-detail" aria-live="polite"></div></section>
 <section class="matches-shell" id="matches"><div class="wrap section"><div class="section-head"><div><p class="eyebrow">IDEAS, PLACES, PEOPLE & PARTIES</p><h2>Compatible with your combination.</h2><p id="matches-selection"></p></div><div class="segments match-mode" role="group" aria-label="Compatibility method"><button data-mode="shared" aria-pressed="true">Shared matches</button><button data-mode="median" aria-pressed="false">Median profile</button></div></div><div id="matches-selection-controls" class="section-selection"></div><div id="mode-explanation" class="mode-explanation"></div><div id="category-tabs" class="category-tabs" role="group" aria-label="Match category"></div><div class="match-tools"><label class="search"><span aria-hidden="true">⌕</span><input id="match-search" type="search" placeholder="Search these matches" aria-label="Search these matches"></label><label class="threshold">Minimum for every person <input id="threshold" type="range" min="0" max="100" step="1" value="0"><output id="threshold-value">0%</output></label></div><p id="catalog-note" class="note"></p><div id="match-grid" class="match-grid" aria-live="polite"></div><div class="more-row"><button id="show-more" class="btn">Show more matches ↓</button></div><div id="profile-context"></div><details class="all-results"><summary>Compare each person’s individual top matches</summary><div id="individual-results" class="table-wrap"></div></details></div></section>
 <section class="wrap section" id="books"><div class="section-head"><div><p class="eyebrow">YOUR GROUP’S READING LIST</p><h2>Read the ideas behind the matches.</h2><p>Books from the original catalog, ranked by their authors’ compatibility with the selected people.</p></div><span class="tag">Author portraits, not book covers</span></div><div id="books-selection" class="section-selection"></div><div class="book-method-controls"><div class="segments" role="group" aria-label="Book matching method"><button data-book-mode="median" aria-pressed="true">Median profile</button><button data-book-mode="shared" aria-pressed="false">Shared matches</button></div><label class="threshold">Minimum author fit for each person <input id="book-threshold" type="range" min="0" max="100" step="1" value="0"><output id="book-threshold-value">0%</output></label></div><p id="books-scope-note" class="note"></p><div id="book-grid" class="book-grid"></div></section>
@@ -627,6 +652,8 @@ function renderGeometry(){
  let svg=`<svg viewBox="${compact?'145 45 430 430':'0 0 720 535'}" role="img" aria-labelledby="radar-title radar-desc"><title id="radar-title">Twelve-axis comparison for ${esc(selectedNames())}</title><desc id="radar-desc">Each spoke measures the named pole from zero at the center to one hundred at the edge. Individual profiles are colored; the median is dark green and the mean is dashed brown.</desc>`;
  [25,50,75,100].forEach(v=>{svg+=`<polygon points="${polygon(Array(12).fill(v))}" fill="${v===100?'#f4f3eb':'none'}" stroke="#deddd1" stroke-width="1"/>`;});
  // Draw rings in descending order so the outer fill cannot cover the inner rings.
+ const sectorColors=['#528de0','#d88b38','#28a185','#ad78d4'];
+ D.axes.forEach((_,j)=>{const a=at(j,100),b=at((j+1)%12,100);svg+=`<polygon points="${cx},${cy} ${a.join(',')} ${b.join(',')}" fill="${sectorColors[Math.floor(j/3)]}" fill-opacity=".14" stroke="none"/>`;});
  [25,50,75].forEach(v=>{svg+=`<polygon points="${polygon(Array(12).fill(v))}" fill="none" stroke="#deddd1"/>`;});
  const labels=['Federal','Democratic','Security-focused','Assimilationist','Militarist','Non-interventionist','Public economy','Planned economy','Protectionist','Irreligious','Progressive','Pro-technology'];
  D.axes.forEach((a,j)=>{const p=at(j,100),l=at(j,100,compact?22:35),anchor=compact?'middle':Math.abs(l[0]-cx)<8?'middle':l[0]>cx?'start':'end';svg+=`<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="#deddd1"/><text class="radar-axis-label" x="${l[0]}" y="${l[1]+4}" text-anchor="${anchor}" fill="#203c2e" font-size="${compact?19:16}" font-weight="600">${compact?j+1:esc(labels[j])}</text>`;});
@@ -639,10 +666,11 @@ function renderGeometry(){
  const dx=Math.max(...xs)-Math.min(...xs),dy=Math.max(...ys)-Math.min(...ys),scale=Math.min(dx?440/dx:Infinity,dy?235/dy:Infinity);
  const k=Number.isFinite(scale)?scale:1,midX=(Math.max(...xs)+Math.min(...xs))/2,midY=(Math.max(...ys)+Math.min(...ys))/2;
  const points=m.coordinates.map((p,i)=>({x:320+(p[0]-midX)*k,y:210-(p[1]-midY)*k,p:ps[i]}));
+ const mapCompact=$('distance-map').clientWidth<560;
  let map=`<svg viewBox="0 0 640 430" role="img" aria-labelledby="map-title map-desc"><title id="map-title">Geometric distance map for ${esc(selectedNames())}</title><desc id="map-desc">Two-dimensional projection of root-mean-square score differences. Distances and projection quality appear below.</desc><defs><pattern id="map-grid" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="1" fill="#d7dbd0"/></pattern></defs><rect x="25" y="25" width="590" height="380" rx="20" fill="url(#map-grid)"/>`;
  if($('map-edges').checked)points.forEach((p,i)=>points.slice(i+1).forEach((q,h)=>map+=`<line x1="${p.x}" y1="${p.y}" x2="${q.x}" y2="${q.y}" stroke="#a2b19d" stroke-width="1.5"><title>${esc(p.p.name)} – ${esc(q.p.name)}: ${fmt(m.distances[i][i+h+1],2)} points RMS</title></line>`));
  const used=[];
- points.forEach((q,i)=>{const width=q.p.name.length*10+22,height=33,candidates=[[20,-40],[20,18],[-width-20,-40],[-width-20,18],[-width/2,-54],[-width/2,24]];let best=null;
+ points.forEach((q,i)=>{const width=q.p.name.length*(mapCompact?14:10)+22,height=mapCompact?43:33,candidates=[[20,-50],[20,18],[-width-20,-50],[-width-20,18],[-width/2,-64],[-width/2,24]];let best=null;
  candidates.forEach(([a,b],rank)=>{const rect={x:q.x+a,y:q.y+b,w:width,h:height};let cost=rank;
  if(rect.x<26||rect.x+width>614||rect.y<25||rect.y+height>405)cost+=10000;
  const intersect=(r,t)=>Math.max(0,Math.min(r.x+r.w,t.x+t.w)-Math.max(r.x,t.x))*Math.max(0,Math.min(r.y+r.h,t.y+t.h)-Math.max(r.y,t.y));
@@ -650,7 +678,14 @@ function renderGeometry(){
  if(!best||cost<best.cost)best={...rect,cost};});used.push(best);
  map+=`<g><circle cx="${q.x}" cy="${q.y}" r="17" fill="${q.p.color}" stroke="#fbf9f3" stroke-width="3"/><text x="${q.x}" y="${q.y+5}" text-anchor="middle" fill="white" font-size="15" font-weight="700">${i+1}</text><rect x="${best.x}" y="${best.y}" width="${width}" height="${height}" rx="6" fill="#fbf9f3" stroke="${q.p.color}" stroke-opacity=".3"/><text x="${best.x+width/2}" y="${best.y+23}" text-anchor="middle" font-size="17" fill="${q.p.color}" font-weight="600">${esc(q.p.name)}</text></g>`;
  });
+ if($('distance-map').clientWidth<560&&ps.length>1){
+  const left=Math.min(...points.map(p=>p.x-20),...used.map(b=>b.x))-28,right=Math.max(...points.map(p=>p.x+20),...used.map(b=>b.x+b.w))+28;
+  const top=Math.min(...points.map(p=>p.y-20),...used.map(b=>b.y))-28,bottom=Math.max(...points.map(p=>p.y+20),...used.map(b=>b.y+b.h))+28;
+  map=map.replace('viewBox="0 0 640 430"',`viewBox="${left} ${top} ${right-left} ${bottom-top}"`);
+ }
+ if(mapCompact)map=map.replaceAll('font-size="17"','font-size="24"');
  $('distance-map').innerHTML=map+'</svg>';
+ $('distance-map').hidden=ps.length<2;
  $('map-quality').textContent=ps.length===1?'One profile selected. Add another person to create a distance.':`This 2D view retains ${fmt(m.explainedPercent,1)}% of the squared-distance variation. ${ps.length<4?'All selected distances fit in two dimensions.':'Some separation is compressed; the exact table is authoritative.'}`;
  $('distance-matrix').innerHTML=ps.length<2?'':`<table><caption class="note">Exact RMS distance · percentage points · lower means closer</caption><thead><tr><th>Person</th>${ps.map((p,i)=>`<th class="num" title="${esc(p.name)}">${i+1}</th>`).join('')}</tr></thead><tbody>${ps.map((p,i)=>`<tr><th>${i+1}. ${esc(p.name)}</th>${m.distances[i].map((v,j)=>`<td class="num distance-cell" style="background:rgba(16,46,36,${i===j?0:(1-v/100)*.14})">${i===j?'—':fmt(v,2)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 }
@@ -703,6 +738,11 @@ renderMatches=function(){renderSectionSelector('matches');inSection('matches',()
 const originalBooks=renderBooks;
 renderBooks=function(){renderSectionSelector('books');inSection('books',()=>{document.querySelectorAll('[data-book-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.bookMode===S.mode)));$('book-threshold-value').textContent=pct(S.threshold,0);$('books-scope-note').textContent=S.mask?`${selectedNames()} · ${S.mode==='median'?'Authors ranked against the median of this combination.':'Authors ranked by their lowest fit among these people.'} Images are author portraits.`:'Choose at least one person above.';if(!S.mask){$('book-grid').innerHTML=emptyScope('books');return;}originalBooks();});};
 const originalSelection=renderSelection;
+const compactCompass=renderCompass;
+renderCompass=function(){compactCompass();$('median-explanation').textContent='';};
+renderAxisDetail=function(){if(!S.mask)return;const j=S.axis,a=D.axes[j],s=stats(j);$('axis-detail').innerHTML=`<strong>${esc(a.label)}: ${pct(s.median,2)} ${esc(a.leftPole)} / ${pct(100-s.median,2)} ${esc(a.rightPole)}</strong>${sortedValues(j)}<p>Median ${fmt(s.median,2)} · Mean ${fmt(s.mean,2)} · Range ${fmt(s.range)} percentage points.</p>`;};
+const compactMatches=renderMatches;
+renderMatches=function(){compactMatches();if(S.sections.matches.mask)$('mode-explanation').textContent=S.mode==='shared'?'Ranked by the lowest compatibility among the selected people.':'Ranked against the selected group’s median profile.';};
 renderSelection=function(){originalSelection();$('selected-content').hidden=false;['graph','axes','pairs','reports'].forEach(id=>$(id).hidden=!S.mask);$('empty-selection').hidden=!!(S.mask||Object.values(S.sections).some(x=>x.mask));$('selection-caption').textContent='Resets all section groups · compass, axes and PDFs follow this selection';};
 renderAll=function(){renderSelection();renderGeometry();renderHero();renderMatches();renderBooks();if(S.mask){renderCompass();renderAxes();renderPairs();renderReports();}};
 selectMask=function(mask){S.mask=mask;Object.values(S.sections).forEach(s=>s.mask=mask);S.limit=6;S.pair=null;renderAll();};
@@ -714,6 +754,8 @@ function exportSelection(){
  const payload={title:'12 Axes family comparison · current selections',sources:D.source,axes:D.axes,pageSelection:selectedProfiles().map(p=>({name:p.name,values:p.values,url:p.url})),sections:scopeData};
  const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='family-selected-comparison.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
+const conciseAxes=renderAxes;
+renderAxes=function(){conciseAxes();$('axes-caption').textContent=selectedNames();const note=$('axes-plot').querySelector(':scope > .note');if(note)note.textContent='Dots: people · diamond: median · ring: mean';const tableNote=$('axes-table').querySelector(':scope > .note');if(tableNote)tableNote.textContent='Scores: % of the named pole. Differences: percentage points.';};
 init=function(){
  $('combination').innerHTML='<option value="0">No one selected</option>'+Object.entries(D.groups).sort((a,b)=>b[1].members.length-a[1].members.length||Number(a[0])-Number(b[0])).map(([mask,g])=>`<option value="${mask}">${Number(mask)===15?'Everyone':g.members.map(i=>esc(D.people[i].name)).join(' + ')}</option>`).join('');
  $('source-provenance').innerHTML=`Public catalog snapshot ${esc(D.source.date)}, commit ${ext(D.source.repository,D.source.commit.slice(0,8))}. ${Object.entries(D.source.catalogSizes).map(([k,v])=>v+' '+k).join(' · ')}. Median vectors are rounded to one decimal only for source compatibility matching; displayed medians and graph coordinates use full precision.`;
@@ -803,6 +845,8 @@ const UI_COPY = {
  'Compare four individual results. Select any combination to discover the ideas, places and people that fit your group.':'Compare quatro resultados individuais. Selecione qualquer combinação para descobrir as ideias, lugares e pessoas com perfis semelhantes ao grupo.'
 };
 const UI_PHRASES = {
+ 'Dots: people · diamond: median · ring: mean':'Pontos: pessoas · losango: mediana · anel: média',
+ 'Scores: % of the named pole. Differences: percentage points.':'Pontuações: % do polo indicado. Diferenças: pontos percentuais.',
  'Separate ':'Compatibilidades separadas de ','minimum individual':'mínimo individual','median-profile':'perfil mediano',
  'fits using the source’s dimension-specific axis sets. These are independent of the minimum filter above.':'usando os conjuntos de eixos de cada dimensão da fonte. São independentes do filtro mínimo acima.',
  ' matches':' correspondências','The median’s most unusual axis:':'Eixo mais incomum da mediana:','Most typical:':'Mais típico:',
@@ -875,6 +919,8 @@ const UI_PHRASES = {
  'Public catalog snapshot':'Versão do catálogo público','commit':'commit','Page ':'Página ','Source page':'Página de origem','Compatibility':'Compatibilidade','Range':'Amplitude','Gap':'Diferença','Author':'Autor','Read more':'Ler mais'
 };
 Object.assign(UI_PHRASES,{
+ 'Ranked by the lowest compatibility among the selected people.':'Ordenado pela menor compatibilidade entre as pessoas selecionadas.',
+ 'Ranked against the selected group’s median profile.':'Ordenado pela compatibilidade com o perfil mediano do grupo selecionado.',
  'Separate median-profile fits using the source’s dimension-specific axis sets. These are independent of the minimum filter above.':'As correspondências com a mediana são calculadas separadamente para cada dimensão, usando os eixos definidos pela fonte. O filtro mínimo acima não se aplica aqui.',
  'Separate minimum individual fits using the source’s dimension-specific axis sets. These are independent of the minimum filter above.':'A menor compatibilidade individual é calculada separadamente para cada dimensão, usando os eixos definidos pela fonte. O filtro mínimo acima não se aplica aqui.',
  'Third position with Strongly traditionalist social values':'Terceira posição com valores sociais fortemente tradicionalistas',

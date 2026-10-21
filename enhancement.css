@@ -106,3 +106,29 @@ html[data-theme="dark"] .axis-value{color:var(--ink)!important}
 .tag{white-space:normal;line-height:1.6}.source-grid p{max-width:70ch}.source-grid{gap:28px}
 .person-pill .person-check{width:18px;height:18px;font-size:12px;font-weight:700;text-shadow:0 1px 2px #000}
 @media(max-width:700px){.insight{display:block;padding:22px}.insight small{margin-bottom:10px}.insight h3{margin:0 0 12px}.insight p{margin:0}.brand span{font-size:10px}}
+/* Color accents identify panels without relying on color to convey scores. */
+.match-card,.book-card,.axis-card,.insight,.dimension-column,.geometry-card{--accent:#4f8cdb}
+.match-card:nth-child(4n+2),.book-card:nth-child(4n+2),.axis-card:nth-child(4n+2),.insight:nth-child(4n+2),.geometry-card:nth-child(2){--accent:#29a68b}
+.match-card:nth-child(4n+3),.book-card:nth-child(4n+3),.axis-card:nth-child(4n+3),.insight:nth-child(4n+3),.dimension-column:nth-child(3){--accent:#d8953c}
+.match-card:nth-child(4n),.book-card:nth-child(4n),.axis-card:nth-child(4n),.dimension-column:nth-child(2){--accent:#b280dd}
+html[data-theme] .match-card,html[data-theme] .book-card,html[data-theme] .axis-card,html[data-theme] .insight,.geometry-card{border-top:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--surface))}
+.card-rank{border-color:var(--accent);box-shadow:0 2px 12px #0001}.card-category{color:var(--ink)}
+.card-score strong,.book-body .card-score strong{color:var(--forest)}
+.dimension-column{border-top:3px solid var(--accent);padding-top:16px}
+.plot-row{--axis-accent:#4f8cdb;border-left:4px solid var(--axis-accent)}
+.plot-row:nth-of-type(3n+2){--axis-accent:#29a68b}.plot-row:nth-of-type(3n){--axis-accent:#b280dd}
+.plot-field{background-color:color-mix(in srgb,var(--axis-accent) 7%,transparent)}
+.plot-range{background:var(--axis-accent);height:3px}.plot-mean{background:#ffd398}.gap-row:nth-child(3n+1) i{background:#4f8cdb}.gap-row:nth-child(3n+2) i{background:#29a68b}.gap-row:nth-child(3n) i{background:#b280dd}
+.report-person{background:color-mix(in srgb,var(--person-color) 5%,var(--surface))!important}
+.pair-button{border-top:3px solid #4f8cdb}.pair-button:nth-child(3n+2){border-top-color:#29a68b}.pair-button:nth-child(3n){border-top-color:#b280dd}
+.geometry-grid{align-items:start}#median-explanation:empty,p:empty{display:none}
+@media(max-width:700px){
+ .section{padding-block:32px}.section-head{margin-bottom:22px;gap:14px}.section-head>div:first-child{flex-basis:auto}
+ .hero{padding-block:32px;gap:24px}.hero-actions{margin-block:18px}.hero h2{font-size:30px}
+ .geometry-card{padding:18px 14px}.geometry-card h3{margin-bottom:12px}.geometry-card .note{margin-bottom:14px}.radar-axis-key{gap:7px 20px;margin-block:12px 18px}
+ .match-grid,.book-grid,.report-columns{gap:18px}.card-body,.book-body{padding:21px}.card-image{height:160px}.book-portrait{height:170px}
+ .card-subtitle,.card-category{min-height:0}.card-score{margin-top:12px}.card-title{margin-bottom:10px}
+ .plot-row{grid-template-columns:minmax(0,1fr) 82px!important;gap:10px 14px;padding:18px 14px}.plot-row>div:first-child{grid-column:1;grid-row:1}.plot-summary{grid-column:2;grid-row:1;text-align:right}.plot-row .plot-field{grid-column:1/-1;grid-row:2;min-height:0;height:70px;margin-top:26px}
+ .context-panel{padding:20px;margin-top:26px}.dimension-grid{gap:16px}.context-notes{gap:16px}.report-item{padding-block:16px}
+ .section-selection{margin-bottom:20px}.report-person{padding:20px}.no-results{padding:28px 18px}.geometry-card .no-results{min-height:0;padding:20px 10px}
+}

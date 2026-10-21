@@ -15,6 +15,8 @@ function renderGeometry(){
  let svg=`<svg viewBox="${compact?'145 45 430 430':'0 0 720 535'}" role="img" aria-labelledby="radar-title radar-desc"><title id="radar-title">Twelve-axis comparison for ${esc(selectedNames())}</title><desc id="radar-desc">Each spoke measures the named pole from zero at the center to one hundred at the edge. Individual profiles are colored; the median is dark green and the mean is dashed brown.</desc>`;
  [25,50,75,100].forEach(v=>{svg+=`<polygon points="${polygon(Array(12).fill(v))}" fill="${v===100?'#f4f3eb':'none'}" stroke="#deddd1" stroke-width="1"/>`;});
  // Draw rings in descending order so the outer fill cannot cover the inner rings.
+ const sectorColors=['#528de0','#d88b38','#28a185','#ad78d4'];
+ D.axes.forEach((_,j)=>{const a=at(j,100),b=at((j+1)%12,100);svg+=`<polygon points="${cx},${cy} ${a.join(',')} ${b.join(',')}" fill="${sectorColors[Math.floor(j/3)]}" fill-opacity=".14" stroke="none"/>`;});
  [25,50,75].forEach(v=>{svg+=`<polygon points="${polygon(Array(12).fill(v))}" fill="none" stroke="#deddd1"/>`;});
  const labels=['Federal','Democratic','Security-focused','Assimilationist','Militarist','Non-interventionist','Public economy','Planned economy','Protectionist','Irreligious','Progressive','Pro-technology'];
  D.axes.forEach((a,j)=>{const p=at(j,100),l=at(j,100,compact?22:35),anchor=compact?'middle':Math.abs(l[0]-cx)<8?'middle':l[0]>cx?'start':'end';svg+=`<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="#deddd1"/><text class="radar-axis-label" x="${l[0]}" y="${l[1]+4}" text-anchor="${anchor}" fill="#203c2e" font-size="${compact?19:16}" font-weight="600">${compact?j+1:esc(labels[j])}</text>`;});
@@ -27,10 +29,11 @@ function renderGeometry(){
  const dx=Math.max(...xs)-Math.min(...xs),dy=Math.max(...ys)-Math.min(...ys),scale=Math.min(dx?440/dx:Infinity,dy?235/dy:Infinity);
  const k=Number.isFinite(scale)?scale:1,midX=(Math.max(...xs)+Math.min(...xs))/2,midY=(Math.max(...ys)+Math.min(...ys))/2;
  const points=m.coordinates.map((p,i)=>({x:320+(p[0]-midX)*k,y:210-(p[1]-midY)*k,p:ps[i]}));
+ const mapCompact=$('distance-map').clientWidth<560;
  let map=`<svg viewBox="0 0 640 430" role="img" aria-labelledby="map-title map-desc"><title id="map-title">Geometric distance map for ${esc(selectedNames())}</title><desc id="map-desc">Two-dimensional projection of root-mean-square score differences. Distances and projection quality appear below.</desc><defs><pattern id="map-grid" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="1" fill="#d7dbd0"/></pattern></defs><rect x="25" y="25" width="590" height="380" rx="20" fill="url(#map-grid)"/>`;
  if($('map-edges').checked)points.forEach((p,i)=>points.slice(i+1).forEach((q,h)=>map+=`<line x1="${p.x}" y1="${p.y}" x2="${q.x}" y2="${q.y}" stroke="#a2b19d" stroke-width="1.5"><title>${esc(p.p.name)} – ${esc(q.p.name)}: ${fmt(m.distances[i][i+h+1],2)} points RMS</title></line>`));
  const used=[];
- points.forEach((q,i)=>{const width=q.p.name.length*10+22,height=33,candidates=[[20,-40],[20,18],[-width-20,-40],[-width-20,18],[-width/2,-54],[-width/2,24]];let best=null;
+ points.forEach((q,i)=>{const width=q.p.name.length*(mapCompact?14:10)+22,height=mapCompact?43:33,candidates=[[20,-50],[20,18],[-width-20,-50],[-width-20,18],[-width/2,-64],[-width/2,24]];let best=null;
  candidates.forEach(([a,b],rank)=>{const rect={x:q.x+a,y:q.y+b,w:width,h:height};let cost=rank;
  if(rect.x<26||rect.x+width>614||rect.y<25||rect.y+height>405)cost+=10000;
  const intersect=(r,t)=>Math.max(0,Math.min(r.x+r.w,t.x+t.w)-Math.max(r.x,t.x))*Math.max(0,Math.min(r.y+r.h,t.y+t.h)-Math.max(r.y,t.y));
@@ -38,7 +41,14 @@ function renderGeometry(){
  if(!best||cost<best.cost)best={...rect,cost};});used.push(best);
  map+=`<g><circle cx="${q.x}" cy="${q.y}" r="17" fill="${q.p.color}" stroke="#fbf9f3" stroke-width="3"/><text x="${q.x}" y="${q.y+5}" text-anchor="middle" fill="white" font-size="15" font-weight="700">${i+1}</text><rect x="${best.x}" y="${best.y}" width="${width}" height="${height}" rx="6" fill="#fbf9f3" stroke="${q.p.color}" stroke-opacity=".3"/><text x="${best.x+width/2}" y="${best.y+23}" text-anchor="middle" font-size="17" fill="${q.p.color}" font-weight="600">${esc(q.p.name)}</text></g>`;
  });
+ if($('distance-map').clientWidth<560&&ps.length>1){
+  const left=Math.min(...points.map(p=>p.x-20),...used.map(b=>b.x))-28,right=Math.max(...points.map(p=>p.x+20),...used.map(b=>b.x+b.w))+28;
+  const top=Math.min(...points.map(p=>p.y-20),...used.map(b=>b.y))-28,bottom=Math.max(...points.map(p=>p.y+20),...used.map(b=>b.y+b.h))+28;
+  map=map.replace('viewBox="0 0 640 430"',`viewBox="${left} ${top} ${right-left} ${bottom-top}"`);
+ }
+ if(mapCompact)map=map.replaceAll('font-size="17"','font-size="24"');
  $('distance-map').innerHTML=map+'</svg>';
+ $('distance-map').hidden=ps.length<2;
  $('map-quality').textContent=ps.length===1?'One profile selected. Add another person to create a distance.':`This 2D view retains ${fmt(m.explainedPercent,1)}% of the squared-distance variation. ${ps.length<4?'All selected distances fit in two dimensions.':'Some separation is compressed; the exact table is authoritative.'}`;
  $('distance-matrix').innerHTML=ps.length<2?'':`<table><caption class="note">Exact RMS distance · percentage points · lower means closer</caption><thead><tr><th>Person</th>${ps.map((p,i)=>`<th class="num" title="${esc(p.name)}">${i+1}</th>`).join('')}</tr></thead><tbody>${ps.map((p,i)=>`<tr><th>${i+1}. ${esc(p.name)}</th>${m.distances[i].map((v,j)=>`<td class="num distance-cell" style="background:rgba(16,46,36,${i===j?0:(1-v/100)*.14})">${i===j?'—':fmt(v,2)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 }

@@ -55,6 +55,8 @@ const UI_COPY = {
  'Compare four individual results. Select any combination to discover the ideas, places and people that fit your group.':'Compare quatro resultados individuais. Selecione qualquer combinação para descobrir as ideias, lugares e pessoas com perfis semelhantes ao grupo.'
 };
 const UI_PHRASES = {
+ 'Dots: people · diamond: median · ring: mean':'Pontos: pessoas · losango: mediana · anel: média',
+ 'Scores: % of the named pole. Differences: percentage points.':'Pontuações: % do polo indicado. Diferenças: pontos percentuais.',
  'Separate ':'Compatibilidades separadas de ','minimum individual':'mínimo individual','median-profile':'perfil mediano',
  'fits using the source’s dimension-specific axis sets. These are independent of the minimum filter above.':'usando os conjuntos de eixos de cada dimensão da fonte. São independentes do filtro mínimo acima.',
  ' matches':' correspondências','The median’s most unusual axis:':'Eixo mais incomum da mediana:','Most typical:':'Mais típico:',
@@ -127,6 +129,8 @@ const UI_PHRASES = {
  'Public catalog snapshot':'Versão do catálogo público','commit':'commit','Page ':'Página ','Source page':'Página de origem','Compatibility':'Compatibilidade','Range':'Amplitude','Gap':'Diferença','Author':'Autor','Read more':'Ler mais'
 };
 Object.assign(UI_PHRASES,{
+ 'Ranked by the lowest compatibility among the selected people.':'Ordenado pela menor compatibilidade entre as pessoas selecionadas.',
+ 'Ranked against the selected group’s median profile.':'Ordenado pela compatibilidade com o perfil mediano do grupo selecionado.',
  'Separate median-profile fits using the source’s dimension-specific axis sets. These are independent of the minimum filter above.':'As correspondências com a mediana são calculadas separadamente para cada dimensão, usando os eixos definidos pela fonte. O filtro mínimo acima não se aplica aqui.',
  'Separate minimum individual fits using the source’s dimension-specific axis sets. These are independent of the minimum filter above.':'A menor compatibilidade individual é calculada separadamente para cada dimensão, usando os eixos definidos pela fonte. O filtro mínimo acima não se aplica aqui.',
  'Third position with Strongly traditionalist social values':'Terceira posição com valores sociais fortemente tradicionalistas',

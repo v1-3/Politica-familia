@@ -24,6 +24,11 @@ renderMatches=function(){renderSectionSelector('matches');inSection('matches',()
 const originalBooks=renderBooks;
 renderBooks=function(){renderSectionSelector('books');inSection('books',()=>{document.querySelectorAll('[data-book-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.bookMode===S.mode)));$('book-threshold-value').textContent=pct(S.threshold,0);$('books-scope-note').textContent=S.mask?`${selectedNames()} · ${S.mode==='median'?'Authors ranked against the median of this combination.':'Authors ranked by their lowest fit among these people.'} Images are author portraits.`:'Choose at least one person above.';if(!S.mask){$('book-grid').innerHTML=emptyScope('books');return;}originalBooks();});};
 const originalSelection=renderSelection;
+const compactCompass=renderCompass;
+renderCompass=function(){compactCompass();$('median-explanation').textContent='';};
+renderAxisDetail=function(){if(!S.mask)return;const j=S.axis,a=D.axes[j],s=stats(j);$('axis-detail').innerHTML=`<strong>${esc(a.label)}: ${pct(s.median,2)} ${esc(a.leftPole)} / ${pct(100-s.median,2)} ${esc(a.rightPole)}</strong>${sortedValues(j)}<p>Median ${fmt(s.median,2)} · Mean ${fmt(s.mean,2)} · Range ${fmt(s.range)} percentage points.</p>`;};
+const compactMatches=renderMatches;
+renderMatches=function(){compactMatches();if(S.sections.matches.mask)$('mode-explanation').textContent=S.mode==='shared'?'Ranked by the lowest compatibility among the selected people.':'Ranked against the selected group’s median profile.';};
 renderSelection=function(){originalSelection();$('selected-content').hidden=false;['graph','axes','pairs','reports'].forEach(id=>$(id).hidden=!S.mask);$('empty-selection').hidden=!!(S.mask||Object.values(S.sections).some(x=>x.mask));$('selection-caption').textContent='Resets all section groups · compass, axes and PDFs follow this selection';};
 renderAll=function(){renderSelection();renderGeometry();renderHero();renderMatches();renderBooks();if(S.mask){renderCompass();renderAxes();renderPairs();renderReports();}};
 selectMask=function(mask){S.mask=mask;Object.values(S.sections).forEach(s=>s.mask=mask);S.limit=6;S.pair=null;renderAll();};
@@ -35,6 +40,8 @@ function exportSelection(){
  const payload={title:'12 Axes family comparison · current selections',sources:D.source,axes:D.axes,pageSelection:selectedProfiles().map(p=>({name:p.name,values:p.values,url:p.url})),sections:scopeData};
  const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='family-selected-comparison.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
+const conciseAxes=renderAxes;
+renderAxes=function(){conciseAxes();$('axes-caption').textContent=selectedNames();const note=$('axes-plot').querySelector(':scope > .note');if(note)note.textContent='Dots: people · diamond: median · ring: mean';const tableNote=$('axes-table').querySelector(':scope > .note');if(tableNote)tableNote.textContent='Scores: % of the named pole. Differences: percentage points.';};
 init=function(){
  $('combination').innerHTML='<option value="0">No one selected</option>'+Object.entries(D.groups).sort((a,b)=>b[1].members.length-a[1].members.length||Number(a[0])-Number(b[0])).map(([mask,g])=>`<option value="${mask}">${Number(mask)===15?'Everyone':g.members.map(i=>esc(D.people[i].name)).join(' + ')}</option>`).join('');
  $('source-provenance').innerHTML=`Public catalog snapshot ${esc(D.source.date)}, commit ${ext(D.source.repository,D.source.commit.slice(0,8))}. ${Object.entries(D.source.catalogSizes).map(([k,v])=>v+' '+k).join(' · ')}. Median vectors are rounded to one decimal only for source compatibility matching; displayed medians and graph coordinates use full precision.`;

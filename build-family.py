@@ -34,6 +34,7 @@ base=re.sub(r'<section class="wrap section" id="method">[\s\S]*?</section>',(roo
 base=base.replace('<div id="mode-explanation"','<div id="matches-selection-controls" class="section-selection"></div><div id="mode-explanation"',1)
 base=base.replace('<div id="book-grid"','<div id="books-selection" class="section-selection"></div><div class="book-method-controls"><div class="segments" role="group" aria-label="Book matching method"><button data-book-mode="median" aria-pressed="true">Median profile</button><button data-book-mode="shared" aria-pressed="false">Shared matches</button></div><label class="threshold">Minimum author fit for each person <input id="book-threshold" type="range" min="0" max="100" step="1" value="0"><output id="book-threshold-value">0%</output></label></div><p id="books-scope-note" class="note"></p><div id="book-grid"',1)
 base=base.replace('Who’s in the comparison?','Set people across the page')
+base=re.sub(r'<p[^>]*>The median point is the projection of the selected axis medians\. It is not the average of these dots\.</p>','',base)
 base=base.replace('People included in all graphs and matches','Default people; changing these resets all section selections')
 base=base.replace('Search and the minimum filter apply to this category; the minimum also filters books.','Search and the minimum filter apply to this match category. Books have their own people and minimum below.')
 base=base.replace('Lower the minimum compatibility above to restore the reading list.','Lower the author-fit minimum in this section to restore the reading list.')
