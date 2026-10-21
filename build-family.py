@@ -50,7 +50,7 @@ old_init_start=base.index('function init(){')
 old_init_end=base.index(needle,old_init_start)
 # init remains declared for the clean replacement in scoped-controls.js.
 base=base[:old_init_start]+'function init(){}\n'+base[old_init_end:]
-base=base.replace(needle,(root/'enhancement.js').read_text(encoding='utf-8')+'\n'+(root/'scoped-controls.js').read_text(encoding='utf-8')+'\n'+needle)
+base=base.replace(needle,(root/'enhancement.js').read_text(encoding='utf-8')+'\n'+(root/'scoped-controls.js').read_text(encoding='utf-8')+'\n'+(root/'preferences.js').read_text(encoding='utf-8')+'\n'+needle)
 # Put evidence and the standalone statistics library before the page script.
 logic_start=base.rfind('<script>')
 if logic_start<0: raise RuntimeError('Could not locate page script')
@@ -59,4 +59,5 @@ base=base[:logic_start]+extra+base[logic_start:]
 out=root/'site';out.mkdir(exist_ok=True)
 (out/'index.html').write_text(base,encoding='utf-8')
 (root/'family-atlas.html').write_text(base,encoding='utf-8')
+(root/'index.html').write_text(base,encoding='utf-8')
 print(json.dumps({'file':str(root/'family-atlas.html'),'bytes':len(base.encode()),'reports':len(pdf['people']),'embedded_pdf_images':base.count('report-thumb')}))

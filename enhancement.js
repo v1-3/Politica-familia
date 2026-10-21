@@ -15,7 +15,7 @@ function renderGeometry(){
  [25,50,75,100].forEach(v=>{svg+=`<polygon points="${polygon(Array(12).fill(v))}" fill="${v===100?'#f4f3eb':'none'}" stroke="#deddd1" stroke-width="1"/>`;});
  // Draw rings in descending order so the outer fill cannot cover the inner rings.
  [25,50,75].forEach(v=>{svg+=`<polygon points="${polygon(Array(12).fill(v))}" fill="none" stroke="#deddd1"/>`;});
- const labels=['Federal?','Democratic?','Security-focused?','Assimilationist?','Militarist?','Non-interventionist?','Public economy?','Planned economy?','Protectionist?','Irreligious?','Progressive?','Pro-technology?'];
+ const labels=['Federal','Democratic','Security-focused','Assimilationist','Militarist','Non-interventionist','Public economy','Planned economy','Protectionist','Irreligious','Progressive','Pro-technology'];
  D.axes.forEach((a,j)=>{const p=at(j,100),l=at(j,100,35),anchor=Math.abs(l[0]-cx)<8?'middle':l[0]>cx?'start':'end';svg+=`<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="#deddd1"/><text class="radar-axis-label" x="${l[0]}" y="${l[1]+4}" text-anchor="${anchor}" fill="#203c2e" font-size="16" font-weight="600">${esc(labels[j])}</text>`;});
  [0,25,50,75,100].forEach(v=>svg+=`<text x="${cx+6}" y="${cy-r*v/100-4}" font-size="9" fill="#77776b">${v}</text>`);
  ps.forEach(p=>{svg+=`<polygon points="${polygon(p.values)}" fill="${p.color}" fill-opacity=".04" stroke="${p.color}" stroke-width="2.3"><title>${esc(p.name)}</title></polygon>`;p.values.forEach((v,j)=>{const q=at(j,v);svg+=`<circle cx="${q[0]}" cy="${q[1]}" r="3.3" fill="${p.color}"><title>${esc(p.name)} · ${esc(D.axes[j].leftPole)}: ${pct(v)}</title></circle>`;});});
