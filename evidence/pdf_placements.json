@@ -1,0 +1,1462 @@
+{
+  "Victor": {
+    "1": {
+      "images": [],
+      "links": []
+    },
+    "2": {
+      "images": [],
+      "links": []
+    },
+    "3": {
+      "images": [
+        {
+          "path": "assets/victor-p3-1.png",
+          "x": 56.25,
+          "y": 134.25,
+          "width": 100.5,
+          "height": 67.5
+        },
+        {
+          "path": "assets/victor-p3-2.png",
+          "x": 53.25,
+          "y": 258.0,
+          "width": 38.25,
+          "height": 25.5
+        },
+        {
+          "path": "assets/victor-p3-3.png",
+          "x": 225.75,
+          "y": 258.0,
+          "width": 38.25,
+          "height": 25.5
+        },
+        {
+          "path": "assets/victor-p3-4.png",
+          "x": 399.0,
+          "y": 258.0,
+          "width": 38.25,
+          "height": 25.5
+        },
+        {
+          "path": "assets/victor-p3-5.png",
+          "x": 51.0,
+          "y": 393.75,
+          "width": 111.0,
+          "height": 66.0
+        }
+      ],
+      "links": []
+    },
+    "4": {
+      "images": [
+        {
+          "path": "assets/victor-p4-1.jpg",
+          "x": 55.5,
+          "y": 102.75,
+          "width": 73.5,
+          "height": 93.75
+        },
+        {
+          "path": "assets/victor-p4-2.jpg",
+          "x": 52.5,
+          "y": 229.5,
+          "width": 30.75,
+          "height": 45.0
+        },
+        {
+          "path": "assets/victor-p4-3.jpg",
+          "x": 225.0,
+          "y": 230.25,
+          "width": 31.5,
+          "height": 42.75
+        },
+        {
+          "path": "assets/victor-p4-4.jpg",
+          "x": 398.25,
+          "y": 228.75,
+          "width": 31.5,
+          "height": 46.5
+        }
+      ],
+      "links": []
+    },
+    "5": {
+      "images": [
+        {
+          "path": "assets/victor-p5-1.jpg",
+          "x": 70.5,
+          "y": 101.25,
+          "width": 31.5,
+          "height": 39.0
+        },
+        {
+          "path": "assets/victor-p5-2.jpg",
+          "x": 339.0,
+          "y": 98.25,
+          "width": 30.75,
+          "height": 45.0
+        },
+        {
+          "path": "assets/victor-p5-3.jpg",
+          "x": 70.5,
+          "y": 146.25,
+          "width": 31.5,
+          "height": 42.0
+        },
+        {
+          "path": "assets/victor-p5-4.jpg",
+          "x": 339.0,
+          "y": 146.25,
+          "width": 30.75,
+          "height": 42.0
+        },
+        {
+          "path": "assets/victor-p5-5.jpg",
+          "x": 70.5,
+          "y": 192.75,
+          "width": 31.5,
+          "height": 42.75
+        },
+        {
+          "path": "assets/victor-p5-6.jpg",
+          "x": 339.0,
+          "y": 196.5,
+          "width": 30.75,
+          "height": 35.25
+        },
+        {
+          "path": "assets/victor-p5-7.jpg",
+          "x": 70.5,
+          "y": 238.5,
+          "width": 31.5,
+          "height": 45.0
+        },
+        {
+          "path": "assets/victor-p5-8.jpg",
+          "x": 339.0,
+          "y": 240.0,
+          "width": 30.75,
+          "height": 41.25
+        },
+        {
+          "path": "assets/victor-p5-1.jpg",
+          "x": 57.75,
+          "y": 384.75,
+          "width": 36.75,
+          "height": 46.5
+        },
+        {
+          "path": "assets/victor-p5-4.jpg",
+          "x": 230.25,
+          "y": 382.5,
+          "width": 36.75,
+          "height": 50.25
+        },
+        {
+          "path": "assets/victor-p5-7.jpg",
+          "x": 403.5,
+          "y": 381.0,
+          "width": 36.75,
+          "height": 53.25
+        }
+      ],
+      "links": [
+        "https://www.amazon.com/s?k=The+Futurist+Manifesto+Filippo+Tommaso+Marinetti&i=stripbooks&tag=12axes0d-20",
+        "https://www.amazon.com/s?k=The+Doctrine+of+Fascism+Benito+Mussolini&i=stripbooks&tag=12axes0d-20",
+        "https://www.amazon.com/s?k=Discourse+to+the+Youth+of+Spain+Ramiro+Ledesma+Ramos&i=stripbooks&tag=12axes0d-20"
+      ]
+    },
+    "6": {
+      "images": [
+        {
+          "path": "assets/victor-p6-4.png",
+          "x": 63.0,
+          "y": 141.75,
+          "width": 58.5,
+          "height": 58.5
+        },
+        {
+          "path": "assets/victor-p6-1.png",
+          "x": 144.0,
+          "y": 134.25,
+          "width": 19.5,
+          "height": 13.5
+        },
+        {
+          "path": "assets/victor-p6-5.png",
+          "x": 54.0,
+          "y": 261.75,
+          "width": 27.75,
+          "height": 27.75
+        },
+        {
+          "path": "assets/victor-p6-3.png",
+          "x": 89.25,
+          "y": 267.75,
+          "width": 25.5,
+          "height": 15.75
+        },
+        {
+          "path": "assets/victor-p6-6.png",
+          "x": 226.5,
+          "y": 261.75,
+          "width": 28.5,
+          "height": 27.75
+        },
+        {
+          "path": "assets/victor-p6-7.png",
+          "x": 263.2,
+          "y": 267.75,
+          "width": 24.06,
+          "height": 15.75
+        },
+        {
+          "path": "assets/victor-p6-8.png",
+          "x": 399.75,
+          "y": 258.75,
+          "width": 28.5,
+          "height": 28.5
+        },
+        {
+          "path": "assets/victor-p6-9.png",
+          "x": 435.75,
+          "y": 264.75,
+          "width": 24.0,
+          "height": 16.5
+        },
+        {
+          "path": "assets/victor-p6-10.png",
+          "x": 63.0,
+          "y": 413.25,
+          "width": 58.5,
+          "height": 57.75
+        },
+        {
+          "path": "assets/victor-p6-2.png",
+          "x": 144.0,
+          "y": 405.75,
+          "width": 19.5,
+          "height": 13.5
+        }
+      ],
+      "links": []
+    },
+    "7": {
+      "images": [
+        {
+          "path": "assets/victor-p7-7.png",
+          "x": 60.0,
+          "y": 486.75,
+          "width": 27.75,
+          "height": 27.0
+        },
+        {
+          "path": "assets/victor-p7-1.jpg",
+          "x": 92.25,
+          "y": 477.75,
+          "width": 36.0,
+          "height": 45.75
+        },
+        {
+          "path": "assets/victor-p7-2.jpg",
+          "x": 56.25,
+          "y": 510.0,
+          "width": 36.0,
+          "height": 52.5
+        },
+        {
+          "path": "assets/victor-p7-3.jpg",
+          "x": 92.25,
+          "y": 512.25,
+          "width": 36.0,
+          "height": 48.75
+        },
+        {
+          "path": "assets/victor-p7-5.jpg",
+          "x": 170.25,
+          "y": 105.0,
+          "width": 25.5,
+          "height": 28.5
+        },
+        {
+          "path": "assets/victor-p7-8.jpg",
+          "x": 370.5,
+          "y": 100.5,
+          "width": 25.5,
+          "height": 38.25
+        },
+        {
+          "path": "assets/victor-p7-9.png",
+          "x": 163.5,
+          "y": 167.25,
+          "width": 39.0,
+          "height": 25.5
+        },
+        {
+          "path": "assets/victor-p7-10.png",
+          "x": 374.25,
+          "y": 171.0,
+          "width": 17.25,
+          "height": 17.25
+        },
+        {
+          "path": "assets/victor-p7-11.png",
+          "x": 174.75,
+          "y": 231.75,
+          "width": 16.5,
+          "height": 17.25
+        },
+        {
+          "path": "assets/victor-p7-12.jpg",
+          "x": 370.5,
+          "y": 225.0,
+          "width": 25.5,
+          "height": 31.5
+        },
+        {
+          "path": "assets/victor-p7-13.png",
+          "x": 174.75,
+          "y": 292.5,
+          "width": 16.5,
+          "height": 17.25
+        },
+        {
+          "path": "assets/victor-p7-14.png",
+          "x": 363.75,
+          "y": 288.75,
+          "width": 38.25,
+          "height": 25.5
+        },
+        {
+          "path": "assets/victor-p7-7.png",
+          "x": 174.75,
+          "y": 353.25,
+          "width": 16.5,
+          "height": 17.25
+        },
+        {
+          "path": "assets/victor-p7-1.jpg",
+          "x": 370.5,
+          "y": 345.75,
+          "width": 25.5,
+          "height": 32.25
+        },
+        {
+          "path": "assets/victor-p7-4.jpg",
+          "x": 170.25,
+          "y": 405.0,
+          "width": 25.5,
+          "height": 35.25
+        },
+        {
+          "path": "assets/victor-p7-6.jpg",
+          "x": 370.5,
+          "y": 405.75,
+          "width": 25.5,
+          "height": 33.75
+        }
+      ],
+      "links": []
+    },
+    "8": {
+      "images": [],
+      "links": []
+    }
+  },
+  "Veranice": {
+    "1": {
+      "images": [],
+      "links": []
+    },
+    "2": {
+      "images": [],
+      "links": []
+    },
+    "3": {
+      "images": [
+        {
+          "path": "assets/veranice-p3-1.png",
+          "x": 63.64,
+          "y": 127.0,
+          "width": 124.88,
+          "height": 62.09
+        },
+        {
+          "path": "assets/veranice-p3-2.png",
+          "x": 70.7,
+          "y": 252.59,
+          "width": 46.57,
+          "height": 23.28
+        },
+        {
+          "path": "assets/veranice-p3-3.png",
+          "x": 238.62,
+          "y": 252.59,
+          "width": 35.98,
+          "height": 23.31
+        },
+        {
+          "path": "assets/veranice-p3-4.png",
+          "x": 401.61,
+          "y": 252.59,
+          "width": 35.98,
+          "height": 23.99
+        },
+        {
+          "path": "assets/veranice-p3-5.png",
+          "x": 79.17,
+          "y": 380.3,
+          "width": 94.54,
+          "height": 62.79
+        }
+      ],
+      "links": []
+    },
+    "4": {
+      "images": [
+        {
+          "path": "assets/veranice-p4-1.jpg",
+          "x": 78.46,
+          "y": 96.66,
+          "width": 69.14,
+          "height": 88.9
+        },
+        {
+          "path": "assets/veranice-p4-2.jpg",
+          "x": 75.64,
+          "y": 238.48,
+          "width": 28.93,
+          "height": 36.69
+        },
+        {
+          "path": "assets/veranice-p4-3.jpg",
+          "x": 237.92,
+          "y": 236.36,
+          "width": 29.63,
+          "height": 40.92
+        },
+        {
+          "path": "assets/veranice-p4-4.jpg",
+          "x": 400.9,
+          "y": 238.48,
+          "width": 29.63,
+          "height": 37.39
+        }
+      ],
+      "links": []
+    },
+    "5": {
+      "images": [
+        {
+          "path": "assets/veranice-p5-1.jpg",
+          "x": 92.57,
+          "y": 94.54,
+          "width": 29.63,
+          "height": 38.1
+        },
+        {
+          "path": "assets/veranice-p5-2.jpg",
+          "x": 345.16,
+          "y": 95.25,
+          "width": 28.93,
+          "height": 36.69
+        },
+        {
+          "path": "assets/veranice-p5-4.jpg",
+          "x": 92.57,
+          "y": 139.7,
+          "width": 29.63,
+          "height": 35.98
+        },
+        {
+          "path": "assets/veranice-p5-3.jpg",
+          "x": 345.16,
+          "y": 136.88,
+          "width": 28.93,
+          "height": 40.92
+        },
+        {
+          "path": "assets/veranice-p5-5.jpg",
+          "x": 92.57,
+          "y": 182.03,
+          "width": 29.63,
+          "height": 38.81
+        },
+        {
+          "path": "assets/veranice-p5-6.jpg",
+          "x": 345.16,
+          "y": 179.92,
+          "width": 28.93,
+          "height": 43.04
+        },
+        {
+          "path": "assets/veranice-p5-7.jpg",
+          "x": 92.57,
+          "y": 225.78,
+          "width": 29.63,
+          "height": 39.51
+        },
+        {
+          "path": "assets/veranice-p5-8.jpg",
+          "x": 345.16,
+          "y": 226.48,
+          "width": 28.93,
+          "height": 37.39
+        },
+        {
+          "path": "assets/veranice-p5-2.jpg",
+          "x": 80.58,
+          "y": 361.95,
+          "width": 34.57,
+          "height": 43.04
+        },
+        {
+          "path": "assets/veranice-p5-4.jpg",
+          "x": 242.86,
+          "y": 362.66,
+          "width": 34.57,
+          "height": 42.33
+        },
+        {
+          "path": "assets/veranice-p5-3.jpg",
+          "x": 405.84,
+          "y": 359.13,
+          "width": 34.57,
+          "height": 48.68
+        }
+      ],
+      "links": [
+        "https://www.amazon.com/s?k=What+Is+a+Nation%3F+Ernest+Renan&i=stripbooks&tag=12axes0d-20",
+        "https://www.amazon.com/s?k=The+Federalist+Papers+James+Madison&i=stripbooks&tag=12axes0d-20",
+        "https://www.amazon.com/s?k=Memoirs%3A+Every+Step+Must+Be+a+Goal+Jacques+Chirac&i=stripbooks&tag=12axes0d-20"
+      ]
+    },
+    "6": {
+      "images": [
+        {
+          "path": "assets/veranice-p6-1.png",
+          "x": 85.52,
+          "y": 133.35,
+          "width": 55.03,
+          "height": 55.03
+        },
+        {
+          "path": "assets/veranice-p6-2.png",
+          "x": 161.72,
+          "y": 126.3,
+          "width": 18.34,
+          "height": 12.7
+        },
+        {
+          "path": "assets/veranice-p6-3.png",
+          "x": 77.05,
+          "y": 253.3,
+          "width": 26.11,
+          "height": 26.81
+        },
+        {
+          "path": "assets/veranice-p6-4.png",
+          "x": 110.92,
+          "y": 259.65,
+          "width": 22.58,
+          "height": 14.82
+        },
+        {
+          "path": "assets/veranice-p6-5.png",
+          "x": 239.33,
+          "y": 256.12,
+          "width": 26.81,
+          "height": 26.11
+        },
+        {
+          "path": "assets/veranice-p6-6.png",
+          "x": 273.9,
+          "y": 261.76,
+          "width": 22.58,
+          "height": 14.82
+        },
+        {
+          "path": "assets/veranice-p6-7.png",
+          "x": 402.31,
+          "y": 256.12,
+          "width": 26.81,
+          "height": 26.11
+        },
+        {
+          "path": "assets/veranice-p6-8.png",
+          "x": 429.12,
+          "y": 261.76,
+          "width": 37.39,
+          "height": 14.82
+        },
+        {
+          "path": "assets/veranice-p6-9.png",
+          "x": 85.52,
+          "y": 398.64,
+          "width": 55.03,
+          "height": 54.33
+        },
+        {
+          "path": "assets/veranice-p6-10.png",
+          "x": 161.72,
+          "y": 391.58,
+          "width": 18.34,
+          "height": 12.7
+        }
+      ],
+      "links": []
+    },
+    "7": {
+      "images": [
+        {
+          "path": "assets/veranice-p7-1.png",
+          "x": 62.23,
+          "y": 453.67,
+          "width": 67.73,
+          "height": 33.87
+        },
+        {
+          "path": "assets/veranice-p7-8.png",
+          "x": 113.03,
+          "y": 453.67,
+          "width": 33.87,
+          "height": 33.87
+        },
+        {
+          "path": "assets/veranice-p7-4.jpg",
+          "x": 79.17,
+          "y": 481.19,
+          "width": 33.87,
+          "height": 47.27
+        },
+        {
+          "path": "assets/veranice-p7-5.jpg",
+          "x": 113.03,
+          "y": 481.9,
+          "width": 33.87,
+          "height": 45.16
+        },
+        {
+          "path": "assets/veranice-p7-9.jpg",
+          "x": 186.41,
+          "y": 96.66,
+          "width": 23.99,
+          "height": 31.04
+        },
+        {
+          "path": "assets/veranice-p7-10.jpg",
+          "x": 374.8,
+          "y": 92.43,
+          "width": 23.99,
+          "height": 39.51
+        },
+        {
+          "path": "assets/veranice-p7-11.jpg",
+          "x": 186.41,
+          "y": 152.4,
+          "width": 23.99,
+          "height": 33.87
+        },
+        {
+          "path": "assets/veranice-p7-12.jpg",
+          "x": 374.8,
+          "y": 150.99,
+          "width": 23.99,
+          "height": 36.69
+        },
+        {
+          "path": "assets/veranice-p7-13.jpg",
+          "x": 186.41,
+          "y": 211.67,
+          "width": 23.99,
+          "height": 28.93
+        },
+        {
+          "path": "assets/veranice-p7-14.jpg",
+          "x": 374.8,
+          "y": 211.67,
+          "width": 23.99,
+          "height": 28.93
+        },
+        {
+          "path": "assets/veranice-p7-2.jpg",
+          "x": 186.41,
+          "y": 268.11,
+          "width": 23.99,
+          "height": 30.34
+        },
+        {
+          "path": "assets/veranice-p7-3.jpg",
+          "x": 374.8,
+          "y": 268.11,
+          "width": 23.99,
+          "height": 30.34
+        },
+        {
+          "path": "assets/veranice-p7-6.jpg",
+          "x": 186.41,
+          "y": 322.44,
+          "width": 23.99,
+          "height": 35.98
+        },
+        {
+          "path": "assets/veranice-p7-7.jpg",
+          "x": 374.8,
+          "y": 323.85,
+          "width": 23.99,
+          "height": 32.46
+        },
+        {
+          "path": "assets/veranice-p7-1.png",
+          "x": 174.42,
+          "y": 385.23,
+          "width": 47.98,
+          "height": 23.99
+        },
+        {
+          "path": "assets/veranice-p7-4.jpg",
+          "x": 374.8,
+          "y": 380.3,
+          "width": 23.99,
+          "height": 33.87
+        }
+      ],
+      "links": []
+    },
+    "8": {
+      "images": [],
+      "links": []
+    }
+  },
+  "Osmar": {
+    "1": {
+      "images": [],
+      "links": []
+    },
+    "2": {
+      "images": [],
+      "links": []
+    },
+    "3": {
+      "images": [
+        {
+          "path": "assets/osmar-p3-1.png",
+          "x": 63.64,
+          "y": 127.0,
+          "width": 124.88,
+          "height": 62.09
+        },
+        {
+          "path": "assets/osmar-p3-2.png",
+          "x": 75.64,
+          "y": 252.59,
+          "width": 36.69,
+          "height": 23.28
+        },
+        {
+          "path": "assets/osmar-p3-3.png",
+          "x": 237.21,
+          "y": 252.59,
+          "width": 39.51,
+          "height": 23.28
+        },
+        {
+          "path": "assets/osmar-p3-4.png",
+          "x": 401.61,
+          "y": 252.59,
+          "width": 35.98,
+          "height": 23.99
+        },
+        {
+          "path": "assets/osmar-p3-5.png",
+          "x": 79.17,
+          "y": 380.3,
+          "width": 94.54,
+          "height": 62.79
+        }
+      ],
+      "links": []
+    },
+    "4": {
+      "images": [
+        {
+          "path": "assets/osmar-p4-1.jpg",
+          "x": 78.46,
+          "y": 88.19,
+          "width": 69.14,
+          "height": 105.13
+        },
+        {
+          "path": "assets/osmar-p4-2.jpg",
+          "x": 75.64,
+          "y": 216.61,
+          "width": 28.93,
+          "height": 40.22
+        },
+        {
+          "path": "assets/osmar-p4-3.jpg",
+          "x": 237.92,
+          "y": 218.72,
+          "width": 29.63,
+          "height": 36.69
+        },
+        {
+          "path": "assets/osmar-p4-4.jpg",
+          "x": 400.9,
+          "y": 217.31,
+          "width": 29.63,
+          "height": 38.81
+        }
+      ],
+      "links": []
+    },
+    "5": {
+      "images": [
+        {
+          "path": "assets/osmar-p5-1.jpg",
+          "x": 92.57,
+          "y": 91.72,
+          "width": 29.63,
+          "height": 44.45
+        },
+        {
+          "path": "assets/osmar-p5-2.jpg",
+          "x": 345.16,
+          "y": 93.13,
+          "width": 28.93,
+          "height": 40.92
+        },
+        {
+          "path": "assets/osmar-p5-3.png",
+          "x": 92.57,
+          "y": 143.23,
+          "width": 29.63,
+          "height": 28.93
+        },
+        {
+          "path": "assets/osmar-p5-4.jpg",
+          "x": 345.16,
+          "y": 136.88,
+          "width": 28.93,
+          "height": 40.92
+        },
+        {
+          "path": "assets/osmar-p5-5.jpg",
+          "x": 92.57,
+          "y": 182.03,
+          "width": 29.63,
+          "height": 38.81
+        },
+        {
+          "path": "assets/osmar-p5-6.jpg",
+          "x": 345.16,
+          "y": 181.33,
+          "width": 28.93,
+          "height": 40.22
+        },
+        {
+          "path": "assets/osmar-p5-7.jpg",
+          "x": 92.57,
+          "y": 227.9,
+          "width": 29.63,
+          "height": 34.57
+        },
+        {
+          "path": "assets/osmar-p5-8.jpg",
+          "x": 345.16,
+          "y": 230.72,
+          "width": 28.93,
+          "height": 28.93
+        },
+        {
+          "path": "assets/osmar-p5-1.jpg",
+          "x": 80.58,
+          "y": 357.01,
+          "width": 34.57,
+          "height": 52.92
+        },
+        {
+          "path": "assets/osmar-p5-4.jpg",
+          "x": 242.86,
+          "y": 359.13,
+          "width": 34.57,
+          "height": 48.68
+        },
+        {
+          "path": "assets/osmar-p5-7.jpg",
+          "x": 405.84,
+          "y": 363.36,
+          "width": 34.57,
+          "height": 40.22
+        }
+      ],
+      "links": [
+        "https://www.amazon.com/s?k=Prosperity+Through+Competition+Ludwig+Erhard&i=stripbooks&tag=12axes0d-20",
+        "https://www.amazon.com/s?k=Principles+of+Economics+Carl+Menger&i=stripbooks&tag=12axes0d-20",
+        "https://www.amazon.com/s?k=A+Lanterna+na+Popa+Roberto+Campos&i=stripbooks&tag=12axes0d-20"
+      ]
+    },
+    "6": {
+      "images": [
+        {
+          "path": "assets/osmar-p6-1.png",
+          "x": 85.52,
+          "y": 133.35,
+          "width": 55.03,
+          "height": 55.03
+        },
+        {
+          "path": "assets/osmar-p6-2.png",
+          "x": 161.72,
+          "y": 126.3,
+          "width": 18.34,
+          "height": 12.7
+        },
+        {
+          "path": "assets/osmar-p6-3.png",
+          "x": 77.05,
+          "y": 246.24,
+          "width": 26.11,
+          "height": 26.11
+        },
+        {
+          "path": "assets/osmar-p6-4.png",
+          "x": 110.92,
+          "y": 251.18,
+          "width": 22.58,
+          "height": 16.23
+        },
+        {
+          "path": "assets/osmar-p6-5.png",
+          "x": 239.33,
+          "y": 243.42,
+          "width": 26.81,
+          "height": 26.81
+        },
+        {
+          "path": "assets/osmar-p6-6.png",
+          "x": 273.9,
+          "y": 249.77,
+          "width": 22.58,
+          "height": 14.11
+        },
+        {
+          "path": "assets/osmar-p6-7.png",
+          "x": 402.31,
+          "y": 246.24,
+          "width": 26.81,
+          "height": 26.11
+        },
+        {
+          "path": "assets/osmar-p6-8.png",
+          "x": 436.17,
+          "y": 251.88,
+          "width": 22.63,
+          "height": 14.82
+        },
+        {
+          "path": "assets/osmar-p6-9.png",
+          "x": 85.52,
+          "y": 388.76,
+          "width": 55.03,
+          "height": 54.33
+        },
+        {
+          "path": "assets/osmar-p6-10.png",
+          "x": 161.72,
+          "y": 381.71,
+          "width": 18.34,
+          "height": 12.7
+        }
+      ],
+      "links": []
+    },
+    "7": {
+      "images": [
+        {
+          "path": "assets/osmar-p7-3.jpg",
+          "x": 79.17,
+          "y": 447.32,
+          "width": 33.87,
+          "height": 46.57
+        },
+        {
+          "path": "assets/osmar-p7-7.png",
+          "x": 113.03,
+          "y": 453.67,
+          "width": 33.87,
+          "height": 33.87
+        },
+        {
+          "path": "assets/osmar-p7-6.png",
+          "x": 82.69,
+          "y": 491.77,
+          "width": 26.11,
+          "height": 26.11
+        },
+        {
+          "path": "assets/osmar-p7-4.png",
+          "x": 113.03,
+          "y": 487.54,
+          "width": 33.87,
+          "height": 33.87
+        },
+        {
+          "path": "assets/osmar-p7-8.jpg",
+          "x": 186.41,
+          "y": 94.54,
+          "width": 23.99,
+          "height": 35.98
+        },
+        {
+          "path": "assets/osmar-p7-9.png",
+          "x": 368.45,
+          "y": 100.19,
+          "width": 35.98,
+          "height": 23.99
+        },
+        {
+          "path": "assets/osmar-p7-10.png",
+          "x": 180.06,
+          "y": 157.34,
+          "width": 36.69,
+          "height": 23.99
+        },
+        {
+          "path": "assets/osmar-p7-11.jpg",
+          "x": 374.8,
+          "y": 153.11,
+          "width": 23.99,
+          "height": 32.46
+        },
+        {
+          "path": "assets/osmar-p7-1.png",
+          "x": 180.77,
+          "y": 214.49,
+          "width": 35.28,
+          "height": 23.99
+        },
+        {
+          "path": "assets/osmar-p7-12.jpg",
+          "x": 374.8,
+          "y": 211.67,
+          "width": 23.99,
+          "height": 28.93
+        },
+        {
+          "path": "assets/osmar-p7-13.jpg",
+          "x": 186.41,
+          "y": 271.64,
+          "width": 23.99,
+          "height": 23.99
+        },
+        {
+          "path": "assets/osmar-p7-14.jpg",
+          "x": 374.8,
+          "y": 268.82,
+          "width": 23.99,
+          "height": 28.93
+        },
+        {
+          "path": "assets/osmar-p7-2.jpg",
+          "x": 186.41,
+          "y": 322.44,
+          "width": 23.99,
+          "height": 35.98
+        },
+        {
+          "path": "assets/osmar-p7-5.jpg",
+          "x": 374.8,
+          "y": 323.85,
+          "width": 23.99,
+          "height": 33.16
+        },
+        {
+          "path": "assets/osmar-p7-3.jpg",
+          "x": 186.41,
+          "y": 381.0,
+          "width": 23.99,
+          "height": 33.16
+        },
+        {
+          "path": "assets/osmar-p7-7.png",
+          "x": 374.8,
+          "y": 385.23,
+          "width": 23.99,
+          "height": 23.99
+        }
+      ],
+      "links": []
+    },
+    "8": {
+      "images": [],
+      "links": []
+    }
+  },
+  "Isadora": {
+    "1": {
+      "images": [],
+      "links": []
+    },
+    "2": {
+      "images": [],
+      "links": []
+    },
+    "3": {
+      "images": [
+        {
+          "path": "assets/isadora-p3-1.png",
+          "x": 79.17,
+          "y": 126.29,
+          "width": 94.54,
+          "height": 63.5
+        },
+        {
+          "path": "assets/isadora-p3-2.png",
+          "x": 76.34,
+          "y": 252.59,
+          "width": 35.98,
+          "height": 23.99
+        },
+        {
+          "path": "assets/isadora-p3-3.png",
+          "x": 233.68,
+          "y": 252.59,
+          "width": 46.57,
+          "height": 23.28
+        },
+        {
+          "path": "assets/isadora-p3-4.png",
+          "x": 401.61,
+          "y": 252.59,
+          "width": 35.98,
+          "height": 23.99
+        },
+        {
+          "path": "assets/isadora-p3-5.png",
+          "x": 79.17,
+          "y": 380.3,
+          "width": 94.54,
+          "height": 62.79
+        }
+      ],
+      "links": []
+    },
+    "4": {
+      "images": [
+        {
+          "path": "assets/isadora-p4-1.jpg",
+          "x": 78.46,
+          "y": 96.66,
+          "width": 69.14,
+          "height": 88.9
+        },
+        {
+          "path": "assets/isadora-p4-2.jpg",
+          "x": 75.64,
+          "y": 238.48,
+          "width": 28.93,
+          "height": 37.39
+        },
+        {
+          "path": "assets/isadora-p4-3.jpg",
+          "x": 237.92,
+          "y": 236.36,
+          "width": 29.63,
+          "height": 40.92
+        },
+        {
+          "path": "assets/isadora-p4-4.jpg",
+          "x": 400.9,
+          "y": 239.18,
+          "width": 29.63,
+          "height": 35.28
+        }
+      ],
+      "links": []
+    },
+    "5": {
+      "images": [
+        {
+          "path": "assets/isadora-p5-1.jpg",
+          "x": 92.57,
+          "y": 94.54,
+          "width": 29.63,
+          "height": 38.1
+        },
+        {
+          "path": "assets/isadora-p5-2.jpg",
+          "x": 345.16,
+          "y": 95.25,
+          "width": 28.93,
+          "height": 37.39
+        },
+        {
+          "path": "assets/isadora-p5-4.jpg",
+          "x": 92.57,
+          "y": 138.29,
+          "width": 29.63,
+          "height": 38.81
+        },
+        {
+          "path": "assets/isadora-p5-3.jpg",
+          "x": 345.16,
+          "y": 137.58,
+          "width": 28.93,
+          "height": 40.22
+        },
+        {
+          "path": "assets/isadora-p5-5.jpg",
+          "x": 92.57,
+          "y": 183.45,
+          "width": 29.63,
+          "height": 35.98
+        },
+        {
+          "path": "assets/isadora-p5-6.jpg",
+          "x": 345.16,
+          "y": 179.21,
+          "width": 28.93,
+          "height": 44.45
+        },
+        {
+          "path": "assets/isadora-p5-7.jpg",
+          "x": 83.4,
+          "y": 230.72,
+          "width": 48.68,
+          "height": 28.93
+        },
+        {
+          "path": "assets/isadora-p5-8.jpg",
+          "x": 345.16,
+          "y": 227.19,
+          "width": 28.93,
+          "height": 35.98
+        },
+        {
+          "path": "assets/isadora-p5-3.jpg",
+          "x": 80.58,
+          "y": 359.83,
+          "width": 34.57,
+          "height": 47.98
+        },
+        {
+          "path": "assets/isadora-p5-7.jpg",
+          "x": 231.57,
+          "y": 366.18,
+          "width": 57.86,
+          "height": 34.57
+        },
+        {
+          "path": "assets/isadora-p5-8.jpg",
+          "x": 405.84,
+          "y": 362.66,
+          "width": 34.57,
+          "height": 42.33
+        }
+      ],
+      "links": [
+        "https://www.amazon.com/s?k=Revolution+Emmanuel+Macron&i=stripbooks&tag=12axes0d-20",
+        "https://www.amazon.com/s?k=Perpetual+Peace+Immanuel+Kant&i=stripbooks&tag=12axes0d-20",
+        "https://www.amazon.com/s?k=The+Federalist+Papers+James+Madison&i=stripbooks&tag=12axes0d-20"
+      ]
+    },
+    "6": {
+      "images": [
+        {
+          "path": "assets/isadora-p6-1.png",
+          "x": 85.52,
+          "y": 133.35,
+          "width": 55.03,
+          "height": 55.03
+        },
+        {
+          "path": "assets/isadora-p6-2.png",
+          "x": 161.72,
+          "y": 126.3,
+          "width": 18.34,
+          "height": 12.7
+        },
+        {
+          "path": "assets/isadora-p6-3.png",
+          "x": 77.05,
+          "y": 243.42,
+          "width": 26.11,
+          "height": 26.81
+        },
+        {
+          "path": "assets/isadora-p6-2.png",
+          "x": 110.92,
+          "y": 249.06,
+          "width": 22.58,
+          "height": 15.52
+        },
+        {
+          "path": "assets/isadora-p6-4.png",
+          "x": 239.33,
+          "y": 243.42,
+          "width": 26.81,
+          "height": 26.81
+        },
+        {
+          "path": "assets/isadora-p6-5.png",
+          "x": 273.9,
+          "y": 249.06,
+          "width": 22.58,
+          "height": 15.52
+        },
+        {
+          "path": "assets/isadora-p6-6.png",
+          "x": 402.31,
+          "y": 243.42,
+          "width": 26.81,
+          "height": 26.81
+        },
+        {
+          "path": "assets/isadora-p6-7.png",
+          "x": 436.17,
+          "y": 249.77,
+          "width": 22.63,
+          "height": 14.11
+        },
+        {
+          "path": "assets/isadora-p6-8.png",
+          "x": 85.52,
+          "y": 381.71,
+          "width": 55.03,
+          "height": 54.33
+        },
+        {
+          "path": "assets/isadora-p6-9.png",
+          "x": 161.72,
+          "y": 374.65,
+          "width": 18.34,
+          "height": 11.99
+        }
+      ],
+      "links": []
+    },
+    "7": {
+      "images": [
+        {
+          "path": "assets/isadora-p7-1.png",
+          "x": 70.7,
+          "y": 453.67,
+          "width": 50.8,
+          "height": 33.87
+        },
+        {
+          "path": "assets/isadora-p7-6.jpg",
+          "x": 113.03,
+          "y": 448.03,
+          "width": 33.87,
+          "height": 45.16
+        },
+        {
+          "path": "assets/isadora-p7-2.png",
+          "x": 70.7,
+          "y": 487.54,
+          "width": 50.8,
+          "height": 33.87
+        },
+        {
+          "path": "assets/isadora-p7-7.png",
+          "x": 113.03,
+          "y": 487.54,
+          "width": 33.87,
+          "height": 33.87
+        },
+        {
+          "path": "assets/isadora-p7-8.jpg",
+          "x": 186.41,
+          "y": 96.66,
+          "width": 23.99,
+          "height": 31.04
+        },
+        {
+          "path": "assets/isadora-p7-9.jpg",
+          "x": 374.8,
+          "y": 97.37,
+          "width": 23.99,
+          "height": 29.63
+        },
+        {
+          "path": "assets/isadora-p7-10.jpg",
+          "x": 186.41,
+          "y": 152.4,
+          "width": 23.99,
+          "height": 33.87
+        },
+        {
+          "path": "assets/isadora-p7-11.jpg",
+          "x": 374.8,
+          "y": 153.11,
+          "width": 23.99,
+          "height": 32.46
+        },
+        {
+          "path": "assets/isadora-p7-12.jpg",
+          "x": 186.41,
+          "y": 211.67,
+          "width": 23.99,
+          "height": 28.93
+        },
+        {
+          "path": "assets/isadora-p7-5.jpg",
+          "x": 374.8,
+          "y": 211.67,
+          "width": 23.99,
+          "height": 28.93
+        },
+        {
+          "path": "assets/isadora-p7-3.jpg",
+          "x": 186.41,
+          "y": 268.11,
+          "width": 23.99,
+          "height": 30.34
+        },
+        {
+          "path": "assets/isadora-p7-4.jpg",
+          "x": 374.8,
+          "y": 268.11,
+          "width": 23.99,
+          "height": 30.34
+        },
+        {
+          "path": "assets/isadora-p7-13.jpg",
+          "x": 186.41,
+          "y": 323.85,
+          "width": 23.99,
+          "height": 32.46
+        },
+        {
+          "path": "assets/isadora-p7-14.jpg",
+          "x": 374.8,
+          "y": 323.15,
+          "width": 23.99,
+          "height": 33.87
+        },
+        {
+          "path": "assets/isadora-p7-1.png",
+          "x": 180.77,
+          "y": 385.23,
+          "width": 35.28,
+          "height": 23.99
+        },
+        {
+          "path": "assets/isadora-p7-6.jpg",
+          "x": 374.8,
+          "y": 381.71,
+          "width": 23.99,
+          "height": 31.75
+        }
+      ],
+      "links": []
+    },
+    "8": {
+      "images": [],
+      "links": []
+    }
+  }
+}
