@@ -1,4 +1,4 @@
-"""Extend the retained family snapshot with Miguel and every new group.
+"""Fill missing family catalog scores and combinations, preserving existing results.
 
 Catalog JSON and Java reference implementations in evidence/catalog-snapshot
 are pinned to d66d8747950045077770a89dfa565d173bb60964. Original groups are
@@ -99,14 +99,13 @@ def context(values, data, catalog):
 def main():
     ensure_cache()
     data = load(DATA)
-    original_people = [p for p in data['people'] if p['name'] != 'Miguel']
+    original_people = [p for p in data['people'] if p.get('catalogMatches') is not False]
+    original_indices = [data['people'].index(p) for p in original_people]
     original_count = len(original_people)
     original_limit = 1 << original_count
-    original_groups = {str(i): data['groups'][str(i)] for i in range(1,original_limit)}
+    original_groups = {k:g for k,g in data['groups'].items() if g.get('matches')}
+    missing_people = [p for p in data['people'] if p.get('catalogMatches') is False]
     original_entities = data['entities']
-    miguel = {'name':'Miguel', 'color':'#737f20', 'values':[55,55,65,65,76.7,31.7,60,55,50,72.5,42.5,41.7]}
-    miguel['url'] = result_url(miguel['values']) + '&religion=catholic'
-    data['people'] = original_people + [miguel]
     count = len(data['people'])
     limit = 1 << count
     catalogs = {}
@@ -127,7 +126,7 @@ def main():
     # Independent regression check: every retained individual score must match.
     checked = 0
     for key,entity in original_entities.items():
-        assert entity['personScores'][:original_count] == all_entities[key]['scores'][:original_count], key
+        assert entity['personScores'] == [all_entities[key]['scores'][i] for i in original_indices], key
         entity['personScores'] = all_entities[key]['scores']
         checked += original_count
     books = {b['personalityId']:b for b in load(CACHE/'books.json')}
@@ -193,13 +192,14 @@ def main():
         if isinstance(a,list) and isinstance(b,list):
             return len(a)==len(b) and all(equivalent(x,y) for x,y in zip(a,b))
         return a==b
-    for mask in range(1,original_limit):
+    for key in original_groups:
+        mask=int(key)
         regenerated=group_for(mask)
         for mode in ['shared','median']:
             for category,rows in original_groups[str(mask)]['matches'][mode].items():
                 assert equivalent(rows,regenerated['matches'][mode][category]), (mask,mode,category)
     print(json.dumps({'verifiedRetainedIndividualScores':checked,'verifiedOriginalGroups':len(original_groups)}),flush=True)
-    data['groups'] = {**original_groups,**{str(mask):group_for(mask) for mask in range(original_limit,limit)}}
+    data['groups'] = {str(mask):original_groups.get(str(mask)) or group_for(mask) for mask in range(1,limit)}
     def entity_for(meta):
         kind = meta['kind']
         fields = ['id','name','category'] + (['role','lifespan'] if kind=='personalities' else ['countryId'] if kind=='ideologies' else ['historical','period']+(['countryId'] if kind=='parties' else []))
@@ -259,8 +259,10 @@ def main():
                 exclude.append(e['id'])
             summary['dimensions'][kind]=matches
         return summary
-    miguel['matches']=individual_summary(miguel['values'],[count-1])
-    miguel['catalogContext']=context(miguel['values'],data,catalogs['ideologies'])
+    for person in missing_people:
+        person['matches']=individual_summary(person['values'],[data['people'].index(person)])
+        person['catalogContext']=context(person['values'],data,catalogs['ideologies'])
+        person['catalogMatches']=True
     values=data['groups'][str(limit-1)]['values']
     data['family']={**data['family'],'values':values,'url':result_url(values),'matches':individual_summary([round1(v) for v in values],list(range(count))), 'catalogContext':context(values,data,catalogs['ideologies'])}
     data['stats']=[]
@@ -269,9 +271,11 @@ def main():
         mid=median(v)
         middle=sorted(v)[(count-1)//2:count//2+1]
         data['stats'].append({'median':mid,'mean':mean(v),'mad':median([abs(x-mid) for x in v]),'min':min(v),'max':max(v),'middle':middle,'range':max(v)-min(v),'without':[median(v[:i]+v[i+1:]) for i in range(count)]})
-    data['source']['method']='The previous 31 family combinations are retained. Miguel and the 32 combinations containing him were calculated on October 27, 2026 from the same pinned published catalog and scoring formula. All six supplied score vectors remain unchanged; these are offline catalog matches, not fresh live rankings.'
-    data['source']['extension']={'date':'2026-10-27','person':'Miguel','newCombinations':original_limit,'preservedCombinations':len(original_groups),'scoringReference':SOURCE+'/backend/src/main/java/com/twelveaxes/service/ProfileMatchScorer.java','verifiedRetainedScores':checked}
-    assert {str(i):data['groups'][str(i)] for i in range(1,original_limit)}==original_groups
+    data['source']['method']='All eight supplied profiles and all 255 combinations have catalog matches. The previous 63 combinations are retained. Jucimar, Lucca and their 192 additional combinations were calculated on October 28, 2026 using the same pinned catalog and scoring formula.'
+    data['source']['catalogPeople']=count
+    data['source'].pop('extensionOffline',None)
+    data['source']['extension']={'date':'2026-10-28','people':[p['name'] for p in missing_people],'newCombinations':limit-1-len(original_groups),'preservedCombinations':len(original_groups),'scoringReference':SOURCE+'/backend/src/main/java/com/twelveaxes/service/ProfileMatchScorer.java','verifiedRetainedScores':checked}
+    assert {k:data['groups'][k] for k in original_groups}==original_groups
     DATA.write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     print(json.dumps({'people':len(data['people']),'groups':len(data['groups']),'entities':len(data['entities']),'images':sum(bool(e.get('localAsset')) for e in data['entities'].values()),'imageErrors':errors},ensure_ascii=False),flush=True)
 

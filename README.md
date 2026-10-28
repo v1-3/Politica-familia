@@ -2,7 +2,7 @@
 
 Open **family-atlas.html** in a modern browser. It is a standalone, offline page: the charts, data, portraits, flags, party images, fonts and original PDF text are embedded. External source and book links require internet access.
 
-Geometry, compatible matches and the group reading list each have their own person buttons and combination menu. Choose any individual, group or everyone independently in each section. Jucimar and Lucca have no catalog scores yet (see below), so their buttons are disabled in the matches and reading-list sections. The page-wide selection resets all three sections and controls the compass, axis comparison and original PDF columns. Clear shows an empty state; local controls remain usable. Books have their own matching method and minimum. “Download current selections” in Sources exports the selected groups as JSON. The source section separately offers the complete retained catalog and all precomputed combinations.
+Geometry, compatible matches and the group reading list each have their own person buttons and combination menu. Choose any individual, group or everyone independently in each section. All eight people can be included in the matches and reading-list sections. The page-wide selection resets all three sections and controls the compass, axis comparison and original PDF columns. Clear shows an empty state; local controls remain usable. Books have their own matching method and minimum. “Download current selections” in Sources exports the selected groups as JSON. The source section separately offers the complete retained catalog and all precomputed combinations.
 
 ## Added to the supplied HTML
 
@@ -21,11 +21,11 @@ The supplied HTML includes a catalog snapshot dated October 18, 2026, pinned to 
 
 Median reduces the influence of one extreme score but does not make a small family group statistically representative. With two people, median equals mean. The geometric map can compress distances; its exact RMS matrix is authoritative. RMS emphasizes larger per-axis gaps; the existing pair comparison uses the mean absolute gap, so the two measures differ intentionally.
 
-## Jucimar and Lucca: what is and is not included
+## Jucimar and Lucca comparisons
 
 Jucimar and Lucca were added from their results URLs and their PDF reports (`evidence/add_new_reports.py`, `evidence/add_new_people.py`, `evidence/add_new_translations.py`). Everything that needs only their twelve scores is complete: radar, distance map, compass, axis comparison, pair gaps, medians and means for all 255 combinations, and the English and Portuguese PDF report views.
 
-Catalog matches and books are **not** calculated for them. Those need the pinned 12axes catalog files (`evidence/catalog-snapshot/`), which are downloaded by `extend-family-catalog.py` and could not be fetched when they were added. Combinations that include either person therefore have exact medians but `matches: null`, and the matches and reading-list sections leave them out with a visible note. Their own catalog results remain visible in their PDF reports. `extend-family-catalog.py` still names Miguel as the person it adds and must be generalized before it can fill these gaps in.
+Catalog matches and books are now calculated for both people and all 255 combinations. The 63 existing match selections were verified and preserved before calculating the 192 missing selections. The generalized `extend-family-catalog.py` fills missing scores without changing person order, using the pinned October 18 catalog and each person's original recommendation filter.
 
 The two October 27 PDFs count 274 ideologies; the pinned snapshot has 271. The reports come from the live site, the snapshot from October 18, so the catalog has grown between them.
 
@@ -33,6 +33,6 @@ The two October 27 PDFs count 274 ideologies; the pinned snapshot has 271. The r
 
 `build-family.py` reads `source-template.html`, `evidence/html-embedded-data.json` and `evidence/pdf_profiles.json`. It adds the section templates, `enhancement.css`, chart and selection scripts, `preferences.js`, `report-locale.js`, `report-view.js` and `statistics.js`, then writes `family-atlas.html`, `index.html` and `site/index.html`. Everything needed for the standard build is in this repository.
 
-`extend-family-catalog.py` reproduces Miguel’s catalog matches using the pinned source inputs. It verifies all original scores and rankings before extending the data. Missing upstream inputs are downloaded to the ignored `evidence/catalog-snapshot/` cache; this cache is not a website output.
+`extend-family-catalog.py` fills missing individual and group catalog matches using the pinned source inputs. It verifies retained scores and rankings before extending the data and preserves person order. Missing upstream inputs are downloaded to the ignored `evidence/catalog-snapshot/` cache; this cache is not a website output.
 
-`statistics.test.js` validates statistical formulas, medoids, MDS and edge cases. `validate-family.cjs` verifies the 96 input scores, 255 selection medians, 63 catalog-match selections, retained match minima, source completeness, script syntax and embedded images. Browser checks cover every selection state and every original report tab.
+`statistics.test.js` validates statistical formulas, medoids, MDS and edge cases. `validate-family.cjs` verifies the 96 input scores, 255 selection medians, 255 catalog-match selections, retained match minima, source completeness, script syntax and embedded images. Browser checks cover every selection state and every original report tab.
