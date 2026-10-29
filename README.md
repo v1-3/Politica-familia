@@ -1,5 +1,7 @@
 # Family Atlas
 
+Julia was added on October 29, 2026 from her supplied result URL, bringing the atlas to nine people, 108 exact scores and 511 nonempty combinations. Her Protestant recommendation filter is preserved alongside the existing filters. All 255 earlier combinations are retained and 256 new combinations use the same pinned catalog. Julia is available in every chart, match category and reading list. No PDF was supplied for Julia; her report column links to the original online result. The eight existing PDF reports remain available.
+
 Open **family-atlas.html** in a modern browser. It is a standalone, offline page: the charts, data, portraits, flags, party images, fonts and original PDF text are embedded. External source and book links require internet access.
 
 Geometry, compatible matches and the group reading list each have their own person buttons and combination menu. Choose any individual, group or everyone independently in each section. All eight people can be included in the matches and reading-list sections. The page-wide selection resets all three sections and controls the compass, axis comparison and original PDF columns. Clear shows an empty state; local controls remain usable. Books have their own matching method and minimum. “Download current selections” in Sources exports the selected groups as JSON. The source section separately offers the complete retained catalog and all precomputed combinations.

@@ -271,10 +271,11 @@ def main():
         mid=median(v)
         middle=sorted(v)[(count-1)//2:count//2+1]
         data['stats'].append({'median':mid,'mean':mean(v),'mad':median([abs(x-mid) for x in v]),'min':min(v),'max':max(v),'middle':middle,'range':max(v)-min(v),'without':[median(v[:i]+v[i+1:]) for i in range(count)]})
-    data['source']['method']='All eight supplied profiles and all 255 combinations have catalog matches. The previous 63 combinations are retained. Jucimar, Lucca and their 192 additional combinations were calculated on October 28, 2026 using the same pinned catalog and scoring formula.'
+    data['source']['method']=f'All {count} supplied profiles and all {limit-1} combinations have catalog matches. The previous {len(original_groups)} combinations are retained. Additional combinations use the same pinned catalog and scoring formula.'
+    data['family']['note']='Family median of all supplied profiles.'
     data['source']['catalogPeople']=count
     data['source'].pop('extensionOffline',None)
-    data['source']['extension']={'date':'2026-10-28','people':[p['name'] for p in missing_people],'newCombinations':limit-1-len(original_groups),'preservedCombinations':len(original_groups),'scoringReference':SOURCE+'/backend/src/main/java/com/twelveaxes/service/ProfileMatchScorer.java','verifiedRetainedScores':checked}
+    data['source']['extension']={'date':'2026-10-29','people':[p['name'] for p in missing_people],'newCombinations':limit-1-len(original_groups),'preservedCombinations':len(original_groups),'scoringReference':SOURCE+'/backend/src/main/java/com/twelveaxes/service/ProfileMatchScorer.java','verifiedRetainedScores':checked}
     assert {k:data['groups'][k] for k in original_groups}==original_groups
     DATA.write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     print(json.dumps({'people':len(data['people']),'groups':len(data['groups']),'entities':len(data['entities']),'images':sum(bool(e.get('localAsset')) for e in data['entities'].values()),'imageErrors':errors},ensure_ascii=False),flush=True)

@@ -6,7 +6,9 @@ const P=JSON.parse(fs.readFileSync('evidence/pdf_profiles.json','utf8'));
 let checked=0;
 const count=D.people.length, selectionCount=(1<<count)-1;
 const catalogCount=D.people.filter(p=>p.catalogMatches!==false).length, catalogSelections=(1<<catalogCount)-1;
-assert.equal(count,8);assert.equal(catalogCount,8);
+assert.equal(count,9);assert.equal(catalogCount,9);
+assert.deepEqual(D.people.find(p=>p.name==='Julia').values,[48.8,50.8,85.5,33.8,71.3,28.7,56.5,60.3,45,23,8,43.8]);
+assert.equal(new URL(D.people.find(p=>p.name==='Julia').url).searchParams.get('religion'),'protestant');
 assert.ok(D.people.every(p=>p.matches&&p.catalogMatches!==false));
 assert.deepEqual(D.people.find(p=>p.name==='Jucimar').values,[61.7,79.7,48.7,40.8,59.2,52,22.8,30.5,31.2,50,55,49.5]);
 assert.deepEqual(D.people.find(p=>p.name==='Lucca').values,[47,53.8,35,64.3,67.5,57.5,60.5,36,54.3,23.8,15.5,55.5]);
@@ -18,6 +20,7 @@ assert.equal(Object.keys(D.groups).length,selectionCount);
 for(const p of D.people){
  const u=new URL(p.url);
  assert.deepEqual(p.values,F.AXES.map(a=>Number(u.searchParams.get(a))));
+ if(p.name==='Julia'){assert.equal(P.people.Julia,undefined);continue;}
  assert.deepEqual(p.values,F.AXES.map(a=>P.people[p.name].axes[a]));
  assert.equal(Object.keys(P.people[p.name].source_text).length,8);
  assert.equal(P.people[p.name].books.length,3);
