@@ -20,7 +20,6 @@ assert.equal(Object.keys(D.groups).length,selectionCount);
 for(const p of D.people){
  const u=new URL(p.url);
  assert.deepEqual(p.values,F.AXES.map(a=>Number(u.searchParams.get(a))));
- if(p.name==='Julia'){assert.equal(P.people.Julia,undefined);continue;}
  assert.deepEqual(p.values,F.AXES.map(a=>P.people[p.name].axes[a]));
  assert.equal(Object.keys(P.people[p.name].source_text).length,8);
  assert.equal(P.people[p.name].books.length,3);

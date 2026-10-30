@@ -1,0 +1,305 @@
+{
+  "commit": "eec01a457e8d677ca9588ac6db0e1c562272d4ee",
+  "sourceFilesIdenticalToOlderUnversionedSnapshot": {
+    "ProfileMatchScorer": false,
+    "ReligionFilter": false,
+    "CountryDimensionMatcherService": false,
+    "PartyDimensionMatcherService": false
+  },
+  "scoringReview": "Current scorer retains the reviewed 0.42/0.33/0.18/0.07 weighted formula, direction augmentation radius 8, and one-decimal rounding. ReligionFilter adds multiple selections; the single Protestant filter retains the same behavior.",
+  "scores": [
+    {
+      "kind": "ideologies",
+      "name": "Liberalismo New Deal",
+      "pdf": 89,
+      "source": 89.0,
+      "roundedMatch": true
+    },
+    {
+      "kind": "countries",
+      "name": "Quênia",
+      "pdf": 89,
+      "source": 89.1,
+      "roundedMatch": true
+    },
+    {
+      "kind": "countries",
+      "name": "Reino da Escócia",
+      "pdf": 94,
+      "source": 93.5,
+      "roundedMatch": true
+    },
+    {
+      "kind": "countries",
+      "name": "Reino da Hungria",
+      "pdf": 90,
+      "source": 90.1,
+      "roundedMatch": true
+    },
+    {
+      "kind": "countries",
+      "name": "Tanzânia",
+      "pdf": 96,
+      "source": 95.9,
+      "roundedMatch": true
+    },
+    {
+      "kind": "countries",
+      "name": "Mongólia",
+      "pdf": 99,
+      "source": 99.4,
+      "roundedMatch": true
+    },
+    {
+      "kind": "personalities",
+      "name": "João Calvino",
+      "pdf": 93,
+      "source": 93.4,
+      "roundedMatch": true
+    },
+    {
+      "kind": "personalities",
+      "name": "Jorge I da Grã-Bretanha",
+      "pdf": 91,
+      "source": 91.1,
+      "roundedMatch": true
+    },
+    {
+      "kind": "personalities",
+      "name": "Lachlan Macquarie",
+      "pdf": 90,
+      "source": 90.4,
+      "roundedMatch": true
+    },
+    {
+      "kind": "personalities",
+      "name": "Marco Aurélio",
+      "pdf": 90,
+      "source": 89.5,
+      "roundedMatch": true
+    },
+    {
+      "kind": "personalities",
+      "name": "Benjamin Disraeli",
+      "pdf": 88,
+      "source": 87.9,
+      "roundedMatch": true
+    },
+    {
+      "kind": "personalities",
+      "name": "Richard Nixon",
+      "pdf": 87,
+      "source": 87.4,
+      "roundedMatch": true
+    },
+    {
+      "kind": "personalities",
+      "name": "Tomás de Aquino",
+      "pdf": 87,
+      "source": 87.4,
+      "roundedMatch": true
+    },
+    {
+      "kind": "personalities",
+      "name": "Harry S. Truman",
+      "pdf": 86,
+      "source": 86.3,
+      "roundedMatch": true
+    },
+    {
+      "kind": "personalities",
+      "name": "Jorge I da Grã-Bretanha",
+      "pdf": 91,
+      "source": 91.1,
+      "roundedMatch": true
+    },
+    {
+      "kind": "personalities",
+      "name": "Tomás de Aquino",
+      "pdf": 87,
+      "source": 87.4,
+      "roundedMatch": true
+    },
+    {
+      "kind": "personalities",
+      "name": "Lachlan Macquarie",
+      "pdf": 90,
+      "source": 90.4,
+      "roundedMatch": true
+    },
+    {
+      "kind": "parties",
+      "name": "Republicanos",
+      "pdf": 87,
+      "source": 86.6,
+      "roundedMatch": true
+    },
+    {
+      "kind": "parties",
+      "name": "Partido Democrata (era New Deal)",
+      "pdf": 91,
+      "source": 90.8,
+      "roundedMatch": true
+    },
+    {
+      "kind": "parties",
+      "name": "Populares",
+      "pdf": 89,
+      "source": 88.9,
+      "roundedMatch": true
+    },
+    {
+      "kind": "parties",
+      "name": "Democracia Cristã (DC)",
+      "pdf": 89,
+      "source": 88.9,
+      "roundedMatch": true
+    },
+    {
+      "kind": "parties",
+      "name": "Partido Democrático Progressista (DPP)",
+      "pdf": 100,
+      "source": 99.5,
+      "roundedMatch": true
+    }
+  ],
+  "eligibleTopEight": {
+    "ideologies": [
+      {
+        "name": "Liberalismo New Deal",
+        "score": 89.0
+      },
+      {
+        "name": "Imperialismo Federalista",
+        "score": 88.5
+      },
+      {
+        "name": "Estoicismo",
+        "score": 88.1
+      },
+      {
+        "name": "Conservadorismo Paternalista",
+        "score": 87.9
+      },
+      {
+        "name": "Monarquismo Federalista",
+        "score": 87.8
+      },
+      {
+        "name": "Conservadorismo Cristão",
+        "score": 86.7
+      },
+      {
+        "name": "Cesarismo",
+        "score": 86.6
+      },
+      {
+        "name": "Nacionalismo Cultural",
+        "score": 85.9
+      }
+    ],
+    "countries": [
+      {
+        "name": "Reino da Escócia",
+        "score": 93.5
+      },
+      {
+        "name": "Reino da Hungria",
+        "score": 90.1
+      },
+      {
+        "name": "Quênia",
+        "score": 89.1
+      },
+      {
+        "name": "Camarões",
+        "score": 88.6
+      },
+      {
+        "name": "Império Romano",
+        "score": 88.5
+      },
+      {
+        "name": "RD Congo",
+        "score": 88.4
+      },
+      {
+        "name": "Estados Unidos do New Deal",
+        "score": 88.3
+      },
+      {
+        "name": "Angola",
+        "score": 86.8
+      }
+    ],
+    "personalities": [
+      {
+        "name": "João Calvino",
+        "score": 93.4
+      },
+      {
+        "name": "Jorge I da Grã-Bretanha",
+        "score": 91.1
+      },
+      {
+        "name": "Lachlan Macquarie",
+        "score": 90.4
+      },
+      {
+        "name": "Marco Aurélio",
+        "score": 89.5
+      },
+      {
+        "name": "Benjamin Disraeli",
+        "score": 87.9
+      },
+      {
+        "name": "Tomás de Aquino",
+        "score": 87.4
+      },
+      {
+        "name": "Richard Nixon",
+        "score": 87.4
+      },
+      {
+        "name": "Harry S. Truman",
+        "score": 86.3
+      }
+    ],
+    "parties": [
+      {
+        "name": "Partido Democrata (era New Deal)",
+        "score": 90.8
+      },
+      {
+        "name": "Populares",
+        "score": 88.9
+      },
+      {
+        "name": "Casa de Orange",
+        "score": 87.2
+      },
+      {
+        "name": "Republicanos",
+        "score": 86.6
+      },
+      {
+        "name": "Partido Conservador (era vitoriana)",
+        "score": 86.0
+      },
+      {
+        "name": "Centro Democrático (CD)",
+        "score": 85.4
+      },
+      {
+        "name": "Democracia Cristã (DC)",
+        "score": 84.1
+      },
+      {
+        "name": "Partido Unionista Democrático (DUP)",
+        "score": 83.7
+      }
+    ]
+  },
+  "allRoundedScoresMatch": true
+}

@@ -22,7 +22,8 @@
     "generated_dates": [
       "2026-10-17",
       "2026-10-26",
-      "2026-10-27"
+      "2026-10-27",
+      "2026-10-30"
     ]
   },
   "people": {
@@ -3354,6 +3355,385 @@
         "No numerical discrepancy identified: PDF dominant-pole percentages are rounded, while near-centre values are labeled Balanced. Exact URL scores retained.",
         "The October 27 report has a values summary on page 7 instead of the timeline used in the October 17 reports."
       ]
+    },
+    "Julia": {
+      "name": "Julia",
+      "source_pdf": "12axes-relatorio-2026-10-30.pdf",
+      "original_file": "12axes-relatorio-2026-10-30.pdf",
+      "generated_date": "2026-10-30",
+      "source_language": "pt",
+      "axes": {
+        "est": 48.8,
+        "rep": 50.8,
+        "pod": 85.5,
+        "imi": 33.8,
+        "dip": 71.3,
+        "int": 28.7,
+        "eco": 56.5,
+        "con": 60.3,
+        "com": 45,
+        "rel": 23,
+        "mor": 8,
+        "tec": 43.8
+      },
+      "axis_source": "https://12axes.vercel.app/results?est=48.8&rep=50.8&pod=85.5&imi=33.8&dip=71.3&int=28.7&eco=56.5&con=60.3&com=45&rel=23&mor=8&tec=43.8&religion=protestant",
+      "source_text": {
+        "1": "“\n— UMA FRASE QUE TE DESCREVE\nQuero uma nação patriota e de fé, com governo federal forte regulando\nbancos, sindicatos protegidos, seguridade social e liderança no\nmundo.\nTOP MATCH\n89,0%\nLiberalismo New Deal\nPAÍS MAIS PRÓXIMO\n89%\nQuênia\nPERSONALIDADE\n93%\nJoão Calvino\nEIXOS ANALISADOS\n12\n— NESTE RELATÓRIO\n01 Seus 12 eixos\n02 O que te distingue\n03 Países mais próximos de você\n04 Personalidades mais próximas de você\n05 Os mais próximos dos seus resultados\n06 Para ler\n07 Partidos mais próximos de você\n08 Seus valores\n09 Outras ideologias\n10 Bússola política\nGerado em 30 de outubro de 2026 · 12axes.vercel.app\n12 axes\nR E L A T Ó R I O  C O M P L E T O\nS E U  P E R F I L  I D E O L Ó G I C O\nCentro\nLiberalismo New Deal\n89%\nMATCH\nCorrente do Partido Democrata nascida com Franklin Roosevelt que une regulação financeira,\nseguridade social, obras públicas e sindicatos fortes a patriotismo cívico, capitalismo preservado e\nliderança internacional. A compatibilidade indica proximidade entre suas respostas e esse perfil.",
+        "2": "12 axes Relatório do perfil político · Liberalismo New Deal\nSeus 12 eixos\nEstrutura Equilibrado\nFederal Unitário\nEconomia Equilibrado\nPúblico Privado\nRepresentação Equilibrado\nDemocracia Autocracia\nControle 60% Planejamento\nPlanejamento Livre mercado\nPoder 86% Segurança\nSegurança Liberdade\nComércio Equilibrado\nProtecionismo Globalismo\nImigração 66% Multicultura\nAssimilação Multicultura\nReligião 77% Religioso\nIrreligioso Religioso\nDiplomacia 71% Militarista\nMilitarista Pacifista\nMoral 92% Tradicionalista\nProgressista Tradicionalista\nIntervenção 71% Nacionalista\nNão intervencionista Nacionalista\nTecnologia Equilibrado\nTecnologia Biologia\nO que te distingue\nSua posição mais incomum Religião\n81%\ndas ideologias puxam menos que você para\nreligioso.\nIrreligioso Religioso\nMediana das ideologias Você\nSua posição mais comum Economia\nNo centro\nVocê fica no centro em Economia,\ne o catálogo também. É onde seu\nperfil menos se distingue.\nPúblico Privado\nMediana das ideologias Você\nSua tensão interna\nMulticultura + Tradicionalista\nSó 14 de 274 ideologias juntam essas duas posições.\nCameralismo Democracia Cristã Mutualismo +11",
+        "3": "12 axes Relatório do perfil político · Liberalismo New Deal\nPaíses mais próximos de você\nPAÍS ATUAL\n89% match\nQuênia\nRepública presidencialista descentralizada\nRepública presidencialista com eleições competitivas e sociedade civil forte, o Quênia tem\nConstituição de 2010 descentralizada em 47 condados, economia de serviços e tecnologia como o M-\nPesa, tensões étnicas e protestos recentes contra impostos.\nTambém próximos, por dimensão\nPOLITICAMENTE\nReino da Hungria 90%\nSOCIALMENTE\nTanzânia 96%\nECONOMICAMENTE\nMongólia 99%\nOS MAIS DISTANTES DE VOCÊ New Hampshire (Estados Unidos) Território Livre (Makhnovshchina) Aragão e Catalunha Anarquistas\nEXPERIÊNCIA HISTÓRICA\n94% match\nReino da Escócia\nMonarquia feudal-parlamentar · c. 843–1707\nReino soberano tradicionalmente datado de 843, com Coroa, Parlamento e direito próprios até a união\ncom a Inglaterra em 1707. A união dinástica das coroas em 1603 e a Reforma presbiteriana marcaram\nsua trajetória.",
+        "4": "12 axes Relatório do perfil político · Liberalismo New Deal\nPersonalidades mais próximas de você\n93% match\nJoão Calvino\nReformador protestante · 1509–1564\nTeólogo francês e principal reformador da tradição calvinista, autor das Instituições da Religião Cristã,\norganizou Genebra como república teocrática entre 1541 e 1564, disciplinando a moral pública e criando o\nmodelo puritano.\nTambém próximos, por dimensão\nPOLITICAMENTE\nJorge I da Grã-Bretanha 91%\nSOCIALMENTE\nTomás de Aquino 87%\nECONOMICAMENTE\nLachlan Macquarie 90%\nAS MAIS DISTANTES DE VOCÊ Subcomandante Marcos Ezra Heywood Satoshi Nakamoto",
+        "5": "12 axes Relatório do perfil político · Liberalismo New Deal\nOs mais próximos dos seus resultados\n01\nJoão Calvino\nReligião 93% 02\nJorge I da Grã-Bretanha\nPolítica 91%\n03\nLachlan Macquarie\nPolítica 90% 04\nMarco Aurélio\nPolítica 90%\n05\n Benjamin Disraeli\nPolítica 88% 06\n Richard Nixon\nPolítica 87%\n07\nTomás de Aquino\nReligião 87% 08\nHarry S. Truman\nPolítica 86%\nPara ler\nUma obra de cada uma das personalidades mais próximas dos seus resultados.\n01 93% compatível\nMAIS PRÓXIMA DE VOCÊ\nJoão Calvino\nAs Institutas da Religião\nCristã\n1536\nVer na Amazon\n02 91% compatível\nAUTOR\nJorge I da Grã-\nBretanha\nCartas de Estado e\nInstruções Ministeriais\n1727\nVer na Amazon\n03 90% compatível\nAUTOR\nMarco Aurélio\nMeditações\n180\nVer na Amazon",
+        "6": "12 axes Relatório do perfil político · Liberalismo New Deal\nPartidos mais próximos de você\nPARTIDO ATUAL\n87% match\nRepublicanos\nPartido · Brasil\nPartido ligado à Igreja Universal do Reino de Deus, fundado em 2005 como PRB, de base evangélica e perfil de\ncentrão. Defende costumes conservadores, economia de mercado moderada e segurança, e já integrou\ngovernos de Lula e Bolsonaro.\nTambém próximos, por dimensão\nPOLITICAMENTE\nPopulares 89%\nSOCIALMENTE\nDemocracia Cristã (DC) 89%\nECONOMICAMENTE\nPartido Democrático\nProgressista (DPP) 100%\nOS MAIS DISTANTES DE VOCÊ\nPartido Libertário Socialistas Democráticos da América (DSA) EZLN (Exército Zapatista de Libertação Nacional)\nPARTIDO HISTÓRICO\n91% match\nPartido Democrata (era New Deal)\nPartido · 1933–1945 · Estados Unidos do New Deal\nPartido de Franklin Roosevelt no poder entre 1933 e 1945, ampliou o Estado com o New Deal: previdência,\nregulação bancária, obras públicas e sindicatos, numa coalizão com o Sul segregacionista, e conduziu os EUA\nna Segunda Guerra.",
+        "7": "12 axes Relatório do perfil político · Liberalismo New Deal\nSeus valores\nPOLÍTICA\nGoverno forte\nPOLÍTICA EXTERNA\nMilitarismo\nECONOMIA\nLiberalismo Social\nIMIGRAÇÃO\nPluralismo\nSOCIEDADE\nTradicionalismo religioso\nTECNOLOGIA\nEquilíbrio tecnológico",
+        "8": "12 axes Relatório do perfil político · Liberalismo New Deal\nOutras ideologias\nDireita\nImperialismo Federalista\nProjeto de império dinástico organizado\ncomo federação de nacionalidades, com\nautonomia regional, parlamentos locais e\nlínguas reconhecidas, mantendo coroa\nhereditária, exército unificado e afirmação\nmilitar da grandeza imperial. A\ncompatibilidade indica proximidade entre\nsuas respostas e esse perfil.\nDireita\nEstoicismo\nFilosofia greco-romana que ensina viver\nconforme a razão e a natureza, aceitando\ncom serenidade o que não se controla,\ncultivando dever, autodomínio e virtude\nacima do prazer, e reconhecendo uma lei\nnatural comum a toda a humanidade\nracional. A compatibilidade indica\nproximidade entre suas respostas e esse\nperfil.\nDireita\nConservadorismo\nPaternalista\nTradição conservadora que aceita\nreformas sociais e proteção aos mais\npobres para preservar a coesão nacional,\nvendo as elites como responsáveis pelo\nbem-estar do povo e pela harmonia entre\nas classes. A compatibilidade indica\nproximidade entre suas respostas e esse\nperfil.\nA IDEOLOGIA MAIS DISTANTE DE VOCÊ Criptoanarquismo Libertário\nCorrente que usa criptografia e tecnologias digitais para garantir privacidade, liberdade e transações fora do controle do Estado, buscando enfraquecer a\nvigilância e a autoridade por meios tecnológicos. A compatibilidade indica proximidade entre suas respostas e esse perfil.\nBússola política\nAUTORITARISMO\nDIREITA\nANARQUISMO\nCentrista com valores sociais Fortemente\ntradicionalistas\nPROGRESSISTA TRADICIONALISTA\n— SOBRE ESTE RELATÓRIO\nO 12 Axes compara suas respostas com perfis de ideologias, países e\npersonalidades nos mesmos 12 eixos. A compatibilidade mede proximidade\nentre perfis; não é diagnóstico científico nem rótulo definitivo. Suas\nrespostas não são armazenadas.\nRefaça o teste ou compartilhe\n12axes.vercel.app\nESQUERDA"
+      },
+      "ideology": {
+        "name": "Liberalismo New Deal",
+        "source_page": 1,
+        "group": "Centro",
+        "description": "Corrente do Partido Democrata nascida com Franklin Roosevelt que une regulação financeira, seguridade social, obras públicas e sindicatos fortes a patriotismo cívico, capitalismo preservado e liderança internacional. A compatibilidade indica proximidade entre suas respostas e esse perfil.",
+        "language": "pt",
+        "match": 89,
+        "description_en": "Democratic Party current born with Franklin Roosevelt that joins financial regulation, social security, public works and strong unions with civic patriotism, preserved capitalism and international leadership."
+      },
+      "report_sentence": "Quero uma nação patriota e de fé, com governo federal forte regulando bancos, sindicatos protegidos, seguridade social e liderança no mundo.",
+      "distinctiveness": {
+        "source_page": 2,
+        "text": "Sua posição mais incomum Religião 81% das ideologias puxam menos que você para religioso. Irreligioso Religioso Mediana das ideologias Você Sua posição mais comum Economia No centro Você fica no centro em Economia, e o catálogo também. É onde seu perfil menos se distingue. Público Privado Mediana das ideologias Você Sua tensão interna Multicultura + Tradicionalista Só 14 de 274 ideologias juntam essas duas posições. Cameralismo Democracia Cristã Mutualismo +11"
+      },
+      "countries": {
+        "featured": [
+          {
+            "name": "Quênia",
+            "source_page": 3,
+            "kind": "present",
+            "subtitle": "República presidencialista descentralizada",
+            "description": "República presidencialista com eleições competitivas e sociedade civil forte, o Quênia tem Constituição de 2010 descentralizada em 47 condados, economia de serviços e tecnologia como o M- Pesa, tensões étnicas e protestos recentes contra impostos.",
+            "language": "pt",
+            "match": 89,
+            "image": "assets/julia-p3-1.png",
+            "description_en": "A presidential republic with competitive elections and a strong civil society, Kenya has a 2010 constitution devolving power to 47 counties, a service and technology economy including M-Pesa, ethnic tensions and recent protests against taxes."
+          },
+          {
+            "name": "Reino da Escócia",
+            "source_page": 3,
+            "kind": "historical",
+            "subtitle": "Monarquia feudal-parlamentar · c. 843–1707",
+            "description": "Reino soberano tradicionalmente datado de 843, com Coroa, Parlamento e direito próprios até a união com a Inglaterra em 1707. A união dinástica das coroas em 1603 e a Reforma presbiteriana marcaram sua trajetória.",
+            "language": "pt",
+            "match": 94,
+            "image": "assets/julia-p3-5.png",
+            "description_en": "A sovereign kingdom traditionally dated to 843, with its own Crown, Parliament and law until union with England in 1707. The dynastic union of the crowns in 1603 and the Presbyterian Reformation shaped its history."
+          }
+        ],
+        "dimensions": [
+          {
+            "name": "Reino da Hungria",
+            "source_page": 3,
+            "dimension": "political",
+            "match": 90,
+            "image": "assets/julia-p3-2.png"
+          },
+          {
+            "name": "Tanzânia",
+            "source_page": 3,
+            "dimension": "social",
+            "match": 96,
+            "image": "assets/julia-p3-3.png"
+          },
+          {
+            "name": "Mongólia",
+            "source_page": 3,
+            "dimension": "economic",
+            "match": 99,
+            "image": "assets/julia-p3-4.png"
+          }
+        ],
+        "furthest": [
+          "New Hampshire (Estados Unidos)",
+          "Território Livre (Makhnovshchina)",
+          "Aragão e Catalunha Anarquistas"
+        ],
+        "source_page": 3
+      },
+      "figures": {
+        "featured": {
+          "name": "João Calvino",
+          "source_page": 4,
+          "kind": "personality",
+          "subtitle": "Reformador protestante · 1509–1564",
+          "description": "Teólogo francês e principal reformador da tradição calvinista, autor das Instituições da Religião Cristã, organizou Genebra como república teocrática entre 1541 e 1564, disciplinando a moral pública e criando o modelo puritano.",
+          "language": "pt",
+          "match": 93,
+          "image": "assets/julia-p4-1.png",
+          "description_en": "A French theologian and the main reformer of the Calvinist tradition, author of the Institutes of the Christian Religion, he organized Geneva as a theocratic republic between 1541 and 1564, disciplining public morality and creating the Puritan model."
+        },
+        "ranking": [
+          {
+            "name": "João Calvino",
+            "source_page": 5,
+            "rank": 1,
+            "category": "Religião",
+            "match": 93,
+            "image": "assets/julia-p5-4.png"
+          },
+          {
+            "name": "Jorge I da Grã-Bretanha",
+            "source_page": 5,
+            "rank": 2,
+            "category": "Política",
+            "match": 91,
+            "image": "assets/julia-p5-1.jpg"
+          },
+          {
+            "name": "Lachlan Macquarie",
+            "source_page": 5,
+            "rank": 3,
+            "category": "Política",
+            "match": 90,
+            "image": "assets/julia-p5-3.jpg"
+          },
+          {
+            "name": "Marco Aurélio",
+            "source_page": 5,
+            "rank": 4,
+            "category": "Política",
+            "match": 90,
+            "image": "assets/julia-p5-5.jpg"
+          },
+          {
+            "name": "Benjamin Disraeli",
+            "source_page": 5,
+            "rank": 5,
+            "category": "Política",
+            "match": 88,
+            "image": "assets/julia-p5-6.jpg"
+          },
+          {
+            "name": "Richard Nixon",
+            "source_page": 5,
+            "rank": 6,
+            "category": "Política",
+            "match": 87,
+            "image": "assets/julia-p5-7.jpg"
+          },
+          {
+            "name": "Tomás de Aquino",
+            "source_page": 5,
+            "rank": 7,
+            "category": "Religião",
+            "match": 87,
+            "image": "assets/julia-p5-2.jpg"
+          },
+          {
+            "name": "Harry S. Truman",
+            "source_page": 5,
+            "rank": 8,
+            "category": "Política",
+            "match": 86,
+            "image": "assets/julia-p5-8.jpg"
+          }
+        ],
+        "dimensions": [
+          {
+            "name": "Jorge I da Grã-Bretanha",
+            "source_page": 4,
+            "dimension": "political",
+            "match": 91,
+            "image": "assets/julia-p4-2.jpg"
+          },
+          {
+            "name": "Tomás de Aquino",
+            "source_page": 4,
+            "dimension": "social",
+            "match": 87,
+            "image": "assets/julia-p4-3.jpg"
+          },
+          {
+            "name": "Lachlan Macquarie",
+            "source_page": 4,
+            "dimension": "economic",
+            "match": 90,
+            "image": "assets/julia-p4-4.jpg"
+          }
+        ],
+        "furthest": [
+          "Subcomandante Marcos",
+          "Ezra Heywood",
+          "Satoshi Nakamoto"
+        ],
+        "source_page": 4
+      },
+      "books": [
+        {
+          "author": "João Calvino",
+          "title": "As Institutas da Religião Cristã",
+          "year": 1536,
+          "author_match": 93,
+          "image": "assets/julia-p5-9.png",
+          "image_kind": "author_portrait",
+          "source_url": "https://www.amazon.com.br/s?k=As+Institutas+da+Religi%C3%A3o+Crist%C3%A3+Jo%C3%A3o+Calvino&i=stripbooks&tag=12axes-20",
+          "url": "https://www.amazon.com.br/s?k=As+Institutas+da+Religi%C3%A3o+Crist%C3%A3+Jo%C3%A3o+Calvino&i=stripbooks",
+          "source_page": 5
+        },
+        {
+          "author": "Jorge I da Grã-Bretanha",
+          "title": "Cartas de Estado e Instruções Ministeriais",
+          "year": 1727,
+          "author_match": 91,
+          "image": "assets/julia-p5-1.jpg",
+          "image_kind": "author_portrait",
+          "source_url": "https://www.amazon.com.br/s?k=Cartas+de+Estado+e+Instru%C3%A7%C3%B5es+Ministeriais+Jorge+I+da+Gr%C3%A3-Bretanha&i=stripbooks&tag=12axes-20",
+          "url": "https://www.amazon.com.br/s?k=Cartas+de+Estado+e+Instru%C3%A7%C3%B5es+Ministeriais+Jorge+I+da+Gr%C3%A3-Bretanha&i=stripbooks",
+          "source_page": 5
+        },
+        {
+          "author": "Marco Aurélio",
+          "title": "Meditações",
+          "year": 180,
+          "author_match": 90,
+          "image": "assets/julia-p5-5.jpg",
+          "image_kind": "author_portrait",
+          "source_url": "https://www.amazon.com.br/s?k=Medita%C3%A7%C3%B5es+Marco+Aur%C3%A9lio&i=stripbooks&tag=12axes-20",
+          "url": "https://www.amazon.com.br/s?k=Medita%C3%A7%C3%B5es+Marco+Aur%C3%A9lio&i=stripbooks",
+          "source_page": 5
+        }
+      ],
+      "parties": {
+        "featured": [
+          {
+            "name": "Republicanos",
+            "source_page": 6,
+            "kind": "active",
+            "subtitle": "Partido · Brasil",
+            "description": "Partido ligado à Igreja Universal do Reino de Deus, fundado em 2005 como PRB, de base evangélica e perfil de centrão. Defende costumes conservadores, economia de mercado moderada e segurança, e já integrou governos de Lula e Bolsonaro.",
+            "language": "pt",
+            "flag": "assets/julia-p6-2.png",
+            "match": 87,
+            "image": "assets/julia-p6-1.png",
+            "description_en": "Party linked to the Universal Church of the Kingdom of God, founded in 2005 as PRB, with an evangelical base and a centrão profile. It defends conservative values, a moderate market economy and security, and has joined both Lula and Bolsonaro governments."
+          },
+          {
+            "name": "Partido Democrata (era New Deal)",
+            "source_page": 6,
+            "kind": "historical",
+            "subtitle": "Partido · 1933–1945 · Estados Unidos do New Deal",
+            "description": "Partido de Franklin Roosevelt no poder entre 1933 e 1945, ampliou o Estado com o New Deal: previdência, regulação bancária, obras públicas e sindicatos, numa coalizão com o Sul segregacionista, e conduziu os EUA na Segunda Guerra.",
+            "language": "pt",
+            "flag": "assets/julia-p6-9.png",
+            "match": 91,
+            "image": "assets/julia-p6-8.png",
+            "description_en": "Franklin Roosevelt's party in power from 1933 to 1945, it expanded the state with the New Deal: social security, bank regulation, public works and unions, in a coalition with the segregationist South, and led the US through World War II."
+          }
+        ],
+        "dimensions": [
+          {
+            "name": "Populares",
+            "source_page": 6,
+            "dimension": "political",
+            "match": 89,
+            "image": "assets/julia-p6-3.png",
+            "flag": "assets/julia-p6-4.png"
+          },
+          {
+            "name": "Democracia Cristã (DC)",
+            "source_page": 6,
+            "dimension": "social",
+            "match": 89,
+            "image": "assets/julia-p6-5.png",
+            "flag": "assets/julia-p6-2.png"
+          },
+          {
+            "name": "Partido Democrático Progressista (DPP)",
+            "source_page": 6,
+            "dimension": "economic",
+            "match": 100,
+            "image": "assets/julia-p6-6.png",
+            "flag": "assets/julia-p6-7.png"
+          }
+        ],
+        "furthest": [
+          "Partido Libertário",
+          "Socialistas Democráticos da América (DSA)",
+          "EZLN (Exército Zapatista de Libertação Nacional)"
+        ],
+        "source_page": 6
+      },
+      "values": [
+        {
+          "name": "Governo forte",
+          "source_page": 7,
+          "category": "Política"
+        },
+        {
+          "name": "Militarismo",
+          "source_page": 7,
+          "category": "Política Externa"
+        },
+        {
+          "name": "Liberalismo Social",
+          "source_page": 7,
+          "category": "Economia"
+        },
+        {
+          "name": "Pluralismo",
+          "source_page": 7,
+          "category": "Imigração"
+        },
+        {
+          "name": "Tradicionalismo religioso",
+          "source_page": 7,
+          "category": "Sociedade"
+        },
+        {
+          "name": "Equilíbrio tecnológico",
+          "source_page": 7,
+          "category": "Tecnologia"
+        }
+      ],
+      "timeline": null,
+      "other_ideologies": {
+        "close": [
+          {
+            "name": "Imperialismo Federalista",
+            "source_page": 8,
+            "group": "Direita",
+            "description": "Projeto de império dinástico organizado como federação de nacionalidades, com autonomia regional, parlamentos locais e línguas reconhecidas, mantendo coroa hereditária, exército unificado e afirmação militar da grandeza imperial. A compatibilidade indica proximidade entre suas respostas e esse perfil.",
+            "language": "pt",
+            "description_en": "Project of a dynastic empire organized as a federation of nationalities, with regional autonomy, local parliaments and recognized languages, while retaining a hereditary crown, unified army and military assertion of imperial greatness."
+          },
+          {
+            "name": "Estoicismo",
+            "source_page": 8,
+            "group": "Direita",
+            "description": "Filosofia greco-romana que ensina viver conforme a razão e a natureza, aceitando com serenidade o que não se controla, cultivando dever, autodomínio e virtude acima do prazer, e reconhecendo uma lei natural comum a toda a humanidade racional. A compatibilidade indica proximidade entre suas respostas e esse perfil.",
+            "language": "pt",
+            "description_en": "Greco-Roman philosophy that teaches living according to reason and nature, accepting with serenity what lies beyond one's control, cultivating duty, self-mastery and virtue above pleasure, and recognizing a natural law common to all rational humanity."
+          },
+          {
+            "name": "Conservadorismo Paternalista",
+            "source_page": 8,
+            "group": "Direita",
+            "description": "Tradição conservadora que aceita reformas sociais e proteção aos mais pobres para preservar a coesão nacional, vendo as elites como responsáveis pelo bem-estar do povo e pela harmonia entre as classes. A compatibilidade indica proximidade entre suas respostas e esse perfil.",
+            "language": "pt",
+            "description_en": "Conservative tradition that accepts social reforms and protection for the poorest to preserve national cohesion, seeing elites as responsible for the people's welfare and for harmony between classes."
+          }
+        ],
+        "furthest": {
+          "name": "Criptoanarquismo",
+          "source_page": 8,
+          "group": "Libertário",
+          "description": "Corrente que usa criptografia e tecnologias digitais para garantir privacidade, liberdade e transações fora do controle do Estado, buscando enfraquecer a vigilância e a autoridade por meios tecnológicos. A compatibilidade indica proximidade entre suas respostas e esse perfil.",
+          "language": "pt",
+          "description_en": "Current that uses cryptography and digital technologies to guarantee privacy, freedom, and transactions beyond state control, seeking to weaken surveillance and authority through technological means."
+        },
+        "source_page": 8
+      },
+      "compass": {
+        "classification": "Centrista com valores sociais Fortemente tradicionalistas",
+        "source_page": 8,
+        "coordinates": null
+      }
     }
   }
 }

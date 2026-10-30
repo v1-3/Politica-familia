@@ -10,7 +10,7 @@ Median-profile matching uses rounded axis-wise medians. Shared matching ranks mi
 
 Twelve group books remain available. For one selected person a separate disclosure shows the source's three-book selection from top eight personalities and category winners. Percentages measure author profiles, not book contents.
 
-Eight historical PDF reports remain unchanged (64 pages, 24 books). Julia has a URL-only card. Historical rankings may differ from the new catalog.
+Nine original PDF reports are available (72 pages, 27 books), including Julia's October 30 report. Earlier reports remain unchanged. Julia's 22 displayed compatibility scores match source calculations at commit `eec01a457e8d677ca9588ac6db0e1c562272d4ee` after rounding. Report results retain their own dates; group comparisons continue to use the shared October 28 catalog.
 
 The interactive map displays rotatable 3D classical MDS of equal-weight RMS gaps; its exact distance matrix is authoritative. All nine people retain 70.2% of squared-distance variation in 2D and 81.2% in 3D. Each selection recalculates this quality. Drag or use keyboard arrows to rotate; pinch, wheel or keyboard plus/minus zoom; double-click or Home resets. Visible rotation, zoom, reset and 2D/3D buttons have been removed. Controls support touch, keyboard and both languages. Rotation uses an orthographic view with equal axis scales, without changing the underlying distances. No person is automatically excluded.
 

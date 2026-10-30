@@ -45,3 +45,7 @@ Verified two-column layouts at 320px without card or score overflow, plus Englis
 ## Adaptive desktop columns
 
 The two-column layout is now a minimum, not a desktop limit. Wider content areas automatically fit additional 280px-or-wider cards. Verified axes, matches, books and reports at 320/768px (two columns), 1024px (three), 1280px (four) and 1920px (six), with no clipped scores or horizontal overflow. Mobile retains two columns. Rebuilt online and offline editions.
+
+## Julia's supplied October 30 PDF
+
+Added all eight pages, 30 image placements, eight ranked figures, three original books, countries, parties, six values, ideology descriptions and the original summary. Exact URL inputs and the Protestant filter are unchanged. English display uses upstream translations plus translations of the PDF-specific wording. All 22 numeric compatibility entries reproduce after rounding against upstream commit `eec01a457e8d677ca9588ac6db0e1c562272d4ee`; the PDF preserves its displayed order for ties. The original eight PDFs and the common catalog used by family comparisons are preserved. Audit details are in `evidence/julia-report-check.json`.

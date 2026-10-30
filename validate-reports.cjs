@@ -7,10 +7,10 @@ let descriptions=0,items=0,pages=0;
 function inspect(value){
  if(Array.isArray(value)){value.forEach(inspect);return;}
  if(!value||typeof value!=='object')return;
- if(value.description){assert.ok(value.name,'Description requires a title');assert.ok(locale.descriptions[value.name],'Missing Portuguese description: '+value.name);descriptions++;}
+ if(value.description){assert.ok(value.name,'Description requires a title');assert.ok(value.language==='pt'?value.description_en:locale.descriptions[value.name],'Missing translated description: '+value.name);descriptions++;}
  if(value.source_page&&!value.eras&&('match' in value||'author_match' in value)){assert.ok(value.name||value.title,'Score item has no title');items++;}
  for(const [key,entry] of Object.entries(value))if(!['source_text','image','flag'].includes(key))inspect(entry);
 }
-for(const [name,person] of Object.entries(data.people)){assert.ok(locale.distinct[name]);assert.equal(Object.keys(person.source_text).length,8);pages+=8;inspect(person);}
+for(const [name,person] of Object.entries(data.people)){assert.ok(locale.distinct[name]||person.source_language==='pt'&&person.distinctiveness.text);assert.equal(Object.keys(person.source_text).length,8);pages+=8;inspect(person);}
 assert.equal(pages,Object.keys(data.people).length*8);
 console.log(JSON.stringify({result:'passed',translatedDescriptions:descriptions,scoreItemsWithTitles:items,preservedSourcePages:pages}));

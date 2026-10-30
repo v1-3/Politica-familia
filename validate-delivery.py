@@ -37,5 +37,8 @@ baseline=json.loads(subprocess.check_output(['git','show','HEAD:evidence/html-em
 current=json.loads((ROOT/'evidence/html-embedded-data.json').read_text(encoding='utf-8'))
 assert [(p['name'],p['url'],p['values']) for p in baseline['people']]==[(p['name'],p['url'],p['values']) for p in current['people']]
 pdf_before=subprocess.check_output(['git','show','HEAD:evidence/pdf_profiles.json'],cwd=ROOT)
-assert json.loads(pdf_before)==json.loads((ROOT/'evidence/pdf_profiles.json').read_text(encoding='utf-8'))
+previous_reports=json.loads(pdf_before)['people']
+current_reports=json.loads((ROOT/'evidence/pdf_profiles.json').read_text(encoding='utf-8'))['people']
+assert all(current_reports[name]==report for name,report in previous_reports.items())
+assert current_reports['Julia']['axes']==dict(zip(['est','rep','pod','imi','dip','int','eco','con','com','rel','mor','tec'],next(p['values'] for p in current['people'] if p['name']=='Julia')))
 print(json.dumps({'result':'passed','onlineJSONParity':True,'uniqueVerifiedMediaAssets':len(references),'originalScoresAndPDFsUnchanged':True,'onlineHTMLBytes':len(online.encode())},indent=2))
