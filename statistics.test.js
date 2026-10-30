@@ -102,6 +102,11 @@ const tetrahedron = [
 const tetra = stats.classicalMDS(tetrahedron);
 close(tetra.explainedPercent, 200 / 3);
 assert.ok(tetra.stress > 0);
+const tetra3=stats.classicalMDS(tetrahedron,3);
+close(tetra3.explainedPercent,100);
+close(tetra3.stress,0);
+for(let i=0;i<4;i++)for(let j=0;j<4;j++)close(tetra3.projectedDistances[i][j],tetra3.distances[i][j]);
+assert.deepEqual(stats.classicalMDS([profile(30),profile(30)],3).coordinates,[[0,0,0],[0,0,0]]);
 close(tetra.negativeEigenvalueMagnitude, 0);
 const originalSquaredTotal = tetra.distances.flat().reduce((sum, value) => sum + value * value, 0);
 const projectedSquaredTotal = tetra.projectedDistances.flat().reduce((sum, value) => sum + value * value, 0);
@@ -109,6 +114,25 @@ close(100 * projectedSquaredTotal / originalSquaredTotal, tetra.explainedPercent
 
 // Real input is valid for all selection sizes; original RMS distances are returned.
 const family = JSON.parse(fs.readFileSync('evidence/html-embedded-data.json','utf8')).people.map(p=>({id:p.name,scores:p.values}));
+// Compass depth is traditionalism only: religion cannot change any coordinate.
+const neutral=stats.compassCoordinates(profile(50));
+assert.deepEqual(neutral,{right:50,authority:50,traditional:50});
+const progressive=profile(50);progressive[10]=100;
+close(stats.compassCoordinates(progressive).traditional,0);
+const traditional=profile(50);traditional[10]=0;
+close(stats.compassCoordinates(traditional).traditional,100);
+for(const person of family){
+ const coordinates=stats.compassCoordinates(person);
+ for(const religion of [0,25,50,75,100]){
+  const changed=[...person.scores];changed[9]=religion;
+  assert.deepEqual(stats.compassCoordinates(changed),coordinates);
+ }
+}
+const juliaCompass=stats.compassCoordinates(family.find(p=>p.id==='Julia'));
+close(juliaCompass.right,41.98);close(juliaCompass.authority,185.9/3);
+close(juliaCompass.traditional,92);
+close(stats.compassCoordinates(family.find(p=>p.id==='Victor')).traditional,88.1);
+close(stats.compassCoordinates(family.find(p=>p.id==='Rafael')).traditional,36.9);
 for (let mask = 0; mask < (1 << family.length); mask++) {
   const selected = family.filter((_, i) => mask & (1 << i));
   const result = stats.classicalMDS(selected);
@@ -117,7 +141,17 @@ for (let mask = 0; mask < (1 << family.length); mask++) {
   assert.ok(result.explainedPercent >= 0 && result.explainedPercent <= 100);
   assert.deepEqual(result.distances, stats.pairwise(selected).rms);
   if (selected.length && selected.length < 4) close(result.explainedPercent, 100);
+  const three=stats.classicalMDS(selected,3);
+  assert.ok(three.coordinates.every(p=>p.length===3&&p.every(Number.isFinite)));
+  assert.deepEqual(three.distances,result.distances);
+  assert.ok(three.explainedPercent+1e-8>=result.explainedPercent);
+  assert.ok(three.stress<=result.stress+1e-8);
+  if(selected.length&&selected.length<5)close(three.explainedPercent,100);
 }
+close(stats.classicalMDS(family,3).explainedPercent,81.2417178289819);
+close(stats.classicalMDS(family,3).stress,.18065666747387774);
+assert.throws(()=>stats.classicalMDS(family,0),RangeError);
+assert.throws(()=>stats.classicalMDS(family,2.5),RangeError);
 assert.throws(() => stats.mdsFromDistances([[0, 1], [2, 0]]), RangeError);
 assert.throws(() => stats.mdsFromDistances([[0, -1], [-1, 0]]), RangeError);
 
@@ -127,5 +161,5 @@ vm.createContext(browser);
 vm.runInContext(fs.readFileSync(require.resolve('./statistics.js'), 'utf8'), browser);
 assert.equal(browser.FamilyStats.median([1, 5, 9]), 5);
 
-console.log('FamilyStats: robust summaries, distance matrices, medoids, MDS, all 64 family selections, and browser export passed.');
+console.log(`FamilyStats: robust summaries, distance matrices, medoids, MDS, all ${1 << family.length} family selection states, and browser export passed.`);
 console.log(JSON.stringify({ familyMedoid: stats.medoid(family).id, familyMDSExplainedPercent: stats.classicalMDS(family).explainedPercent, familyMDSStress: stats.classicalMDS(family).stress }, null, 2));

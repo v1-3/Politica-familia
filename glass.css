@@ -1,0 +1,51 @@
+/* Translucent surfaces have a solid fallback and opaque, high-contrast text. */
+:root{--glass:rgba(255,255,255,.78);--glass-border:rgba(255,255,255,.88);--glass-shadow:0 12px 38px #26386312,inset 0 1px 0 #ffffffcc;--paper:#eef2f7;--surface:#f9fbff;--ink:#162738;--muted:#42566a;--line:#bac7d5;--forest:#195d50}
+html[data-theme="dark"]{--glass:rgba(27,40,59,.82);--glass-border:rgba(185,212,243,.22);--glass-shadow:0 12px 38px #02091644,inset 0 1px 0 #c7e1ff20;--paper:#0c1726;--surface:#1b293c;--ink:#f1f6ff;--muted:#c2d1e3;--line:#4b6078;--forest:#a0e7d6}
+html{scroll-padding-top:88px!important;background:var(--paper)}
+body,html[data-theme="dark"] body{padding-top:76px;background:radial-gradient(ellipse at 8% 10%,#68b6f033,transparent 45%),radial-gradient(ellipse at 92% 38%,#ba8ee533,transparent 46%),radial-gradient(ellipse at 30% 85%,#58c9ad26,transparent 40%),var(--paper);background-attachment:fixed;color:var(--ink)}
+header,.matches-shell,.report-shell,html[data-theme="dark"] .report-shell{background:transparent!important}
+.panel,.geometry-card,.compass-panel,.hero-result,.context-panel,.axis-card,.pair-detail,.report-person,.book-card,.match-card,.insight,.pair-button,
+html[data-theme="dark"] :is(.hero-result,.context-panel,.axis-card,.pair-detail,.report-person,.book-card,.match-card){background:var(--glass)!important;border:1px solid var(--glass-border);box-shadow:var(--glass-shadow);backdrop-filter:blur(22px) saturate(130%);-webkit-backdrop-filter:blur(22px) saturate(130%);border-radius:24px}
+.axis-card,.match-card,.book-card,.report-person{border-top:3px solid var(--axis-accent,var(--person-color,var(--accent,#6f9fd2)))}
+.selection-shell,html[data-theme="dark"] .selection-shell{position:fixed!important;top:max(10px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 20px);z-index:50;background:var(--glass)!important;border:1px solid var(--glass-border);border-radius:999px;box-shadow:0 8px 28px #142d4133,inset 0 1px 0 #ffffff66;backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%)}
+.selection-shell .selection{display:block;width:100%;padding:5px!important;margin:0;min-width:0}
+.selection-shell .people-filter{display:flex;flex-wrap:nowrap!important;justify-content:flex-start;gap:5px!important;overflow-x:auto;max-width:100%;scrollbar-width:thin;scrollbar-color:var(--line) transparent;border-radius:999px;overscroll-behavior-x:contain}
+.selection-shell .person-pill{flex:none;white-space:nowrap;min-height:40px;padding:7px 12px!important;font-size:14px!important;line-height:1.4;gap:7px;color:var(--ink);border:1px solid transparent;box-shadow:inset 0 1px 0 #ffffff66;transition:background .15s,border-color .15s}
+.selection-shell .person-pill[aria-pressed="true"]{background:color-mix(in srgb,var(--color) 23%,var(--glass));border-color:color-mix(in srgb,var(--color) 65%,var(--line));color:var(--ink)}
+.selection-shell .person-pill[aria-pressed="false"]{background:transparent;border:1px dashed var(--line);color:var(--muted)}
+.person-pill .person-check{width:17px;height:17px;flex-shrink:0}
+.selection-shell .person-pill:focus-visible{outline:2px solid var(--ink);outline-offset:-3px}
+.btn,.segments,.category-tabs button,.cube-tools button,#page-preferences button,select,.search{border-radius:16px;box-shadow:inset 0 1px 0 #ffffff30;background:var(--glass);color:var(--ink)}
+.segments button{border-radius:12px}.segments button[aria-pressed="true"],.category-tabs button[aria-pressed="true"]{box-shadow:0 3px 10px #102b3b20}
+.cube-svg,.cube-svg *{-webkit-user-select:none;user-select:none}
+.cube-svg text{pointer-events:none}
+#distance-map .cube-svg,#compass-chart .cube-svg{background:color-mix(in srgb,var(--surface) 55%,transparent)!important}
+.cube-region{opacity:.8}.cube-axis-leader{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 4;opacity:.7}
+.cube-svg .cube-axis{font-size:19px;stroke-width:5px}
+.cube-region-key{display:flex;flex-wrap:wrap;gap:8px 16px;list-style:none;padding:0;margin:16px 0;font-size:14px}
+.cube-region-key i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:7px;background:var(--color)}
+.cube-tint-key{height:8px;border-radius:8px;background:linear-gradient(90deg,#d23e84,#8796a7,#b58751);margin:8px 0}
+.cube-tint-labels{display:flex;justify-content:space-between;gap:20px;font-size:14px;color:var(--muted)}
+.cube-tint-labels span:last-child{text-align:right}
+@media(max-width:700px){body{padding-top:74px}.selection-shell .person-pill{min-height:40px;padding:7px 10px!important}.compass-visual{padding:16px 10px}.cube-svg .cube-axis{font-size:21px}.cube-legend{gap:8px 12px}.compass-read{padding:22px 16px}.section{padding-block:30px}.geometry-card{padding:18px 14px}}
+@media(prefers-reduced-transparency:reduce){:root,html[data-theme="dark"]{--glass:var(--surface)}.selection-shell,.geometry-card,.compass-panel{backdrop-filter:none}}
+@supports not (backdrop-filter:blur(1px)){:root,html[data-theme="dark"]{--glass:var(--surface)}}
+@media print{body{padding-top:0;background:white!important}.selection-shell{display:none!important}.panel,.geometry-card,.compass-panel,.match-card,.book-card{backdrop-filter:none;box-shadow:none}}
+
+#compass-table table{min-width:360px}
+@media(max-width:700px){.cube-svg .cube-axis{font-size:28px}}
+
+/* Remaining inset panels and mode selectors share the same glass material. */
+html[data-theme] :is(.segments,.axis-detail,.hero-bottom,.mode-explanation,.sorted-value,.original-book-list,.robust-highlight){background:var(--glass)!important;color:var(--ink);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow);backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%)}
+html[data-theme] :is(.segments button,.category-tabs button)[aria-pressed="true"],html[data-theme] .sorted-value.middle{background:color-mix(in srgb,var(--forest) 22%,var(--glass))!important;color:var(--ink)!important;border:1px solid color-mix(in srgb,var(--forest) 55%,var(--glass-border));box-shadow:inset 0 1px 0 #ffffff66,0 3px 12px #102c4720}
+.axis-detail{border-radius:20px}.sorted-value{border-radius:10px}.cube-hint{margin:10px 0}
+
+/* A second row comes before horizontal scrolling; no names are squeezed. */
+@media(max-width:980px){
+ html{scroll-padding-top:132px!important}
+ body,html[data-theme="dark"] body{padding-top:120px}
+ .selection-shell{border-radius:25px;max-width:calc(100% - 20px)}
+ .selection-shell .people-filter{display:grid;grid-template-rows:repeat(2,40px);grid-auto-flow:column;grid-auto-columns:max-content;border-radius:20px;gap:5px!important}
+ .selection-shell .person-pill{justify-content:center}
+}
+

@@ -1,40 +1,38 @@
 # Family Atlas
 
-Julia was added on October 29, 2026 from her supplied result URL, bringing the atlas to nine people, 108 exact scores and 511 nonempty combinations. Her Protestant recommendation filter is preserved alongside the existing filters. All 255 earlier combinations are retained and 256 new combinations use the same pinned catalog. Julia is available in every chart, match category and reading list. No PDF was supplied for Julia; her report column links to the original online result. The eight existing PDF reports remain available.
+Nine people, 108 exact URL scores, 511 nonempty combinations. Portuguese/English and light/dark themes. One compact floating person bar controls every section. It uses one row on wide screens and two rows before horizontal scrolling on narrower screens. Preset combinations are removed. The axes section uses only original bars. Liquid glass surfaces support both themes and a solid-color fallback. Axes, matches, books and reports use at least two visible columns. Wider screens add columns automatically with a 280px preferred minimum card width, without card carousels or internal report scrolling. Images fill their frames. Repeated explanations are removed and historical descriptions expand on demand. The pair-comparison section and axis-detail box are removed.
 
-Open **family-atlas.html** in a modern browser. It is a standalone, offline page: the charts, data, portraits, flags, party images, fonts and original PDF text are embedded. External source and book links require internet access.
+## Results and provenance
 
-Geometry, compatible matches and the group reading list each have their own person buttons and combination menu. Choose any individual, group or everyone independently in each section. All eight people can be included in the matches and reading-list sections. The page-wide selection resets all three sections and controls the compass, axis comparison and original PDF columns. Clear shows an empty state; local controls remain usable. Books have their own matching method and minimum. “Download current selections” in Sources exports the selected groups as JSON. The source section separately offers the complete retained catalog and all precomputed combinations.
+Catalog pinned to `44417356172d18f98c0597c191a3b225211380c6` (October 28, 2026), recalculated October 29: 274 ideologies, 314 countries/historical states, 655 personalities, 203 parties. Input scores are unchanged. Every selected recommendation filter must allow a candidate.
 
-## Added to the supplied HTML
+Median-profile matching uses rounded axis-wise medians. Shared matching ranks minimum individual fit, then median, mean and canonical English name. Translation changes display names, not order. Personality areas use occupation groups and all twelve axes; country/party dimensions use source subsets. Featured and earlier area winners are excluded. Descriptive context retains tied axes.
 
-- A twelve-axis radar at the top of the page, with individual profiles, median and mean. Spokes use short labels such as “Democratic”.
-- A two-dimensional geometric map of equal-weight RMS score distances, projection-quality disclosure and an exact distance matrix.
-- Axis medians, means, raw MAD and ranges remain in the axis comparison. The separate family-statistics section and median explanation/demo have been removed as requested.
-- Original PDF views for all eight people: countries, 64 ranked figures, 24 books, parties, ideology descriptions, distinctive axes and all 64 pages of extracted text. The four earlier reports include six eras each; the four newer reports (Rafael, Miguel, Jucimar and Lucca) include six values instead. Source images are included; books use author portraits, as in the PDFs.
-- The original compass, pairwise gap comparison, illustrated catalog matches and group reading lists are retained.
-- Median-profile matching is the initial view. Shared matching remains available; its minimum-person rule is deliberately sensitive to the least compatible person and is not an outlier-resistant estimator.
+Twelve group books remain available. For one selected person a separate disclosure shows the source's three-book selection from top eight personalities and category winners. Percentages measure author profiles, not book contents.
 
-## Evidence and limits
+Eight historical PDF reports remain unchanged (64 pages, 24 books). Julia has a URL-only card. Historical rankings may differ from the new catalog.
 
-The 96 numeric values come exactly from the eight user-supplied results URLs. The first four PDF summaries are dated October 17, 2026; Rafael’s is dated October 26, 2026; Miguel’s, Jucimar’s and Lucca’s are dated October 27, 2026. They use rounded values and retain their original catalog wording. Matches describe the test's catalog similarity rather than definitive political identities or endorsements.
+The interactive map displays rotatable 3D classical MDS of equal-weight RMS gaps; its exact distance matrix is authoritative. All nine people retain 70.2% of squared-distance variation in 2D and 81.2% in 3D. Each selection recalculates this quality. Drag or use keyboard arrows to rotate; pinch, wheel or keyboard plus/minus zoom; double-click or Home resets. Visible rotation, zoom, reset and 2D/3D buttons have been removed. Controls support touch, keyboard and both languages. Rotation uses an orthographic view with equal axis scales, without changing the underlying distances. No person is automatically excluded.
 
-The supplied HTML includes a catalog snapshot dated October 18, 2026, pinned to repository commit `d66d8747950045077770a89dfa565d173bb60964`. Its source metadata states that results were recomputed from published catalog data when the live API was unavailable. This revision preserves the previous 31 sets of group results and calculates Miguel and the 32 additional combinations from that same pinned snapshot. It does not claim a fresh live ranking. Search operates within the retained top matches shown by the page, not every original catalog item. Original PDF results are displayed separately and can differ from recomputed catalog results. The original Catholic recommendation filters in the links of Osmar, Miguel, Jucimar and Lucca are preserved, without inferring a religious identity.
+The political compass uses the same gesture-based 3D interaction. X and Y keep the original economic-right and authority formulas. Depth is traditionalism, `100 − mor`: progressive at 0, traditional at 100. Religion has no influence on compass coordinates. All compass axes keep a fixed 0–100 scale. The median marker projects the axis-wise median input profile. Every person's 3D marker carries their first initial; colors, names and tooltips distinguish shared initials. Both cubes rotate independently. Graph text cannot be selected while dragging. Compass poles use descriptive labels outside the cube. Smooth rear-wall colors interpolate the original eight-region palette; the progressive–traditional axis adds a 24% maximum pink-to-ochre tint without introducing new ideology classifications.
 
-Median reduces the influence of one extreme score but does not make a small family group statistically representative. With two people, median equals mean. The geometric map can compress distances; its exact RMS matrix is authoritative. RMS emphasizes larger per-axis gaps; the existing pair comparison uses the mean absolute gap, so the two measures differ intentionally.
+## Build
 
-## Jucimar and Lucca comparisons
+Run `python build-family.py`. It generates self-contained `family-atlas.html` and `index.html`, then `publish-online.py` creates `site/index.html`, versioned assets in `site/assets/`, and `site/family-atlas-offline.html`. Images load as needed online; the standalone download embeds them. GitHub Actions publishes `site/` with repository-relative paths.
 
-Jucimar and Lucca were added from their results URLs and their PDF reports (`evidence/add_new_reports.py`, `evidence/add_new_people.py`, `evidence/add_new_translations.py`). Everything that needs only their twelve scores is complete: radar, distance map, compass, axis comparison, pair gaps, medians and means for all 255 combinations, and the English and Portuguese PDF report views.
+Editable sources: `source-template.html`, `enhancement.*`, `scoped-controls.js`, `glass.css`, `compact.css`, `compact-ui.js`, `geometry-3d.js`, `preferences.js`, `catalog-ui.js`, `report-view.js`, `report-locale.js`, `statistics.js`, and JSON in `evidence/`.
 
-Catalog matches and books are now calculated for both people and all 255 combinations. The 63 existing match selections were verified and preserved before calculating the 192 missing selections. The generalized `extend-family-catalog.py` fills missing scores without changing person order, using the pinned October 18 catalog and each person's original recommendation filter.
+Run `python extend-family-catalog.py --refresh` for an explicit complete catalog refresh; ordinary runs preserve existing results. Inputs use the ignored commit-specific cache. Run `python finalize-catalog.py` before building for localized individual-book metadata.
 
-The two October 27 PDFs count 274 ideologies; the pinned snapshot has 271. The reports come from the live site, the snapshot from October 18, so the catalog has grown between them.
+## Validation
 
-## Editable source
+`node geometry-3d.test.cjs`: drag, pinch, pointer cleanup, wheel, double-click, keyboard and selection prevention.
 
-`build-family.py` reads `source-template.html`, `evidence/html-embedded-data.json` and `evidence/pdf_profiles.json`. It adds the section templates, `enhancement.css`, chart and selection scripts, `preferences.js`, `report-locale.js`, `report-view.js` and `statistics.js`, then writes `family-atlas.html`, `index.html` and `site/index.html`. Everything needed for the standard build is in this repository.
+`node statistics.test.js`: summaries, distances, MDS, all 512 selection states.
+`node validate-family.cjs`: 108 scores, 511 groups, matches, embedded images and script syntax.
+`node validate-reports.cjs`: historical report metadata.
+`python validate-refresh.py`: independent full-catalog dimension, ranking, filter and localization checks.
 
-`extend-family-catalog.py` fills missing individual and group catalog matches using the pinned source inputs. It verifies retained scores and rankings before extending the data and preserves person order. Missing upstream inputs are downloaded to the ignored `evidence/catalog-snapshot/` cache; this cache is not a website output.
+`python validate-delivery.py`: online/offline data and image parity, asset paths, unchanged URL scores and PDF evidence.
 
-`statistics.test.js` validates statistical formulas, medoids, MDS and edge cases. `validate-family.cjs` verifies the 96 input scores, 255 selection medians, 255 catalog-match selections, retained match minima, source completeness, script syntax and embedded images. Browser checks cover every selection state and every original report tab.
+Browser verification covers languages, themes, global selection, empty states, search, source books and responsive layout.

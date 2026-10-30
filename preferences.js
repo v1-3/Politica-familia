@@ -11,7 +11,7 @@ const UI_COPY = {
  'Individual rows retain that person’s own original recommendation filter. Group lists require eligibility for every selected person.':'Cada linha individual mantém o filtro original daquela pessoa. Nas listas do grupo, o candidato precisa ser elegível para todas as pessoas selecionadas.',
  'A geometry of your differences.':['Compare all 12 political axes.','Compare os 12 eixos políticos.'],
  'Compatible with your combination.':['Matches for the selected people.','Correspondências para as pessoas selecionadas.'],
- 'Read the ideas behind the matches.':['Books by authors with similar profiles.','Livros de autores com perfis semelhantes.'],
+ 'Read the ideas behind the matches.':['Group reading list','Lista de leitura do grupo'],
  'Choose any combination below. The radar shows scores; the distance map shows separation.':['Select people below. The radar compares their scores on each axis. The map summarizes the differences between their profiles.','Selecione as pessoas abaixo. O radar compara suas pontuações em cada eixo. O mapa resume as diferenças entre os perfis.'],
  'Center = 0%, outer ring = 100% of each named pole. A larger shape does not mean a stronger or better ideology.':['Each label names the position measured from 0% at the center to 100% at the outer ring. Area does not measure political strength or quality.','Cada rótulo indica a posição medida de 0% no centro a 100% no anel externo. A área não mede força ou qualidade política.'],
  'Closer points mean more similar test answers across all 12 axes. Horizontal and vertical directions have no political meaning.':['Closer points indicate more similar scores across the 12 axes. The map directions do not represent left, right, authority or freedom.','Pontos próximos indicam pontuações mais semelhantes nos 12 eixos. As direções do mapa não representam esquerda, direita, autoridade ou liberdade.'],
@@ -167,6 +167,11 @@ Object.assign(UI_PHRASES,{
 for(let n=4;n<=9;n++){UI_PHRASES[n%2?`For each axis, take the middle of the ${n} selected scores.`:`For each axis, average the middle two of the ${n} selected scores.`]=n%2?`Em cada eixo, use a pontuação central das ${n} selecionadas.`:`Em cada eixo, calcule a média das duas pontuações centrais das ${n} selecionadas.`;}
 let uiLanguage=localStorage.getItem('family-language')||'en';
 const uiOriginal=new WeakMap();
+UI_COPY['Matches use the reviewed catalog from October 28, 2026. All nine people and their combinations use the same version; original PDFs retain their historical results.']='As correspondências usam o catálogo revisado de 28 de outubro de 2026. As nove pessoas e suas combinações usam a mesma versão; os PDFs originais preservam os resultados históricos.';
+UI_COPY['Select people in the floating bar. Every section compares the same group.']='Selecione as pessoas na barra flutuante. Todas as seções comparam o mesmo grupo.';
+UI_COPY['Select people in the floating bar.']='Selecione as pessoas na barra flutuante.';
+UI_COPY['People included throughout the page']='Pessoas incluídas em toda a página';
+UI_COPY['Search and the minimum filter apply to this match category. Books have a separate minimum filter.']='A busca e o filtro mínimo se aplicam a esta categoria. Os livros têm um filtro mínimo separado.';
 const uiAttributes=new WeakMap();
 const uiPhraseMap={...Object.fromEntries(Object.entries(UI_COPY).filter(([,v])=>typeof v==='string')),...UI_PHRASES};
 const uiPhrasePattern=new RegExp('(?<![A-Za-z])(?:'+Object.keys(uiPhraseMap).sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![A-Za-z])','g');
@@ -198,7 +203,12 @@ function translateInterface(){
  document.getElementById('theme-toggle').textContent=document.documentElement.dataset.theme==='dark'?(uiLanguage==='pt'?'Modo claro':'Light mode'):(uiLanguage==='pt'?'Modo escuro':'Dark mode');
  uiObserver.observe(document.body,{childList:true,subtree:true,characterData:true});
 }
-const uiObserver=new MutationObserver(()=>translateInterface());
+const uiObserver=new MutationObserver(records=>{
+ // Rotation only redraws already-localized SVG titles and numeric point labels.
+ // Avoid rescanning every text node on the page on each pointer movement.
+ if(records.every(record=>record.target instanceof Element&&record.target.closest('.cube-scene')))return;
+ translateInterface();
+});
 const preferences=document.createElement('div');preferences.id='page-preferences';preferences.innerHTML='<button type="button" id="language-toggle">Português</button><button type="button" id="theme-toggle">Dark mode</button>';
 document.querySelector('.nav').append(preferences);
 document.documentElement.dataset.theme=localStorage.getItem('family-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');

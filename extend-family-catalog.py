@@ -1,8 +1,7 @@
-"""Fill missing family catalog scores and combinations, preserving existing results.
+"""Build missing combinations, or explicitly refresh all results with --refresh.
 
-Catalog JSON and Java reference implementations in evidence/catalog-snapshot
-are pinned to d66d8747950045077770a89dfa565d173bb60964. Original groups are
-kept byte-for-byte at the JSON-value level. No live ranking API is used.
+Inputs are pinned to COMMIT in a versioned evidence/catalog-snapshot directory.
+No live ranking API is used; ordinary runs verify and preserve existing groups.
 """
 from pathlib import Path
 from statistics import median, mean
@@ -10,20 +9,22 @@ import base64
 import concurrent.futures
 import json
 import math
+import sys
 import mimetypes
 import urllib.request
 from urllib.parse import urlparse, parse_qs
 
 ROOT = Path(__file__).resolve().parent
-CACHE = ROOT / 'evidence/catalog-snapshot'
 DATA = ROOT / 'evidence/html-embedded-data.json'
-COMMIT = 'd66d8747950045077770a89dfa565d173bb60964'
+COMMIT = '44417356172d18f98c0597c191a3b225211380c6'
+CACHE = ROOT / 'evidence/catalog-snapshot' / COMMIT
 SOURCE = 'https://github.com/RomanCypherpunk/12axes/tree/' + COMMIT
 RAW = 'https://raw.githubusercontent.com/RomanCypherpunk/12axes/' + COMMIT
 AXES = ['estrutura', 'representacao', 'poder', 'imigracao', 'diplomacia', 'intervencao', 'economia', 'controle', 'comercio', 'religiao', 'moral', 'tecnologia']
 KEYS = ['est', 'rep', 'pod', 'imi', 'dip', 'int', 'eco', 'con', 'com', 'rel', 'mor', 'tec']
 KINDS = {'ideologies': ('ideology-profiles.json', 'ideologyId'), 'countries': ('countries-profiles.json', 'countryId'), 'personalities': ('personality-profiles.json', 'personalityId'), 'parties': ('parties-profiles.json', 'partyId')}
 DIMENSIONS = {'Political': list(range(12)), 'Social': [1, 10, 9, 6, 7, 8, 3, 2, 11], 'Economic': [6, 7, 8]}
+AREA_CATEGORIES = {'Political': {'politico','teorico','ativista'}, 'Social': {'filosofo','religioso','intelectual','ativista'}, 'Economic': {'politico','economista','empresario'}}
 SELECTABLE = {'catholic', 'protestant', 'orthodox', 'judaism', 'islam', 'buddhism', 'hinduism'}
 
 def ensure_cache():
@@ -65,7 +66,12 @@ def compatibility(user, target, axes=range(12)):
 def allows(religions, preference):
     if not religions:
         return True
-    preferred = ['catholic', 'protestant', 'orthodox'] if preference == 'christianity' else [preference] if preference else []
+    preferred = set(preference.split(',')) if preference else set()
+    if 'christianity' in preferred:
+        preferred.update(['catholic','protestant','orthodox'])
+    has_selectable = any(r in SELECTABLE for r in religions)
+    if 'other' in preferred and (not has_selectable or preferred == {'other'}):
+        return not has_selectable
     matches = any(r in preferred for r in religions)
     if 'only' in religions:
         return matches if any(r in SELECTABLE for r in religions) else preference is None
@@ -75,8 +81,10 @@ def result_url(values):
     return 'https://12axes.vercel.app/results?' + '&'.join(f'{k}={v:g}' for k,v in zip(KEYS,values))
 
 def context(values, data, catalog):
-    distances = [abs(v-m) for v,m in zip(values,data['source']['catalogMedians'])]
+    values = [round1(v) for v in values]
+    distances = [round1(abs(v-m)) for v,m in zip(values,data['source']['catalogMedians'])]
     result = {'unusual': max(range(12), key=lambda j: distances[j]), 'typical': min(range(12), key=lambda j: distances[j]), 'tension': None}
+    result.update(unusualAxes=[j for j,d in enumerate(distances) if d==max(distances)], typicalAxes=[j for j,d in enumerate(distances) if d==min(distances)], contextDistances=distances)
     best = 0
     for i in range(12):
         for j in range(i+1,12):
@@ -99,6 +107,15 @@ def context(values, data, catalog):
 def main():
     ensure_cache()
     data = load(DATA)
+    refresh = '--refresh' in sys.argv
+    if data['source']['commit'] != COMMIT and not refresh:
+        raise SystemExit('Catalog version changed: run with --refresh to regenerate every result.')
+    previous_entities = data['entities']
+    if refresh:
+        data['groups'] = {}
+        data['entities'] = {}
+        for person in data['people']:
+            person['catalogMatches'] = False
     original_people = [p for p in data['people'] if p.get('catalogMatches') is not False]
     original_indices = [data['people'].index(p) for p in original_people]
     original_count = len(original_people)
@@ -116,6 +133,7 @@ def main():
         catalogs[kind] = []
         for raw in load(CACHE/f'{kind}.json'):
             meta = {**raw, **translations.get(raw['id'],{})}
+            meta['i18n'] = {'pt':{k:raw[k] for k in ['name','category','role','description','period'] if k in raw}, 'en':{k:meta[k] for k in ['name','category','role','description','period'] if k in meta}}
             vector = profiles.get(meta['id']) or meta.get('vector') or {}
             meta['vector'] = [vector.get(a,50) for a in AXES]
             meta['kind'] = kind
@@ -123,6 +141,7 @@ def main():
             meta['scores'] = [compatibility(p['values'], meta['vector']) for p in data['people']]
             catalogs[kind].append(meta)
             all_entities[meta['key']] = meta
+    data['source'].update(commit=COMMIT, repository=SOURCE, date='2026-10-28', calculatedDate='2026-10-29', catalogSizes={k:len(v) for k,v in catalogs.items()}, catalogMedians=[median(e['vector'][j] for e in catalogs['ideologies']) for j in range(12)])
     # Independent regression check: every retained individual score must match.
     checked = 0
     for key,entity in original_entities.items():
@@ -168,14 +187,18 @@ def main():
                 field_winners.setdefault(e['category'], e)
             matches['fields'] = pick(list(field_winners.values()),8)
             matches['distant'] = sum([pick(list(reversed(entries)),3) for entries in sorted_by_kind.values()],[])
-            matches['books'] = [{**row_by_key[e['key']], 'title':books[e['id']]['title']['en'],'year':books[e['id']]['year'],'bookSource':SOURCE+'/backend/src/main/resources/data/books.json'} for e in sorted_by_kind['personalities'] if e['id'] in books][:12]
+            matches['books'] = [{**row_by_key[e['key']], 'title':books[e['id']]['title']['en'],'titles':books[e['id']]['title'],'year':books[e['id']]['year'],'bookSource':SOURCE+'/backend/src/main/resources/data/books.json'} for e in sorted_by_kind['personalities'] if e['id'] in books][:12]
             matches['dimensions'] = {}
+            excluded = {'personalities':{matches['personalities'][0]['key']}, 'countries':{matches['countries'][0]['key'],matches['historical'][0]['key']}, 'parties':{matches['parties'][0]['key'],matches['historicalParties'][0]['key']}}
             for label,axes in DIMENSIONS.items():
                 rows = []
                 for kind in ['personalities','countries','parties']:
+                    used_axes = range(12) if kind=='personalities' else axes
                     def dim_score(e):
-                        return min(compatibility(data['people'][i]['values'],e['vector'],axes) for i in indices) if mode=='shared' else compatibility(matching_values,e['vector'],axes)
-                    winner = min(eligible[kind],key=lambda e:(-dim_score(e),e['name']))
+                        return min(compatibility(data['people'][i]['values'],e['vector'],used_axes) for i in indices) if mode=='shared' else compatibility(matching_values,e['vector'],used_axes)
+                    candidates = [e for e in eligible[kind] if e['key'] not in excluded[kind] and (kind!='personalities' or e['category'] in AREA_CATEGORIES[label])]
+                    winner = min(candidates,key=lambda e:(-dim_score(e),e['name']))
+                    excluded[kind].add(winner['key'])
                     rows.append({'key':winner['key'],'score':dim_score(winner)})
                 matches['dimensions'][label]=rows
             for category,rows in matches.items():
@@ -204,12 +227,16 @@ def main():
         kind = meta['kind']
         fields = ['id','name','category'] + (['role','lifespan'] if kind=='personalities' else ['countryId'] if kind=='ideologies' else ['historical','period']+(['countryId'] if kind=='parties' else []))
         entry = {key:meta[key] for key in fields if key in meta}
+        entry['i18n'] = meta['i18n']
         prefix = {'countries':'flag','personalities':'image','parties':'logo'}.get(kind)
         entry.update(kind=kind,asset=meta.get(prefix+'Path') if prefix else None,reference=meta.get(prefix+'SourceUrl') if prefix else None,source=SOURCE+'/backend/src/main/resources/data/'+kind+'.json',personScores=meta['scores'],assetKind={'countries':'flag','personalities':'portrait','parties':'logo','ideologies':'ideology'}[kind])
         return entry
     for key in sorted(needed):
         if key not in original_entities:
             original_entities[key] = entity_for(all_entities[key])
+            previous = previous_entities.get(key,{})
+            if previous.get('localAsset') and previous.get('asset')==original_entities[key].get('asset'):
+                original_entities[key]['localAsset']=previous['localAsset']
     # Only new retained images are fetched, then embedded to preserve offline use.
     image_dir = CACHE/'assets'
     image_dir.mkdir(exist_ok=True)
@@ -247,13 +274,13 @@ def main():
         winners={}
         for s,e in scored['personalities']: winners.setdefault(e['category'],(s,e))
         summary['fields']=[item(s,e) for s,e in winners.values()]
-        candidates={e['id']:(s,e) for s,e in scored['personalities'] if e['id'] in {p['id'] for p in summary['personalities']+summary['fields']} and e['id'] in books}
+        candidates={e['id']:(s,e) for s,e in scored['personalities'] if e['id'] in {p['id'] for p in summary['personalities'][:8]+summary['fields']} and e['id'] in books}
         summary['books']=[{'title':books[e['id']]['title']['en'],'author':e['name'],'authorId':e['id'],'year':books[e['id']]['year'],'score':s,'reference':e.get('imageSourceUrl'),'source':SOURCE+'/backend/src/main/resources/data/books.json'} for s,e in sorted(candidates.values(),key=lambda x:(-x[0],x[1]['name']))[:3]]
         summary['dimensions']={}
         for kind,exclude in [('personalities',[summary['personalities'][0]['id']]),('countries',[summary['countries'][0]['id'],summary['historical'][0]['id']]),('parties',[summary['parties'][0]['id'],summary['historicalParties'][0]['id']])]:
             matches=[]
             for label,axes in DIMENSIONS.items():
-                rows=sorted([(compatibility(values,e['vector'],axes),e) for e in eligible[kind] if e['id'] not in exclude],key=lambda x:(-x[0],x[1]['name']))
+                rows=sorted([(compatibility(values,e['vector'],range(12) if kind=='personalities' else axes),e) for e in eligible[kind] if e['id'] not in exclude and (kind!='personalities' or e['category'] in AREA_CATEGORIES[label])],key=lambda x:(-x[0],x[1]['name']))
                 s,e=rows[0]
                 matches.append(item(s,e,label,[s for s,e in rows]))
                 exclude.append(e['id'])

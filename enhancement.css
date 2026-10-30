@@ -143,3 +143,30 @@ html[data-theme] .match-card,html[data-theme] .book-card,html[data-theme] .axis-
  .context-panel{padding:20px;margin-top:26px}.dimension-grid{gap:16px}.context-notes{gap:16px}.report-item{padding-block:16px}
  .section-selection{margin-bottom:20px}.report-person{padding:20px}.no-results{padding:28px 18px}.geometry-card .no-results{min-height:0;padding:20px 10px}
 }
+/* Readable attribution and the expanded/source reading-list distinction. */
+.footer small,footer small,.footer p,footer p,.offline-download {font-size:14px!important;line-height:1.6}
+.original-book-list {grid-column:1/-1;padding:20px;border:1px solid currentColor;border-radius:12px}
+.original-book-list summary {cursor:pointer;font-weight:700}
+.offline-download {text-align:center;padding:16px}
+.source-links a,.source-grid a,.selection-label strong,.hero .btn{font-size:14px!important;line-height:1.6}
+.catalog-description{font-size:14px;line-height:1.7;margin:14px 0;color:var(--ink)}
+.catalog-description summary{cursor:pointer;font-weight:600}.catalog-description p{margin-top:10px}
+.cube-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:18px 0 0}
+.cube-controls .note{width:100%;margin:0}
+.cube-tools{display:flex;gap:6px;flex-wrap:wrap}
+.cube-tools button{min-width:44px;min-height:44px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font-size:16px;padding:6px 10px}
+.cube-svg{touch-action:none;cursor:grab;border:1px solid var(--line);border-radius:12px;margin-top:12px!important;background:var(--surface)}
+.cube-svg:active{cursor:grabbing}.cube-svg:focus-visible{outline:3px solid var(--forest);outline-offset:3px}
+.cube-edge{stroke:var(--muted);stroke-width:1.3;stroke-opacity:.55;fill:none}
+.cube-connection{stroke:var(--muted);stroke-width:1;stroke-opacity:.45}
+#distance-map .cube-svg .cube-number,#compass-chart .cube-svg .cube-number{fill:white!important;font-size:18px;font-weight:700;paint-order:stroke;stroke:#222;stroke-width:2px;stroke-linejoin:round}
+#distance-map .cube-svg .cube-number-large,#compass-chart .cube-svg .cube-number-large{font-size:32px}
+.cube-svg .cube-axis{fill:var(--ink)!important;font-size:20px;font-weight:700;paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
+.cube-legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 20px;padding-left:0;list-style:none;font-size:14px;margin:16px 0}
+.cube-swatch{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--color);margin-right:6px}
+@media(max-width:650px){.cube-legend{grid-template-columns:repeat(2,minmax(0,1fr))}.cube-tools{gap:8px}}
+.median-swatch{border-radius:0;transform:rotate(45deg)}
+.compass-axis-key{list-style:none;padding:0;font-size:14px;line-height:1.7;margin:18px 0}
+.compass-axis-key li{margin:8px 0}.compass-axis-key b{display:inline-block;min-width:24px}
+#compass-chart .cube-svg{overflow:hidden}#compass-table table{min-width:510px}
+@media print{.cube-controls{display:none}.cube-svg{break-inside:avoid}}

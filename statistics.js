@@ -211,7 +211,9 @@
     }).sort(function (left, right) { return right.value - left.value; });
   }
 
-  function mdsFromDistances(distances) {
+  function mdsFromDistances(distances, dimensions) {
+    dimensions = dimensions === undefined ? 2 : dimensions;
+    if (!Number.isInteger(dimensions) || dimensions < 1 || dimensions > 12) throw new RangeError('Dimensions must be an integer between 1 and 12.');
     if (!Array.isArray(distances)) throw new TypeError('Expected a square distance matrix.');
     var n = distances.length;
     distances.forEach(function (row, i) {
@@ -236,9 +238,9 @@
     var eigens = eigenSymmetric(gram);
     var positive = eigens.map(function (eigen) { return Math.max(0, eigen.value); });
     var totalVariance = positive.reduce(function (sum, value) { return sum + value; }, 0);
-    var retainedVariance = (positive[0] || 0) + (positive[1] || 0);
+    var retainedVariance = positive.slice(0, dimensions).reduce(function (sum, value) { return sum + value; }, 0);
     var coordinates = Array.from({ length: n }, function (_, index) {
-      return [0, 1].map(function (dimension) {
+      return Array.from({length: dimensions}, function (_, dimension) {
         return eigens[dimension] ? eigens[dimension].vector[index] * Math.sqrt(positive[dimension]) : 0;
       });
     });
@@ -247,7 +249,7 @@
     var originalSum = 0;
     for (var i = 0; i < n; i++) {
       for (var j = i + 1; j < n; j++) {
-        var projected = Math.hypot(coordinates[i][0] - coordinates[j][0], coordinates[i][1] - coordinates[j][1]);
+        var projected = Math.hypot.apply(Math, coordinates[i].map(function (value, d) { return value - coordinates[j][d]; }));
         projectedDistances[i][j] = projectedDistances[j][i] = projected;
         residualSum += Math.pow(distances[i][j] - projected, 2);
         originalSum += Math.pow(distances[i][j], 2);
@@ -255,6 +257,7 @@
     }
     return {
       n: n,
+      dimensions: dimensions,
       coordinates: coordinates,
       distances: distances.map(function (row) { return row.slice(); }),
       projectedDistances: projectedDistances,
@@ -268,9 +271,18 @@
     };
   }
 
-  function classicalMDS(profiles) {
+  function compassCoordinates(profile) {
+    var values = scoresOf(profile);
+    return {
+      right: .6 * (100 - values[6]) + .4 * (100 - values[7]),
+      authority: (values[2] + 100 - values[1] + 100 - values[0]) / 3,
+      traditional: 100 - values[10]
+    };
+  }
+
+  function classicalMDS(profiles, dimensions) {
     var comparisons = pairwise(profiles);
-    var embedding = mdsFromDistances(comparisons.rms);
+    var embedding = mdsFromDistances(comparisons.rms, dimensions);
     embedding.ids = comparisons.ids;
     embedding.meanAbsoluteDistances = comparisons.meanAbsolute;
     return embedding;
@@ -289,6 +301,7 @@
     pairwise: pairwise,
     medoid: medoid,
     mdsFromDistances: mdsFromDistances,
-    classicalMDS: classicalMDS
+    classicalMDS: classicalMDS,
+    compassCoordinates: compassCoordinates
   });
 }));

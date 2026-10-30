@@ -1,0 +1,17 @@
+{
+  "catalogCommit": "44417356172d18f98c0597c191a3b225211380c6",
+  "combinations": 511,
+  "numericChecks": 826591,
+  "dimensionEntries": 9198,
+  "localization": "passed",
+  "geometryAllNine": {
+    "2": {
+      "retainedVariationPercent": 70.22498720816915,
+      "normalizedDistanceError": 0.26117157459177315
+    },
+    "3": {
+      "retainedVariationPercent": 81.2417178289819,
+      "normalizedDistanceError": 0.18065666747387774
+    }
+  }
+}
