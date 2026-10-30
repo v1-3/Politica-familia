@@ -15,6 +15,7 @@ h1{font-size:36px;line-height:1.15}h2{font-size:28px;line-height:1.2}h3{line-hei
 .geometry-card{padding:18px}.geometry-card h3{font-size:18px;margin:0 0 8px}.geometry-card .note{margin:6px 0}
 .cube-legend{font-size:12px;gap:5px 12px;margin:10px 0}.cube-region-key{font-size:12px;gap:5px 10px;margin:10px 0}
 .cube-hint{font-size:12px!important;line-height:1.35!important}.compass-read{padding:20px}.compass-read h4{margin-top:16px}
+.cube-view-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:10px 0}.cube-view-controls .segments{display:inline-flex}.cube-view-controls .cube-hint{flex:1;min-width:180px}
 .compass-axis-key,.cube-tint-labels{font-size:12px}.insights{gap:12px;margin-top:16px}.insight{padding:16px}
 .axes-bars,.match-grid,.book-grid,.report-columns,.report-columns:has(.report-person:nth-child(4)){
  display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,calc((100% - 16px)/2)),1fr));grid-template-rows:none;grid-auto-flow:row;grid-auto-columns:auto;gap:16px;overflow:visible;align-items:start;padding:0;scroll-snap-type:none;

@@ -84,8 +84,9 @@ function cubePose(action,state){
 function cubeControls(state){
  let host=$(state.owner+'-view-controls');
  if(!host){host=document.createElement('p');host.id=state.owner+'-view-controls';$(state.host).before(host);}
- host.className='note cube-hint';host.hidden=state.people.length<state.minimum;
- host.textContent=rp('Drag to rotate · pinch or scroll to zoom · double-click to reset.','Arraste para girar · pince ou role para ampliar · clique duas vezes para redefinir.');
+ host.className='cube-view-controls';host.hidden=state.people.length<state.minimum;
+ host.innerHTML=`<span class="segments" role="group" aria-label="${rp('Graph dimensions','Dimensões do gráfico')}">${['2d','3d'].map(mode=>`<button type="button" data-cube-mode="${mode}" aria-pressed="${state.mode===mode}">${mode.toUpperCase()}</button>`).join('')}</span>${state.mode==='3d'?`<span class="note cube-hint">${rp('Drag to rotate · pinch or scroll to zoom · double-click to reset.','Arraste para girar · pince ou role para ampliar · clique duas vezes para redefinir.')}</span>`:''}`;
+ host.onclick=e=>{const button=e.target.closest('[data-cube-mode]');if(!button)return;state.mode=button.dataset.cubeMode;state.owner==='map'?renderGeometry():renderCompass();};
 }
 function cubeMount(state,label){
  const host=$(state.host);host.hidden=false;
