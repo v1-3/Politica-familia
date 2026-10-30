@@ -39,7 +39,7 @@ function renderGeometry(){
  const intersect=(r,t)=>Math.max(0,Math.min(r.x+r.w,t.x+t.w)-Math.max(r.x,t.x))*Math.max(0,Math.min(r.y+r.h,t.y+t.h)-Math.max(r.y,t.y));
  used.forEach(r=>cost+=intersect(r,rect)*10);points.forEach(p=>cost+=intersect(rect,{x:p.x-12,y:p.y-12,w:24,h:24})*10);
  if(!best||cost<best.cost)best={...rect,cost};});used.push(best);
- map+=`<g><circle cx="${q.x}" cy="${q.y}" r="17" fill="${q.p.color}" stroke="#fbf9f3" stroke-width="3"/><text x="${q.x}" y="${q.y+5}" text-anchor="middle" fill="white" font-size="15" font-weight="700">${i+1}</text><rect x="${best.x}" y="${best.y}" width="${width}" height="${height}" rx="6" fill="#fbf9f3" stroke="${q.p.color}" stroke-opacity=".3"/><text x="${best.x+width/2}" y="${best.y+23}" text-anchor="middle" font-size="17" fill="${q.p.color}" font-weight="600">${esc(q.p.name)}</text></g>`;
+ map+=`<g><circle cx="${q.x}" cy="${q.y}" r="17" fill="${q.p.color}" stroke="#fbf9f3" stroke-width="3"/><text class="person-initial" x="${q.x}" y="${q.y+5}" text-anchor="middle" fill="white" font-size="15" font-weight="700">${esc(q.p.name.charAt(0).toUpperCase())}</text><rect x="${best.x}" y="${best.y}" width="${width}" height="${height}" rx="6" fill="#fbf9f3" stroke="${q.p.color}" stroke-opacity=".3"/><text x="${best.x+width/2}" y="${best.y+23}" text-anchor="middle" font-size="17" fill="${q.p.color}" font-weight="600">${esc(q.p.name)}</text></g>`;
  });
  if($('distance-map').clientWidth<560&&ps.length>1){
   const left=Math.min(...points.map(p=>p.x-20),...used.map(b=>b.x))-28,right=Math.max(...points.map(p=>p.x+20),...used.map(b=>b.x+b.w))+28;

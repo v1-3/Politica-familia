@@ -1,6 +1,7 @@
 /* Two columns minimum; wider screens add readable columns without carousels. */
 .wrap{width:calc(100% - clamp(20px,4vw,96px))}
 body{font-size:14px;line-height:1.45}
+.person-initial{fill:#fff!important;stroke:#142733;stroke-width:.6px;paint-order:stroke;user-select:none;pointer-events:none}
 h1{font-size:36px;line-height:1.15}h2{font-size:28px;line-height:1.2}h3{line-height:1.25}
 .section{padding-block:28px}.section-head{margin-bottom:16px;gap:16px}.section-head h2{margin-bottom:6px}
 .eyebrow,.hero>div:first-child,.hero-foot,.hero-actions,#matches-selection,#books-scope-note,#mode-explanation,.card-subtitle,.card-category,.card-rank,.card-footer>span,.book-portrait>span,.context-notes{display:none!important}

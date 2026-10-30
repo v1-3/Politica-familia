@@ -22,6 +22,7 @@ def embed(obj):
 embed(pdf)
 base=base.replace('<title>12 Axes — Family Comparison</title>','<title>12 Axes — Family Atlas</title>')
 base=re.sub(r'<title>.*?</title>','<title>12 Axes — Family Atlas</title>',base,count=1)
+base=base.replace('<circle data-marker="person" cx="${p.x}" cy="${p.y}" r="7" fill="${p.color}" stroke="#fbf9f3" stroke-width="2.5"/>','<circle data-marker="person" cx="${p.x}" cy="${p.y}" r="11" fill="${p.color}" stroke="#fbf9f3" stroke-width="2.5"/><text class="person-initial" x="${p.x}" y="${p.y}" dy=".35em" text-anchor="middle" fill="white" font-size="12" font-weight="700">${esc(p.name.charAt(0).toUpperCase())}</text>')
 base=base.replace('</style>','\n'+(root/'enhancement.css').read_text(encoding='utf-8')+'\n'+(root/'glass.css').read_text(encoding='utf-8')+'\n'+(root/'compact.css').read_text(encoding='utf-8')+'\n</style>',1)
 base=base.replace('<a href="#graph">Compass</a>','<a href="#geometry">Geometry</a><a href="#graph">Compass</a>')
 base=base.replace('<a href="#books">Books</a>','<a href="#books">Books</a><a href="#reports">PDF reports</a>')
